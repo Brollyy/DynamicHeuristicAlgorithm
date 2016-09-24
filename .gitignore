@@ -50,3 +50,7 @@ Temporary Items
 .vs/
 bin/
 obj/
+
+# Project files
+Logs/
+Statistics/
