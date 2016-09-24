@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace DynamicHeuristicAlgorithm.Utils
+namespace DynamicHeuristicAlgorithmCore.Utils
 {
 
     public static class Logger
@@ -21,6 +21,7 @@ namespace DynamicHeuristicAlgorithm.Utils
         private static LogLevel logLevel = LogLevel.NONE;
         private static string logFilename = null;
         private static StreamWriter allLogTarget = null;
+        private static StreamWriter errorLogTarget = null;
         private static Encoding allLogEncoding; // UTF8 default
         private static readonly int MAX_LOG_FILES = 10;
         private static long MAX_LOG_LENGTH = 0;  // 100MB default
@@ -32,6 +33,7 @@ namespace DynamicHeuristicAlgorithm.Utils
             Logger.MAX_LOG_LENGTH = allLogFilesize > 0 ? allLogFilesize : 100L * 1024L * 1024L;
             Logger.allLogEncoding = allLogEncoding == null ? UnicodeEncoding.UTF8 : allLogEncoding;
             OpenLogFile();
+            OpenErrorLogFile();
         }
 
         private static bool OpenLogFile()
@@ -55,12 +57,32 @@ namespace DynamicHeuristicAlgorithm.Utils
                     if(e is IOException || e is DirectoryNotFoundException)
                     {
                         LogExternal(LogLevel.ERROR, e.Message);
+                        LogInternalError(e.Message);
                     }
                     Logger.allLogTarget = null;
                 }
             }
             LogExternal(LogLevel.ERROR, "Can't open log file at" + new DirectoryInfo(logFilename).Parent.FullName);
+            LogInternalError("Can't open log file at" + new DirectoryInfo(logFilename).Parent.FullName);
             return false;
+        }
+
+        private static bool OpenErrorLogFile()
+        {
+            try
+            {
+                Logger.errorLogTarget = new StreamWriter(logFilename + "Error", true, allLogEncoding);
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (e is IOException || e is DirectoryNotFoundException)
+                {
+                    LogExternal(LogLevel.ERROR, e.Message);
+                }
+                Logger.errorLogTarget = null;
+                return false;
+            }
         }
 
         private static void Log(LogLevel logLevel, string message)
@@ -68,6 +90,15 @@ namespace DynamicHeuristicAlgorithm.Utils
             string logMessage = "[" + DateTime.Now.ToString() + " " + logLevel.ToString() + "]: " + message;
             LogExternal(logLevel, logMessage);
             LogInternal(logLevel, logMessage);
+            LogInternalError(logMessage);
+        }
+
+        private static void LogInternalError(string logMessage)
+        {
+            if(errorLogTarget != null)
+            {
+                errorLogTarget.WriteLine(logMessage);
+            }
         }
 
         private static void LogInternal(LogLevel logLevel, string message)
@@ -127,6 +158,7 @@ namespace DynamicHeuristicAlgorithm.Utils
             string header = "[" + DateTime.Now.ToString() + " ERROR]: ";
             LogExternal(LogLevel.ERROR, header + ex.Message);
             LogInternal(LogLevel.ERROR, header + ex.GetType().Name + ": " + ex.Message + "\n" + ex.StackTrace);
+            LogInternalError(header + ex.GetType().Name + ": " + ex.Message + "\n" + ex.StackTrace);
         }
 
         public static void Dispose()
@@ -136,6 +168,16 @@ namespace DynamicHeuristicAlgorithm.Utils
                 allLogTarget.Flush();
                 allLogTarget.Close();
                 allLogTarget.Dispose();
+            }
+        }
+
+        public static void DisposeError()
+        {
+            if(errorLogTarget != null)
+            {
+                errorLogTarget.Flush();
+                errorLogTarget.Close();
+                errorLogTarget.Dispose();
             }
         }
 
@@ -149,6 +191,7 @@ namespace DynamicHeuristicAlgorithm.Utils
             }
             Array.ForEach(Directory.GetFiles(new DirectoryInfo(logFilename).Parent.FullName), File.Delete);
             OpenLogFile();
+            OpenErrorLogFile();
         }
 
         private class FileFullException : Exception

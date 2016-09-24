@@ -59,7 +59,6 @@
     <Compile Include="Utils\ControlWriter.cs" />
     <Compile Include="Utils\GameFactory.cs" />
     <Compile Include="Utils\HeuristicFactory.cs" />
-    <Compile Include="Utils\Logger.cs" />
     <Compile Include="Utils\MultiTextWriter.cs" />
     <Compile Include="Utils\PlayerFactory.cs" />
     <EmbeddedResource Include="DynamicHeuristicAlgorithmRunner.resx">

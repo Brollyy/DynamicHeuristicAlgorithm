@@ -1,4 +1,4 @@
-﻿using DynamicHeuristicAlgorithm.Utils;
+﻿using DynamicHeuristicAlgorithmCore.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,6 +37,7 @@ namespace DynamicHeuristicAlgorithm
         static void OnExit(object sender, EventArgs args)
         {
             Logger.Dispose();
+            Logger.DisposeError();
         }
 
         static string GetProjectFolderPath()

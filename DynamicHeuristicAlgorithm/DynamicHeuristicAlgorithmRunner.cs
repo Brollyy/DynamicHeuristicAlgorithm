@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using DynamicHeuristicAlgorithmCore.Utils;
 
 namespace DynamicHeuristicAlgorithm
 {
