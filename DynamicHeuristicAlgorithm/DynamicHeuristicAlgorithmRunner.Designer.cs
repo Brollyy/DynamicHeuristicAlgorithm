@@ -35,28 +35,28 @@
             this.setHeuristicsRadioButton = new System.Windows.Forms.RadioButton();
             this.playYourselfRadioButton = new System.Windows.Forms.RadioButton();
             this.setHeuristicsGroupBox = new System.Windows.Forms.GroupBox();
-            this.openSquareBonusHeuristicCheckBox = new System.Windows.Forms.CheckBox();
-            this.largeValuesOnEdgeHeuristicCheckBox = new System.Windows.Forms.CheckBox();
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox = new System.Windows.Forms.CheckBox();
-            this.numberOfMergesHeuristicCheckBox = new System.Windows.Forms.CheckBox();
-            this.chooseGameGroupBox = new System.Windows.Forms.GroupBox();
-            this.gameTicTacToeRadioButton = new System.Windows.Forms.RadioButton();
-            this.openSquareBonusHeuristicWeightMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.numberOfMergesHeuristicWeightMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.openSquareBonusHeuristicWeightMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.numberOfMergesHeuristicCheckBox = new System.Windows.Forms.CheckBox();
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox = new System.Windows.Forms.CheckBox();
+            this.largeValuesOnEdgeHeuristicCheckBox = new System.Windows.Forms.CheckBox();
+            this.openSquareBonusHeuristicCheckBox = new System.Windows.Forms.CheckBox();
+            this.chooseGameGroupBox = new System.Windows.Forms.GroupBox();
+            this.gameConnectFourRadioButton = new System.Windows.Forms.RadioButton();
             this.game2048RadioButton = new System.Windows.Forms.RadioButton();
-            this.gameCoinFlipGuessRadioButton = new System.Windows.Forms.RadioButton();
+            this.gameTicTacToeRadioButton = new System.Windows.Forms.RadioButton();
             this.AIOptionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.recursionDepthLabel = new System.Windows.Forms.Label();
+            this.recursionDepthMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.purgeDynamicHeuristicDataButton = new System.Windows.Forms.Button();
+            this.deleteStatisticsButton = new System.Windows.Forms.Button();
+            this.saveStatisticsCheckBox = new System.Windows.Forms.CheckBox();
+            this.numberOfRunsMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.numberOfRunsLabel = new System.Windows.Forms.Label();
             this.clearConsoleButton = new System.Windows.Forms.Button();
             this.purgeLogsButton = new System.Windows.Forms.Button();
-            this.numberOfRunsLabel = new System.Windows.Forms.Label();
-            this.numberOfRunsMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.saveStatisticsCheckBox = new System.Windows.Forms.CheckBox();
-            this.deleteStatisticsButton = new System.Windows.Forms.Button();
-            this.purgeDynamicHeuristicDataButton = new System.Windows.Forms.Button();
-            this.recursionDepthMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.recursionDepthLabel = new System.Windows.Forms.Label();
             this.modeGroupBox.SuspendLayout();
             this.setHeuristicsGroupBox.SuspendLayout();
             this.chooseGameGroupBox.SuspendLayout();
@@ -150,93 +150,16 @@
             this.setHeuristicsGroupBox.Text = "Heuristics";
             this.setHeuristicsGroupBox.Visible = false;
             // 
-            // openSquareBonusHeuristicCheckBox
+            // numberOfMergesHeuristicWeightMaskedTextBox
             // 
-            this.openSquareBonusHeuristicCheckBox.AutoSize = true;
-            this.openSquareBonusHeuristicCheckBox.Location = new System.Drawing.Point(7, 20);
-            this.openSquareBonusHeuristicCheckBox.Name = "openSquareBonusHeuristicCheckBox";
-            this.openSquareBonusHeuristicCheckBox.Size = new System.Drawing.Size(119, 17);
-            this.openSquareBonusHeuristicCheckBox.TabIndex = 0;
-            this.openSquareBonusHeuristicCheckBox.Text = "Open square bonus";
-            this.openSquareBonusHeuristicCheckBox.UseVisualStyleBackColor = true;
-            this.openSquareBonusHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.openSquareBonusHeuristicCheckBox_CheckedChanged);
-            // 
-            // largeValuesOnEdgeHeuristicCheckBox
-            // 
-            this.largeValuesOnEdgeHeuristicCheckBox.AutoSize = true;
-            this.largeValuesOnEdgeHeuristicCheckBox.Location = new System.Drawing.Point(7, 44);
-            this.largeValuesOnEdgeHeuristicCheckBox.Name = "largeValuesOnEdgeHeuristicCheckBox";
-            this.largeValuesOnEdgeHeuristicCheckBox.Size = new System.Drawing.Size(129, 17);
-            this.largeValuesOnEdgeHeuristicCheckBox.TabIndex = 1;
-            this.largeValuesOnEdgeHeuristicCheckBox.Text = "Large values on edge";
-            this.largeValuesOnEdgeHeuristicCheckBox.UseVisualStyleBackColor = true;
-            this.largeValuesOnEdgeHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.largeValuesOnEdgeHeuristicCheckBox_CheckedChanged);
-            // 
-            // nonMonotonicLinesPenaltyHeuristicCheckBox
-            // 
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.AutoSize = true;
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Location = new System.Drawing.Point(7, 68);
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Name = "nonMonotonicLinesPenaltyHeuristicCheckBox";
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Size = new System.Drawing.Size(159, 17);
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.TabIndex = 2;
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Text = "Non-monotonic lines penalty";
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.UseVisualStyleBackColor = true;
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.nonMonotonicLinesPenaltyHeuristicCheckBox_CheckedChanged);
-            // 
-            // numberOfMergesHeuristicCheckBox
-            // 
-            this.numberOfMergesHeuristicCheckBox.AutoSize = true;
-            this.numberOfMergesHeuristicCheckBox.Location = new System.Drawing.Point(7, 92);
-            this.numberOfMergesHeuristicCheckBox.Name = "numberOfMergesHeuristicCheckBox";
-            this.numberOfMergesHeuristicCheckBox.Size = new System.Drawing.Size(112, 17);
-            this.numberOfMergesHeuristicCheckBox.TabIndex = 3;
-            this.numberOfMergesHeuristicCheckBox.Text = "Number of merges";
-            this.numberOfMergesHeuristicCheckBox.UseVisualStyleBackColor = true;
-            this.numberOfMergesHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.numberOfMergesHeuristicCheckBox_CheckedChanged);
-            // 
-            // chooseGameGroupBox
-            // 
-            this.chooseGameGroupBox.Controls.Add(this.gameCoinFlipGuessRadioButton);
-            this.chooseGameGroupBox.Controls.Add(this.game2048RadioButton);
-            this.chooseGameGroupBox.Controls.Add(this.gameTicTacToeRadioButton);
-            this.chooseGameGroupBox.Location = new System.Drawing.Point(164, 212);
-            this.chooseGameGroupBox.Name = "chooseGameGroupBox";
-            this.chooseGameGroupBox.Size = new System.Drawing.Size(214, 100);
-            this.chooseGameGroupBox.TabIndex = 5;
-            this.chooseGameGroupBox.TabStop = false;
-            this.chooseGameGroupBox.Text = "Game";
-            // 
-            // gameTicTacToeRadioButton
-            // 
-            this.gameTicTacToeRadioButton.AutoSize = true;
-            this.gameTicTacToeRadioButton.Location = new System.Drawing.Point(6, 44);
-            this.gameTicTacToeRadioButton.Name = "gameTicTacToeRadioButton";
-            this.gameTicTacToeRadioButton.Size = new System.Drawing.Size(84, 17);
-            this.gameTicTacToeRadioButton.TabIndex = 0;
-            this.gameTicTacToeRadioButton.Text = "Tic Tac Toe";
-            this.gameTicTacToeRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // openSquareBonusHeuristicWeightMaskedTextBox
-            // 
-            this.openSquareBonusHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 19);
-            this.openSquareBonusHeuristicWeightMaskedTextBox.Mask = "0000";
-            this.openSquareBonusHeuristicWeightMaskedTextBox.Name = "openSquareBonusHeuristicWeightMaskedTextBox";
-            this.openSquareBonusHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.openSquareBonusHeuristicWeightMaskedTextBox.Size = new System.Drawing.Size(43, 20);
-            this.openSquareBonusHeuristicWeightMaskedTextBox.TabIndex = 6;
-            this.openSquareBonusHeuristicWeightMaskedTextBox.Visible = false;
-            this.openSquareBonusHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.openSquareBonusHeuristicWeightMaskedTextBox_Leave);
-            // 
-            // largeValuesOnEdgeHeuristicWeightMaskedTextBox
-            // 
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 43);
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Mask = "0000";
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Name = "largeValuesOnEdgeHeuristicWeightMaskedTextBox";
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Size = new System.Drawing.Size(43, 20);
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.TabIndex = 7;
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Visible = false;
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.largeValuesOnEdgeHeuristicWeightMaskedTextBox_Leave);
+            this.numberOfMergesHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 90);
+            this.numberOfMergesHeuristicWeightMaskedTextBox.Mask = "0000";
+            this.numberOfMergesHeuristicWeightMaskedTextBox.Name = "numberOfMergesHeuristicWeightMaskedTextBox";
+            this.numberOfMergesHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.numberOfMergesHeuristicWeightMaskedTextBox.Size = new System.Drawing.Size(43, 20);
+            this.numberOfMergesHeuristicWeightMaskedTextBox.TabIndex = 9;
+            this.numberOfMergesHeuristicWeightMaskedTextBox.Visible = false;
+            this.numberOfMergesHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.numberOfMergesHeuristicWeightMaskedTextBox_Leave);
             // 
             // nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox
             // 
@@ -249,16 +172,93 @@
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Visible = false;
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox_Leave);
             // 
-            // numberOfMergesHeuristicWeightMaskedTextBox
+            // largeValuesOnEdgeHeuristicWeightMaskedTextBox
             // 
-            this.numberOfMergesHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 90);
-            this.numberOfMergesHeuristicWeightMaskedTextBox.Mask = "0000";
-            this.numberOfMergesHeuristicWeightMaskedTextBox.Name = "numberOfMergesHeuristicWeightMaskedTextBox";
-            this.numberOfMergesHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.numberOfMergesHeuristicWeightMaskedTextBox.Size = new System.Drawing.Size(43, 20);
-            this.numberOfMergesHeuristicWeightMaskedTextBox.TabIndex = 9;
-            this.numberOfMergesHeuristicWeightMaskedTextBox.Visible = false;
-            this.numberOfMergesHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.numberOfMergesHeuristicWeightMaskedTextBox_Leave);
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 43);
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Mask = "0000";
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Name = "largeValuesOnEdgeHeuristicWeightMaskedTextBox";
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Size = new System.Drawing.Size(43, 20);
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.TabIndex = 7;
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Visible = false;
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.largeValuesOnEdgeHeuristicWeightMaskedTextBox_Leave);
+            // 
+            // openSquareBonusHeuristicWeightMaskedTextBox
+            // 
+            this.openSquareBonusHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 19);
+            this.openSquareBonusHeuristicWeightMaskedTextBox.Mask = "0000";
+            this.openSquareBonusHeuristicWeightMaskedTextBox.Name = "openSquareBonusHeuristicWeightMaskedTextBox";
+            this.openSquareBonusHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.openSquareBonusHeuristicWeightMaskedTextBox.Size = new System.Drawing.Size(43, 20);
+            this.openSquareBonusHeuristicWeightMaskedTextBox.TabIndex = 6;
+            this.openSquareBonusHeuristicWeightMaskedTextBox.Visible = false;
+            this.openSquareBonusHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.openSquareBonusHeuristicWeightMaskedTextBox_Leave);
+            // 
+            // numberOfMergesHeuristicCheckBox
+            // 
+            this.numberOfMergesHeuristicCheckBox.AutoSize = true;
+            this.numberOfMergesHeuristicCheckBox.Location = new System.Drawing.Point(7, 92);
+            this.numberOfMergesHeuristicCheckBox.Name = "numberOfMergesHeuristicCheckBox";
+            this.numberOfMergesHeuristicCheckBox.Size = new System.Drawing.Size(112, 17);
+            this.numberOfMergesHeuristicCheckBox.TabIndex = 3;
+            this.numberOfMergesHeuristicCheckBox.Text = "Number of merges";
+            this.numberOfMergesHeuristicCheckBox.UseVisualStyleBackColor = true;
+            this.numberOfMergesHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.numberOfMergesHeuristicCheckBox_CheckedChanged);
+            // 
+            // nonMonotonicLinesPenaltyHeuristicCheckBox
+            // 
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.AutoSize = true;
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Location = new System.Drawing.Point(7, 68);
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Name = "nonMonotonicLinesPenaltyHeuristicCheckBox";
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Size = new System.Drawing.Size(159, 17);
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.TabIndex = 2;
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Text = "Non-monotonic lines penalty";
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.UseVisualStyleBackColor = true;
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.nonMonotonicLinesPenaltyHeuristicCheckBox_CheckedChanged);
+            // 
+            // largeValuesOnEdgeHeuristicCheckBox
+            // 
+            this.largeValuesOnEdgeHeuristicCheckBox.AutoSize = true;
+            this.largeValuesOnEdgeHeuristicCheckBox.Location = new System.Drawing.Point(7, 44);
+            this.largeValuesOnEdgeHeuristicCheckBox.Name = "largeValuesOnEdgeHeuristicCheckBox";
+            this.largeValuesOnEdgeHeuristicCheckBox.Size = new System.Drawing.Size(129, 17);
+            this.largeValuesOnEdgeHeuristicCheckBox.TabIndex = 1;
+            this.largeValuesOnEdgeHeuristicCheckBox.Text = "Large values on edge";
+            this.largeValuesOnEdgeHeuristicCheckBox.UseVisualStyleBackColor = true;
+            this.largeValuesOnEdgeHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.largeValuesOnEdgeHeuristicCheckBox_CheckedChanged);
+            // 
+            // openSquareBonusHeuristicCheckBox
+            // 
+            this.openSquareBonusHeuristicCheckBox.AutoSize = true;
+            this.openSquareBonusHeuristicCheckBox.Location = new System.Drawing.Point(7, 20);
+            this.openSquareBonusHeuristicCheckBox.Name = "openSquareBonusHeuristicCheckBox";
+            this.openSquareBonusHeuristicCheckBox.Size = new System.Drawing.Size(119, 17);
+            this.openSquareBonusHeuristicCheckBox.TabIndex = 0;
+            this.openSquareBonusHeuristicCheckBox.Text = "Open square bonus";
+            this.openSquareBonusHeuristicCheckBox.UseVisualStyleBackColor = true;
+            this.openSquareBonusHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.openSquareBonusHeuristicCheckBox_CheckedChanged);
+            // 
+            // chooseGameGroupBox
+            // 
+            this.chooseGameGroupBox.Controls.Add(this.gameConnectFourRadioButton);
+            this.chooseGameGroupBox.Controls.Add(this.game2048RadioButton);
+            this.chooseGameGroupBox.Controls.Add(this.gameTicTacToeRadioButton);
+            this.chooseGameGroupBox.Location = new System.Drawing.Point(164, 212);
+            this.chooseGameGroupBox.Name = "chooseGameGroupBox";
+            this.chooseGameGroupBox.Size = new System.Drawing.Size(214, 100);
+            this.chooseGameGroupBox.TabIndex = 5;
+            this.chooseGameGroupBox.TabStop = false;
+            this.chooseGameGroupBox.Text = "Game";
+            // 
+            // gameConnectFourRadioButton
+            // 
+            this.gameConnectFourRadioButton.AutoSize = true;
+            this.gameConnectFourRadioButton.Location = new System.Drawing.Point(6, 44);
+            this.gameConnectFourRadioButton.Name = "gameConnectFourRadioButton";
+            this.gameConnectFourRadioButton.Size = new System.Drawing.Size(86, 17);
+            this.gameConnectFourRadioButton.TabIndex = 2;
+            this.gameConnectFourRadioButton.Text = "Connect four";
+            this.gameConnectFourRadioButton.UseVisualStyleBackColor = true;
             // 
             // game2048RadioButton
             // 
@@ -271,17 +271,17 @@
             this.game2048RadioButton.UseVisualStyleBackColor = true;
             this.game2048RadioButton.CheckedChanged += new System.EventHandler(this.game2048RadioButton_CheckedChanged);
             // 
-            // gameCoinFlipGuessRadioButton
+            // gameTicTacToeRadioButton
             // 
-            this.gameCoinFlipGuessRadioButton.AutoSize = true;
-            this.gameCoinFlipGuessRadioButton.Checked = true;
-            this.gameCoinFlipGuessRadioButton.Location = new System.Drawing.Point(6, 20);
-            this.gameCoinFlipGuessRadioButton.Name = "gameCoinFlipGuessRadioButton";
-            this.gameCoinFlipGuessRadioButton.Size = new System.Drawing.Size(93, 17);
-            this.gameCoinFlipGuessRadioButton.TabIndex = 2;
-            this.gameCoinFlipGuessRadioButton.TabStop = true;
-            this.gameCoinFlipGuessRadioButton.Text = "Coin flip guess";
-            this.gameCoinFlipGuessRadioButton.UseVisualStyleBackColor = true;
+            this.gameTicTacToeRadioButton.AutoSize = true;
+            this.gameTicTacToeRadioButton.Checked = true;
+            this.gameTicTacToeRadioButton.Location = new System.Drawing.Point(6, 20);
+            this.gameTicTacToeRadioButton.Name = "gameTicTacToeRadioButton";
+            this.gameTicTacToeRadioButton.Size = new System.Drawing.Size(84, 17);
+            this.gameTicTacToeRadioButton.TabIndex = 0;
+            this.gameTicTacToeRadioButton.TabStop = true;
+            this.gameTicTacToeRadioButton.Text = "Tic Tac Toe";
+            this.gameTicTacToeRadioButton.UseVisualStyleBackColor = true;
             // 
             // AIOptionsGroupBox
             // 
@@ -299,6 +299,81 @@
             this.AIOptionsGroupBox.TabStop = false;
             this.AIOptionsGroupBox.Text = "AI options";
             this.AIOptionsGroupBox.Visible = false;
+            // 
+            // recursionDepthLabel
+            // 
+            this.recursionDepthLabel.AutoSize = true;
+            this.recursionDepthLabel.Location = new System.Drawing.Point(33, 46);
+            this.recursionDepthLabel.Name = "recursionDepthLabel";
+            this.recursionDepthLabel.Size = new System.Drawing.Size(124, 13);
+            this.recursionDepthLabel.TabIndex = 12;
+            this.recursionDepthLabel.Text = "Maximal recursion depth ";
+            // 
+            // recursionDepthMaskedTextBox
+            // 
+            this.recursionDepthMaskedTextBox.Location = new System.Drawing.Point(7, 43);
+            this.recursionDepthMaskedTextBox.Mask = "0";
+            this.recursionDepthMaskedTextBox.Name = "recursionDepthMaskedTextBox";
+            this.recursionDepthMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.recursionDepthMaskedTextBox.Size = new System.Drawing.Size(20, 20);
+            this.recursionDepthMaskedTextBox.TabIndex = 11;
+            this.recursionDepthMaskedTextBox.Leave += new System.EventHandler(this.recursionDepthMaskedTextBox_Leave);
+            // 
+            // purgeDynamicHeuristicDataButton
+            // 
+            this.purgeDynamicHeuristicDataButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.purgeDynamicHeuristicDataButton.ForeColor = System.Drawing.Color.Red;
+            this.purgeDynamicHeuristicDataButton.Location = new System.Drawing.Point(167, 55);
+            this.purgeDynamicHeuristicDataButton.Name = "purgeDynamicHeuristicDataButton";
+            this.purgeDynamicHeuristicDataButton.Size = new System.Drawing.Size(193, 26);
+            this.purgeDynamicHeuristicDataButton.TabIndex = 10;
+            this.purgeDynamicHeuristicDataButton.Text = "Purge dynamic heuristic data";
+            this.purgeDynamicHeuristicDataButton.UseVisualStyleBackColor = true;
+            this.purgeDynamicHeuristicDataButton.Visible = false;
+            this.purgeDynamicHeuristicDataButton.Click += new System.EventHandler(this.purgeDynamicHeuristicDataButton_Click);
+            // 
+            // deleteStatisticsButton
+            // 
+            this.deleteStatisticsButton.ForeColor = System.Drawing.Color.Red;
+            this.deleteStatisticsButton.Location = new System.Drawing.Point(167, 19);
+            this.deleteStatisticsButton.Name = "deleteStatisticsButton";
+            this.deleteStatisticsButton.Size = new System.Drawing.Size(193, 26);
+            this.deleteStatisticsButton.TabIndex = 9;
+            this.deleteStatisticsButton.Text = "Delete statistics";
+            this.deleteStatisticsButton.UseVisualStyleBackColor = true;
+            this.deleteStatisticsButton.Click += new System.EventHandler(this.deleteStatisticsButton_Click);
+            // 
+            // saveStatisticsCheckBox
+            // 
+            this.saveStatisticsCheckBox.AutoSize = true;
+            this.saveStatisticsCheckBox.Checked = true;
+            this.saveStatisticsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.saveStatisticsCheckBox.Location = new System.Drawing.Point(7, 69);
+            this.saveStatisticsCheckBox.Name = "saveStatisticsCheckBox";
+            this.saveStatisticsCheckBox.Size = new System.Drawing.Size(154, 17);
+            this.saveStatisticsCheckBox.TabIndex = 8;
+            this.saveStatisticsCheckBox.Text = "Save statistics after the run";
+            this.saveStatisticsCheckBox.UseVisualStyleBackColor = true;
+            this.saveStatisticsCheckBox.CheckedChanged += new System.EventHandler(this.saveStatisticsCheckBox_CheckedChanged);
+            // 
+            // numberOfRunsMaskedTextBox
+            // 
+            this.numberOfRunsMaskedTextBox.Location = new System.Drawing.Point(7, 19);
+            this.numberOfRunsMaskedTextBox.Mask = "00000";
+            this.numberOfRunsMaskedTextBox.Name = "numberOfRunsMaskedTextBox";
+            this.numberOfRunsMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.numberOfRunsMaskedTextBox.Size = new System.Drawing.Size(54, 20);
+            this.numberOfRunsMaskedTextBox.TabIndex = 7;
+            this.numberOfRunsMaskedTextBox.Leave += new System.EventHandler(this.numberOfRunsMaskedTextBox_Leave);
+            // 
+            // numberOfRunsLabel
+            // 
+            this.numberOfRunsLabel.AutoSize = true;
+            this.numberOfRunsLabel.Location = new System.Drawing.Point(67, 22);
+            this.numberOfRunsLabel.Name = "numberOfRunsLabel";
+            this.numberOfRunsLabel.Size = new System.Drawing.Size(84, 13);
+            this.numberOfRunsLabel.TabIndex = 0;
+            this.numberOfRunsLabel.Text = "Numbers of runs";
             // 
             // clearConsoleButton
             // 
@@ -321,81 +396,6 @@
             this.purgeLogsButton.Text = "Purge logs";
             this.purgeLogsButton.UseVisualStyleBackColor = true;
             this.purgeLogsButton.Click += new System.EventHandler(this.purgeLogsButton_Click);
-            // 
-            // numberOfRunsLabel
-            // 
-            this.numberOfRunsLabel.AutoSize = true;
-            this.numberOfRunsLabel.Location = new System.Drawing.Point(67, 22);
-            this.numberOfRunsLabel.Name = "numberOfRunsLabel";
-            this.numberOfRunsLabel.Size = new System.Drawing.Size(84, 13);
-            this.numberOfRunsLabel.TabIndex = 0;
-            this.numberOfRunsLabel.Text = "Numbers of runs";
-            // 
-            // numberOfRunsMaskedTextBox
-            // 
-            this.numberOfRunsMaskedTextBox.Location = new System.Drawing.Point(7, 19);
-            this.numberOfRunsMaskedTextBox.Mask = "00000";
-            this.numberOfRunsMaskedTextBox.Name = "numberOfRunsMaskedTextBox";
-            this.numberOfRunsMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.numberOfRunsMaskedTextBox.Size = new System.Drawing.Size(54, 20);
-            this.numberOfRunsMaskedTextBox.TabIndex = 7;
-            this.numberOfRunsMaskedTextBox.Leave += new System.EventHandler(this.numberOfRunsMaskedTextBox_Leave);
-            // 
-            // saveStatisticsCheckBox
-            // 
-            this.saveStatisticsCheckBox.AutoSize = true;
-            this.saveStatisticsCheckBox.Checked = true;
-            this.saveStatisticsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.saveStatisticsCheckBox.Location = new System.Drawing.Point(7, 69);
-            this.saveStatisticsCheckBox.Name = "saveStatisticsCheckBox";
-            this.saveStatisticsCheckBox.Size = new System.Drawing.Size(154, 17);
-            this.saveStatisticsCheckBox.TabIndex = 8;
-            this.saveStatisticsCheckBox.Text = "Save statistics after the run";
-            this.saveStatisticsCheckBox.UseVisualStyleBackColor = true;
-            this.saveStatisticsCheckBox.CheckedChanged += new System.EventHandler(this.saveStatisticsCheckBox_CheckedChanged);
-            // 
-            // deleteStatisticsButton
-            // 
-            this.deleteStatisticsButton.ForeColor = System.Drawing.Color.Red;
-            this.deleteStatisticsButton.Location = new System.Drawing.Point(167, 19);
-            this.deleteStatisticsButton.Name = "deleteStatisticsButton";
-            this.deleteStatisticsButton.Size = new System.Drawing.Size(193, 26);
-            this.deleteStatisticsButton.TabIndex = 9;
-            this.deleteStatisticsButton.Text = "Delete statistics";
-            this.deleteStatisticsButton.UseVisualStyleBackColor = true;
-            this.deleteStatisticsButton.Click += new System.EventHandler(this.deleteStatisticsButton_Click);
-            // 
-            // purgeDynamicHeuristicDataButton
-            // 
-            this.purgeDynamicHeuristicDataButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.purgeDynamicHeuristicDataButton.ForeColor = System.Drawing.Color.Red;
-            this.purgeDynamicHeuristicDataButton.Location = new System.Drawing.Point(167, 55);
-            this.purgeDynamicHeuristicDataButton.Name = "purgeDynamicHeuristicDataButton";
-            this.purgeDynamicHeuristicDataButton.Size = new System.Drawing.Size(193, 26);
-            this.purgeDynamicHeuristicDataButton.TabIndex = 10;
-            this.purgeDynamicHeuristicDataButton.Text = "Purge dynamic heuristic data";
-            this.purgeDynamicHeuristicDataButton.UseVisualStyleBackColor = true;
-            this.purgeDynamicHeuristicDataButton.Visible = false;
-            this.purgeDynamicHeuristicDataButton.Click += new System.EventHandler(this.purgeDynamicHeuristicDataButton_Click);
-            // 
-            // recursionDepthMaskedTextBox
-            // 
-            this.recursionDepthMaskedTextBox.Location = new System.Drawing.Point(7, 43);
-            this.recursionDepthMaskedTextBox.Mask = "0";
-            this.recursionDepthMaskedTextBox.Name = "recursionDepthMaskedTextBox";
-            this.recursionDepthMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.recursionDepthMaskedTextBox.Size = new System.Drawing.Size(20, 20);
-            this.recursionDepthMaskedTextBox.TabIndex = 11;
-            this.recursionDepthMaskedTextBox.Leave += new System.EventHandler(this.recursionDepthMaskedTextBox_Leave);
-            // 
-            // recursionDepthLabel
-            // 
-            this.recursionDepthLabel.AutoSize = true;
-            this.recursionDepthLabel.Location = new System.Drawing.Point(33, 46);
-            this.recursionDepthLabel.Name = "recursionDepthLabel";
-            this.recursionDepthLabel.Size = new System.Drawing.Size(124, 13);
-            this.recursionDepthLabel.TabIndex = 12;
-            this.recursionDepthLabel.Text = "Maximal recursion depth ";
             // 
             // DynamicHeuristicAlgorithmRunner
             // 
@@ -444,7 +444,7 @@
         private System.Windows.Forms.MaskedTextBox nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox;
         private System.Windows.Forms.MaskedTextBox largeValuesOnEdgeHeuristicWeightMaskedTextBox;
         private System.Windows.Forms.RadioButton game2048RadioButton;
-        private System.Windows.Forms.RadioButton gameCoinFlipGuessRadioButton;
+        private System.Windows.Forms.RadioButton gameConnectFourRadioButton;
         private System.Windows.Forms.GroupBox AIOptionsGroupBox;
         private System.Windows.Forms.Button clearConsoleButton;
         private System.Windows.Forms.Button purgeLogsButton;

@@ -1,4 +1,5 @@
-﻿using DynamicHeuristicAlgorithmCore.GameInterface;
+﻿using DynamicHeuristicAlgorithm.TicTacToe;
+using DynamicHeuristicAlgorithmCore.GameInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,10 @@ namespace DynamicHeuristicAlgorithm.Utils
         {
             switch(name)
             {
-                case "CoinFlipGuess":
-                    throw new NotImplementedException("Game CoinFlipGuess is not implemented.");
+                case "ConnectFour":
+                    throw new NotImplementedException("Game ConnectFour is not implemented.");
                 case "TicTacToe":
-                    throw new NotImplementedException("Game TicTacToe is not implemented.");
+                    return new TicTacToeGameImpl();
                 case "2048":
                     throw new NotImplementedException("Game 2048 is not implemented.");
                 default:

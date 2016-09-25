@@ -244,8 +244,8 @@ namespace DynamicHeuristicAlgorithm
             uint[] weights = new uint[0];
             switch (gameName)
             {
-                case "CoinFlipGuess":
-                    names = new string[] { "coinFlipGuessHeuristic" };
+                case "ConnectFour":
+                    names = new string[] { "connectFourHeuristic" };
                     weights = new uint[] { 1 };
                     break;
                 case "TicTacToe":

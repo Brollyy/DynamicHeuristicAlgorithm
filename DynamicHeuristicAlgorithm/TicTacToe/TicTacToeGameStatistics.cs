@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DynamicHeuristicAlgorithmCore.PlayerInterface
+namespace DynamicHeuristicAlgorithm.TicTacToe
 {
-    public interface Player
+    public class TicTacToeGameStatistics : GameStatistics
     {
-        void PerformMove(Game game, GameState gameState);
+        
     }
 }

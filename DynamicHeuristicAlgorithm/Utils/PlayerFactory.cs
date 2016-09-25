@@ -1,4 +1,5 @@
-﻿using DynamicHeuristicAlgorithmCore.PlayerInterface;
+﻿using DynamicHeuristicAlgorithm.TicTacToe;
+using DynamicHeuristicAlgorithmCore.PlayerInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,8 @@ namespace DynamicHeuristicAlgorithm.Utils
 
         private static Player GetRealPlayer(Dictionary<string, object> parameters)
         {
-            throw new NotImplementedException("Real player support is not implemented.");
+            // Temporary
+            return new PerfectTicTacToePlayer();
         }
 
         private static Player GetAIPlayerWithHeuristics(Dictionary<string, object> parameters)

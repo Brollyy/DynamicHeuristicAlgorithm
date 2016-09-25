@@ -11,7 +11,6 @@ namespace DynamicHeuristicAlgorithmCore.GameInterface
     {
         #region PlayerInteraction
         // Game info
-        uint GetStateByteSize();
         GameStatistics GetGameStatistics();
 
         // Possibilites info

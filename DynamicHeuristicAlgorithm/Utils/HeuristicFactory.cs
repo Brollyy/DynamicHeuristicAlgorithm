@@ -40,8 +40,8 @@ namespace DynamicHeuristicAlgorithm.Utils
                     throw new NotImplementedException("Number of merges heuristic is not implemented.");
                 case "ticTacToeHeurisitc":
                     throw new NotImplementedException("Tic Tac Toe heuristic is not implemented.");
-                case "coinFlipGuessHeuristic":
-                    throw new NotImplementedException("Coin flip guess heuristic is not implemented.");
+                case "connectFourHeuristic":
+                    throw new NotImplementedException("Connect four heuristic is not implemented.");
                 default:
                     throw new NotImplementedException("Heuristic '" + name + "' is not implemented.");
             }

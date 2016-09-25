@@ -98,6 +98,7 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             if(errorLogTarget != null)
             {
                 errorLogTarget.WriteLine(logMessage);
+                errorLogTarget.Flush();
             }
         }
 
@@ -151,6 +152,7 @@ namespace DynamicHeuristicAlgorithmCore.Utils
         public static void LogError(string message)
         {
             Log(LogLevel.ERROR, message);
+            FlushAllLogs();
         }
 
         public static void LogError(Exception ex)
@@ -159,6 +161,7 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             LogExternal(LogLevel.ERROR, header + ex.Message);
             LogInternal(LogLevel.ERROR, header + ex.GetType().Name + ": " + ex.Message + "\n" + ex.StackTrace);
             LogInternalError(header + ex.GetType().Name + ": " + ex.Message + "\n" + ex.StackTrace);
+            FlushAllLogs();
         }
 
         public static void Dispose()
@@ -192,6 +195,14 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             Array.ForEach(Directory.GetFiles(new DirectoryInfo(logFilename).Parent.FullName), File.Delete);
             OpenLogFile();
             OpenErrorLogFile();
+        }
+
+        private static void FlushAllLogs()
+        {
+            if (allLogTarget != null)
+            {
+                allLogTarget.Flush();
+            }
         }
 
         private class FileFullException : Exception

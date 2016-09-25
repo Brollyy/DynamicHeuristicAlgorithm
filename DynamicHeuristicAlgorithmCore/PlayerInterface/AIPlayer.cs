@@ -17,6 +17,6 @@ namespace DynamicHeuristicAlgorithmCore.PlayerInterface
             this.heuristics = heuristics;
         }
 
-        public abstract void PerformMove(GameState gameState);
+        public abstract void PerformMove(Game game, GameState gameState);
     }
 }
