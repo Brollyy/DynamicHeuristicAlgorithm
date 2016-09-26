@@ -90,7 +90,10 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             string logMessage = "[" + DateTime.Now.ToString() + " " + logLevel.ToString() + "]: " + message;
             LogExternal(logLevel, logMessage);
             LogInternal(logLevel, logMessage);
-            LogInternalError(logMessage);
+            if (logLevel == LogLevel.ERROR)
+            {
+                LogInternalError(logMessage);
+            }
         }
 
         private static void LogInternalError(string logMessage)
@@ -187,6 +190,7 @@ namespace DynamicHeuristicAlgorithmCore.Utils
         public static void PurgeAllLogs()
         {
             Dispose();
+            DisposeError();
             foreach(string file in Directory.GetFiles(new DirectoryInfo(logFilename).Parent.FullName))
             {
                 File.Delete(file);
