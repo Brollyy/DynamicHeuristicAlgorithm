@@ -80,6 +80,7 @@
             this.consoleOutputTextBox.Multiline = true;
             this.consoleOutputTextBox.Name = "consoleOutputTextBox";
             this.consoleOutputTextBox.ReadOnly = true;
+            this.consoleOutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.consoleOutputTextBox.Size = new System.Drawing.Size(597, 193);
             this.consoleOutputTextBox.TabIndex = 2;
             this.consoleOutputTextBox.TabStop = false;

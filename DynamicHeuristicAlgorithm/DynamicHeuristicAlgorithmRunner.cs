@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using DynamicHeuristicAlgorithmCore.Utils;
+using System.Threading;
 
 namespace DynamicHeuristicAlgorithm
 {
@@ -115,13 +116,30 @@ namespace DynamicHeuristicAlgorithm
             Logger.LogError("Dynamic heuristic not implemented.");
         }
 
+        Thread gameThread;
+
         private void playButton_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
+            if (gameThread == null)
+            {
+                Logger.LogDebug("Starting new thread to handle the game run.");
+                gameThread = new Thread(new ThreadStart(GameRunThreadStart));
+                gameThread.Start();
+                Logger.LogDebug("Started new thread " + gameThread.ManagedThreadId);
+            }
+            else
+            {
+                Logger.LogInfo("Can't start game. Another game is already running.");
+            }
+        }
+
+        private void GameRunThreadStart()
+        {
             try
             {
                 Player player = GetPlayer();
-                switch(GetModeName())
+                switch (GetModeName())
                 {
                     case "playYourself":
                         {
@@ -132,21 +150,21 @@ namespace DynamicHeuristicAlgorithm
                     case "setHeuristics":
                     case "dynamicHeuristic":
                         {
-                            if(numberOfRunsMaskedTextBox.Text.Equals(""))
+                            if (numberOfRunsMaskedTextBox.Text.Equals(""))
                             {
                                 Logger.LogInfo("Number of runs not set. Setting default 1.");
                                 numberOfRunsMaskedTextBox.Text = "1";
                             }
                             uint runs = Convert.ToUInt32(numberOfRunsMaskedTextBox.Text);
-                            for(uint i = 0; i < runs; ++i)
+                            for (uint i = 0; i < runs; ++i)
                             {
                                 Game game = GetGame();
                                 PlayTheGame(game, player);
-                                if(saveStatisticsCheckBox.Checked)
+                                if (saveStatisticsCheckBox.Checked)
                                 {
                                     SaveStatistics(game, player);
                                 }
-                                if(GetModeName().Equals("dynamicHeuristic"))
+                                if (GetModeName().Equals("dynamicHeuristic"))
                                 {
                                     AnalyzeGame(game, player);
                                 }
@@ -154,8 +172,13 @@ namespace DynamicHeuristicAlgorithm
                         }
                         break;
                 }
+                if (gameThread != null)
+                {
+                    Logger.LogDebug("Thread " + gameThread.ManagedThreadId + " ended.");
+                }
+                gameThread = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.LogError(ex);
             }
@@ -166,15 +189,18 @@ namespace DynamicHeuristicAlgorithm
             throw new NotImplementedException("Dynamic heuristic is not implemented.");
         }
 
-        private void PlayTheGame(Game game, Player player)
+        private void PlayTheGame(Game game, Player player, uint runs = 1)
         {
-            HashSet<Player> players = new HashSet<Player>() { player };
-            game.PlayGame(players);
+            for (uint i = 0; i < runs; ++i)
+            {
+                HashSet<Player> players = new HashSet<Player>() { player };
+                game.PlayGame(players);
+            }
         }
 
         private void SaveStatistics(Game game, Player player)
         {
-            throw new NotImplementedException("Statistice are not implemented.");
+            throw new NotImplementedException("Statistics are not implemented.");
         }
 
         private Player GetPlayer()

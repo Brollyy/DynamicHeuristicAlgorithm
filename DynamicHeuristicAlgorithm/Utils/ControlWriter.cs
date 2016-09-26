@@ -11,6 +11,9 @@ namespace DynamicHeuristicAlgorithm.Utils
     public class ControlWriter : TextWriter
     {
         private Control textbox;
+        private delegate void WriteCharCallback(char value);
+        private delegate void WriteStringCallback(string value);
+
         public ControlWriter(Control textbox)
         {
             this.textbox = textbox;
@@ -18,12 +21,28 @@ namespace DynamicHeuristicAlgorithm.Utils
 
         public override void Write(char value)
         {
-            textbox.Text += value;
+            if(textbox.InvokeRequired)
+            {
+                WriteCharCallback call = new WriteCharCallback(Write);
+                textbox.FindForm().Invoke(call, new object[] { value });
+            }
+            else
+            {
+                textbox.Text += value;
+            }
         }
 
-        public override void Write(string value)
+        public override void WriteLine(string value)
         {
-            textbox.Text += value;
+            if (textbox.InvokeRequired)
+            {
+                WriteStringCallback call = new WriteStringCallback(WriteLine);
+                textbox.FindForm().Invoke(call, new object[] { value });
+            }
+            else
+            {
+                textbox.Text += value + Environment.NewLine;
+            }
         }
 
         public override Encoding Encoding

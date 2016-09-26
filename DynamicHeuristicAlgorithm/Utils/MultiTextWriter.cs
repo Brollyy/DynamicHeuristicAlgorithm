@@ -25,10 +25,10 @@ namespace DynamicHeuristicAlgorithm.Utils
                 writer.Write(value);
         }
 
-        public override void Write(string value)
+        public override void WriteLine(string value)
         {
             foreach (var writer in writers)
-                writer.Write(value);
+                writer.WriteLine(value);
         }
 
         public override void Flush()
