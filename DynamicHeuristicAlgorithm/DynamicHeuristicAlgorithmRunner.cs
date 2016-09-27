@@ -121,16 +121,42 @@ namespace DynamicHeuristicAlgorithm
         private void playButton_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
-            if (gameThread == null)
+            Logger.LogDebug("Starting new thread to handle the game run.");
+            gameThread = new Thread(new ThreadStart(GameRunThreadStart));
+            Logger.LogDebug("Started new thread " + gameThread.ManagedThreadId);
+            BlockUI();
+            gameThread.Start();
+        }
+
+        private void BlockUI()
+        {
+            if (InvokeRequired)
             {
-                Logger.LogDebug("Starting new thread to handle the game run.");
-                gameThread = new Thread(new ThreadStart(GameRunThreadStart));
-                gameThread.Start();
-                Logger.LogDebug("Started new thread " + gameThread.ManagedThreadId);
+                Invoke(new Action(BlockUI));
             }
             else
             {
-                Logger.LogInfo("Can't start game. Another game is already running.");
+                playButton.Enabled = false;
+                purgeLogsButton.Enabled = false;
+                purgeDynamicHeuristicDataButton.Enabled = false;
+                deleteStatisticsButton.Enabled = false;
+                clearConsoleButton.Enabled = false;
+            }
+        }
+
+        private void UnblockUI()
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(UnblockUI));
+            }
+            else
+            {
+                playButton.Enabled = true;
+                purgeLogsButton.Enabled = true;
+                purgeDynamicHeuristicDataButton.Enabled = true;
+                deleteStatisticsButton.Enabled = true;
+                clearConsoleButton.Enabled = true;
             }
         }
 
@@ -172,11 +198,8 @@ namespace DynamicHeuristicAlgorithm
                         }
                         break;
                 }
-                if (gameThread != null)
-                {
-                    Logger.LogDebug("Thread " + gameThread.ManagedThreadId + " ended.");
-                }
-                gameThread = null;
+                Logger.LogDebug("Thread " + gameThread.ManagedThreadId + " ended.");
+                UnblockUI();
             }
             catch (Exception ex)
             {

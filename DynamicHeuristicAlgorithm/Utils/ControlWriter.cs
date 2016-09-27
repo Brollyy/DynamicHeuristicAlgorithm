@@ -21,27 +21,33 @@ namespace DynamicHeuristicAlgorithm.Utils
 
         public override void Write(char value)
         {
-            if(textbox.InvokeRequired)
+            if (!textbox.IsDisposed)
             {
-                WriteCharCallback call = new WriteCharCallback(Write);
-                textbox.FindForm().Invoke(call, new object[] { value });
-            }
-            else
-            {
-                textbox.Text += value;
+                if (textbox.InvokeRequired)
+                {
+                    WriteCharCallback call = new WriteCharCallback(Write);
+                    textbox.FindForm().Invoke(call, new object[] { value });
+                }
+                else
+                {
+                    textbox.Text += value;
+                }
             }
         }
 
         public override void WriteLine(string value)
         {
-            if (textbox.InvokeRequired)
+            if (!textbox.IsDisposed)
             {
-                WriteStringCallback call = new WriteStringCallback(WriteLine);
-                textbox.FindForm().Invoke(call, new object[] { value });
-            }
-            else
-            {
-                textbox.Text += value + Environment.NewLine;
+                if (textbox.InvokeRequired)
+                {
+                    WriteStringCallback call = new WriteStringCallback(WriteLine);
+                    textbox.FindForm().Invoke(call, new object[] { value });
+                }
+                else
+                {
+                    textbox.Text += value + Environment.NewLine;
+                }
             }
         }
 

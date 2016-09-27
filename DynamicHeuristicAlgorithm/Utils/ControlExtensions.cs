@@ -12,14 +12,41 @@ namespace DynamicHeuristicAlgorithm.Utils
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool LockWindowUpdate(IntPtr hWndLock);
 
-        public static void Suspend(this Control control)
+        private delegate void SuspendCallback(Control control);
+        private delegate void ResumeCallback(Control control);
+
+        public static void Suspend(Control control)
         {
-            LockWindowUpdate(control.Handle);
+            if (!control.IsDisposed)
+            {
+
+                if (control.InvokeRequired)
+                {
+                    SuspendCallback call = new SuspendCallback(Suspend);
+                    control.FindForm().Invoke(call, new object[] { control });
+                }
+                else
+                {
+                    LockWindowUpdate(control.Handle);
+                }
+            }
         }
 
-        public static void Resume(this Control control)
+        public static void Resume(Control control)
         {
-            LockWindowUpdate(IntPtr.Zero);
+            if (!control.IsDisposed)
+            {
+                if (control.InvokeRequired)
+                {
+
+                    ResumeCallback call = new ResumeCallback(Resume);
+                    control.FindForm().Invoke(call, new object[] { control });
+                }
+                else
+                {
+                    LockWindowUpdate(IntPtr.Zero);
+                }
+            }
         }
 
     }
