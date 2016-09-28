@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DynamicHeuristicAlgorithmCore.PlayerInterface;
 using TicTacToeCore;
 using DynamicHeuristicAlgorithmCore.Utils;
+using System.Threading;
 
 namespace DynamicHeuristicAlgorithm.TicTacToe
 {
@@ -14,12 +15,14 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
     {
         private TicTacToeGame game;
         private byte currentPlayerIndex;
+        private byte startingPlayerIndex;
         private const byte MAX_PLAYERS = 2;
+        private GameView gameView;
 
         public TicTacToeGameImpl()
         {
             game = new TicTacToeGame();
-            currentPlayerIndex = 0;
+            currentPlayerIndex = 1;
         }
 
         public GameStatistics GetGameStatistics()
@@ -90,12 +93,23 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                     {
                         if(game.MakeMove(i, j))
                         {
+                            gameView.ShowMoveInView(Tuple.Create<byte, byte, int>(i, j, currentPlayerIndex));
                             return true;
                         }
                     }
                 }
             }
             return false;
+        }
+
+        public bool PerformMove(byte i, byte j)
+        {
+            bool valid = game.MakeMove(i, j);
+            if(valid)
+            {
+                gameView.ShowMoveInView(Tuple.Create<byte, byte, int>(i, j, currentPlayerIndex));
+            }
+            return valid;
         }
 
         public HashSet<Player> PlayGame(HashSet<Player> players)
@@ -110,6 +124,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
 
             Random rng = new Random();
             currentPlayerIndex = (byte)rng.Next(2);
+            startingPlayerIndex = currentPlayerIndex;
             Logger.LogInfo("Starting player is " + GetCurrentPlayer(players).GetType().Name + ".");
 
             do
@@ -117,27 +132,95 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                 Player currentPlayer = GetCurrentPlayer(players);
                 Logger.LogDebug(currentPlayer.GetType().Name + "'s move.");
                 currentPlayer.PerformMove(this, GetCurrentGameState());
+                ChangeToNextPlayer();
             }
             while (!game.IsGameFinished());
 
             byte winner = game.GetWinner();
-            if(winner == 0)
+            if (winner == 0)
             {
                 Logger.LogInfo("Tic Tac Toe game ended in a tie.");
                 return new HashSet<Player>();
             }
-            else if(winner == 1)
+
+            if ((winner == 1 && startingPlayerIndex == 0) ||
+                (winner == 2 && startingPlayerIndex == 1))
             {
                 Logger.LogInfo("Tic Tac Toe game ended in a win");
                 return new HashSet<Player>() { players.ElementAt(0) };
             }
-            else if(winner == 2)
+
+            if ((winner == 1 && startingPlayerIndex == 1) ||
+                (winner == 2 && startingPlayerIndex == 0))
             {
                 Logger.LogInfo("Tic Tac Toe game ended in a lose");
                 return new HashSet<Player>() { players.ElementAt(1) };
             }
 
             return new HashSet<Player>();
+        }
+
+        public HashSet<Player> PlayGameInView(HashSet<Player> players, GameView view, AutoResetEvent manualMoveAcceptBlock)
+        {
+            gameView = view;
+            if (players.Count != 1)
+            {
+                throw new NotImplementedException("Tic tac toe is only for 2 players.");
+            }
+            Logger.LogInfo("Starting Tic Tac Toe game.");
+
+            players.Add(new PerfectTicTacToePlayer());
+
+            Random rng = new Random();
+            currentPlayerIndex = (byte)rng.Next(2);
+            startingPlayerIndex = currentPlayerIndex;
+            Logger.LogInfo("Starting player is " + GetCurrentPlayer(players).GetType().Name + ".");
+
+            do
+            {
+                if (manualMoveAcceptBlock != null)
+                {
+                    manualMoveAcceptBlock.WaitOne();
+                }
+                Player currentPlayer = GetCurrentPlayer(players);
+                Logger.LogDebug(currentPlayer.GetType().Name + "'s move.");
+                currentPlayer.PerformMove(this, GetCurrentGameState());
+                ChangeToNextPlayer();
+            }
+            while (!game.IsGameFinished());
+
+            byte winner = game.GetWinner();
+            if (winner == 0)
+            {
+                Logger.LogInfo("Tic Tac Toe game ended in a tie.");
+                return new HashSet<Player>();
+            }
+
+            if ((winner == 1 && startingPlayerIndex == 0) ||
+                (winner == 2 && startingPlayerIndex == 1))
+            {
+                Logger.LogInfo("Tic Tac Toe game ended in a win");
+                return new HashSet<Player>() { players.ElementAt(0) };
+            }
+
+            if ((winner == 1 && startingPlayerIndex == 1) ||
+                (winner == 2 && startingPlayerIndex == 0))
+            {
+                Logger.LogInfo("Tic Tac Toe game ended in a lose");
+                return new HashSet<Player>() { players.ElementAt(1) };
+            }
+
+            return new HashSet<Player>();
+        }
+
+        private void ChangeToNextPlayer()
+        {
+            currentPlayerIndex = GetNextPlayerIndex(currentPlayerIndex);
+        }
+
+        private byte GetNextPlayerIndex(byte playerIndex)
+        {
+            return (byte)((playerIndex + 1) % 2);
         }
 
         private GameState GetCurrentGameState()

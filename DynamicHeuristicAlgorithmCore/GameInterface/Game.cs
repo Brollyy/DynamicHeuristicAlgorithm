@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DynamicHeuristicAlgorithmCore.GameInterface
@@ -25,6 +26,7 @@ namespace DynamicHeuristicAlgorithmCore.GameInterface
         #region Control
 
         HashSet<Player> PlayGame(HashSet<Player> players); // Return winners (whenever applicable)
+        HashSet<Player> PlayGameInView(HashSet<Player> players, GameView view, AutoResetEvent manualMoveAcceptBlock);
 
         #endregion
     }

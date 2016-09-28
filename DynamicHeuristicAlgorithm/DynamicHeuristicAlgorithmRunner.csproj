@@ -59,9 +59,16 @@
     <Compile Include="TicTacToe\TicTacToeGameImpl.cs" />
     <Compile Include="TicTacToe\TicTacToeGameStateImpl.cs" />
     <Compile Include="TicTacToe\TicTacToeGameStatistics.cs" />
+    <Compile Include="TicTacToe\TicTacToeRunner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TicTacToe\TicTacToeRunner.Designer.cs">
+      <DependentUpon>TicTacToeRunner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ControlExtensions.cs" />
     <Compile Include="Utils\ControlWriter.cs" />
     <Compile Include="Utils\GameFactory.cs" />
+    <Compile Include="Utils\GameViewFactory.cs" />
     <Compile Include="Utils\HeuristicFactory.cs" />
     <Compile Include="Utils\MultiTextWriter.cs" />
     <Compile Include="Utils\PlayerFactory.cs" />
@@ -76,7 +83,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TicTacToe\TicTacToeRunner.resx">
+      <DependentUpon>TicTacToeRunner.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,6 +110,15 @@
       <Project>{29a16aed-36af-4057-bfe6-ccc29b652ea2}</Project>
       <Name>TicTacToeGame</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ticTacToeO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ticTacToeX.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ticTacToeNone.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

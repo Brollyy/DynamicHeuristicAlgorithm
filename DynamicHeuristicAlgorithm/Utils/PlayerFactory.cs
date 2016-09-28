@@ -28,7 +28,7 @@ namespace DynamicHeuristicAlgorithm.Utils
         private static Player GetRealPlayer(Dictionary<string, object> parameters)
         {
             // Temporary
-            return new PerfectTicTacToePlayer();
+            return new RealPlayer();
         }
 
         private static Player GetAIPlayerWithHeuristics(Dictionary<string, object> parameters)

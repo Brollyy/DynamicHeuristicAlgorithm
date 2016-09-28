@@ -154,5 +154,17 @@ namespace DynamicHeuristicAlgorithm.Properties {
                 this["SaveStatistics"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TicTacToeAutomaticMoves {
+            get {
+                return ((bool)(this["TicTacToeAutomaticMoves"]));
+            }
+            set {
+                this["TicTacToeAutomaticMoves"] = value;
+            }
+        }
     }
 }

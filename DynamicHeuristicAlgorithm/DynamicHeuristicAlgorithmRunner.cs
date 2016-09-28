@@ -30,13 +30,19 @@ namespace DynamicHeuristicAlgorithm
 
         private void ChangePlayButtonTextBackEventHandler(object sender, CancelEventArgs e)
         {
-            Logger.LogInfo("Settings saved.");
-            playButton.Text = "Play";
+            if (!InvokeRequired)
+            {
+                Logger.LogInfo("Settings saved.");
+                playButton.Text = "Play";
+            }
         }
 
         private void ChangePlayButtonTextEventHandler(object sender, SettingChangingEventArgs e)
         {
-            playButton.Text = "Save settings and play";
+            if (!InvokeRequired)
+            {
+                playButton.Text = "Save settings and play";
+            }
         }
 
         private RadioButton GetSelectedRadioButtonInGroup(GroupBox group)
@@ -116,15 +122,13 @@ namespace DynamicHeuristicAlgorithm
             Logger.LogError("Dynamic heuristic not implemented.");
         }
 
-        Thread gameThread;
-
         private void playButton_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
-            Logger.LogDebug("Starting new thread to handle the game run.");
-            gameThread = new Thread(new ThreadStart(GameRunThreadStart));
-            Logger.LogDebug("Started new thread " + gameThread.ManagedThreadId);
             BlockUI();
+            Logger.LogDebug("Starting new thread to handle the game.");
+            Thread gameThread = new Thread(new ThreadStart(StartThreadStart));
+            Logger.LogDebug("Started new thread " + gameThread.ManagedThreadId);
             gameThread.Start();
         }
 
@@ -160,17 +164,19 @@ namespace DynamicHeuristicAlgorithm
             }
         }
 
-        private void GameRunThreadStart()
+        private void StartThreadStart()
         {
             try
             {
+                AutoResetEvent block = new AutoResetEvent(false);
                 Player player = GetPlayer();
                 switch (GetModeName())
                 {
                     case "playYourself":
                         {
                             Game game = GetGame();
-                            PlayTheGame(game, player);
+                            StartNewGame(game, player, block);
+                            block.WaitOne();
                         }
                         break;
                     case "setHeuristics":
@@ -185,45 +191,34 @@ namespace DynamicHeuristicAlgorithm
                             for (uint i = 0; i < runs; ++i)
                             {
                                 Game game = GetGame();
-                                PlayTheGame(game, player);
-                                if (saveStatisticsCheckBox.Checked)
-                                {
-                                    SaveStatistics(game, player);
-                                }
-                                if (GetModeName().Equals("dynamicHeuristic"))
-                                {
-                                    AnalyzeGame(game, player);
-                                }
+                                StartNewGame(game, player, block);
+                                block.WaitOne();
                             }
                         }
                         break;
                 }
-                Logger.LogDebug("Thread " + gameThread.ManagedThreadId + " ended.");
-                UnblockUI();
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex);
             }
-        }
-
-        private void AnalyzeGame(Game game, Player player)
-        {
-            throw new NotImplementedException("Dynamic heuristic is not implemented.");
-        }
-
-        private void PlayTheGame(Game game, Player player, uint runs = 1)
-        {
-            for (uint i = 0; i < runs; ++i)
+            finally
             {
-                HashSet<Player> players = new HashSet<Player>() { player };
-                game.PlayGame(players);
+                Logger.LogDebug("Thread " + Thread.CurrentThread.ManagedThreadId + " ended.");
+                UnblockUI();
             }
         }
 
-        private void SaveStatistics(Game game, Player player)
+        private void StartNewGame(Game game, Player player, AutoResetEvent block)
         {
-            throw new NotImplementedException("Statistics are not implemented.");
+            Logger.LogInfo("Starting new game.");
+            Form newGameForm = GameViewFactory.GetGameViewAsForm(game, player);
+            newGameForm.FormClosed += new FormClosedEventHandler((sender, args) =>
+            {
+                block.Set();
+            });
+
+            Application.Run(newGameForm);
         }
 
         private Player GetPlayer()

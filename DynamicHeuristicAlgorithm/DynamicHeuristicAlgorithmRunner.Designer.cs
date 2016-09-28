@@ -153,91 +153,99 @@
             // 
             // numberOfMergesHeuristicWeightMaskedTextBox
             // 
+            this.numberOfMergesHeuristicWeightMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NumberOfMergesHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numberOfMergesHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 90);
             this.numberOfMergesHeuristicWeightMaskedTextBox.Mask = "0000";
             this.numberOfMergesHeuristicWeightMaskedTextBox.Name = "numberOfMergesHeuristicWeightMaskedTextBox";
             this.numberOfMergesHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.numberOfMergesHeuristicWeightMaskedTextBox.Size = new System.Drawing.Size(43, 20);
             this.numberOfMergesHeuristicWeightMaskedTextBox.TabIndex = 9;
+            this.numberOfMergesHeuristicWeightMaskedTextBox.Text = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NumberOfMergesHeuristicWeight;
             this.numberOfMergesHeuristicWeightMaskedTextBox.Visible = false;
-            this.numberOfMergesHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.numberOfMergesHeuristicWeightMaskedTextBox_Leave);
             // 
             // nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox
             // 
+            this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NonMonotonicLinesPenaltyHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 67);
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Mask = "0000";
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Name = "nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox";
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Size = new System.Drawing.Size(43, 20);
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.TabIndex = 8;
+            this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Text = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NonMonotonicLinesPenaltyHeuristicWeight;
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Visible = false;
-            this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox_Leave);
             // 
             // largeValuesOnEdgeHeuristicWeightMaskedTextBox
             // 
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "LargeValuesOnEdgeHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 43);
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Mask = "0000";
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Name = "largeValuesOnEdgeHeuristicWeightMaskedTextBox";
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Size = new System.Drawing.Size(43, 20);
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.TabIndex = 7;
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Text = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.LargeValuesOnEdgeHeuristicWeight;
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Visible = false;
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.largeValuesOnEdgeHeuristicWeightMaskedTextBox_Leave);
             // 
             // openSquareBonusHeuristicWeightMaskedTextBox
             // 
+            this.openSquareBonusHeuristicWeightMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "OpenSquaresBonusHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.openSquareBonusHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 19);
             this.openSquareBonusHeuristicWeightMaskedTextBox.Mask = "0000";
             this.openSquareBonusHeuristicWeightMaskedTextBox.Name = "openSquareBonusHeuristicWeightMaskedTextBox";
             this.openSquareBonusHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.openSquareBonusHeuristicWeightMaskedTextBox.Size = new System.Drawing.Size(43, 20);
             this.openSquareBonusHeuristicWeightMaskedTextBox.TabIndex = 6;
+            this.openSquareBonusHeuristicWeightMaskedTextBox.Text = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.OpenSquaresBonusHeuristicWeight;
             this.openSquareBonusHeuristicWeightMaskedTextBox.Visible = false;
-            this.openSquareBonusHeuristicWeightMaskedTextBox.Leave += new System.EventHandler(this.openSquareBonusHeuristicWeightMaskedTextBox_Leave);
             // 
             // numberOfMergesHeuristicCheckBox
             // 
             this.numberOfMergesHeuristicCheckBox.AutoSize = true;
+            this.numberOfMergesHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NumberOfMergesHeuristic;
+            this.numberOfMergesHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NumberOfMergesHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numberOfMergesHeuristicCheckBox.Location = new System.Drawing.Point(7, 92);
             this.numberOfMergesHeuristicCheckBox.Name = "numberOfMergesHeuristicCheckBox";
             this.numberOfMergesHeuristicCheckBox.Size = new System.Drawing.Size(112, 17);
             this.numberOfMergesHeuristicCheckBox.TabIndex = 3;
             this.numberOfMergesHeuristicCheckBox.Text = "Number of merges";
             this.numberOfMergesHeuristicCheckBox.UseVisualStyleBackColor = true;
-            this.numberOfMergesHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.numberOfMergesHeuristicCheckBox_CheckedChanged);
             // 
             // nonMonotonicLinesPenaltyHeuristicCheckBox
             // 
             this.nonMonotonicLinesPenaltyHeuristicCheckBox.AutoSize = true;
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NonMonotonicLinesPenaltyHeuristic;
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NonMonotonicLinesPenaltyHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.nonMonotonicLinesPenaltyHeuristicCheckBox.Location = new System.Drawing.Point(7, 68);
             this.nonMonotonicLinesPenaltyHeuristicCheckBox.Name = "nonMonotonicLinesPenaltyHeuristicCheckBox";
             this.nonMonotonicLinesPenaltyHeuristicCheckBox.Size = new System.Drawing.Size(159, 17);
             this.nonMonotonicLinesPenaltyHeuristicCheckBox.TabIndex = 2;
             this.nonMonotonicLinesPenaltyHeuristicCheckBox.Text = "Non-monotonic lines penalty";
             this.nonMonotonicLinesPenaltyHeuristicCheckBox.UseVisualStyleBackColor = true;
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.nonMonotonicLinesPenaltyHeuristicCheckBox_CheckedChanged);
             // 
             // largeValuesOnEdgeHeuristicCheckBox
             // 
             this.largeValuesOnEdgeHeuristicCheckBox.AutoSize = true;
+            this.largeValuesOnEdgeHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.LargeValuesOnEdgeHeuristic;
+            this.largeValuesOnEdgeHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "LargeValuesOnEdgeHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.largeValuesOnEdgeHeuristicCheckBox.Location = new System.Drawing.Point(7, 44);
             this.largeValuesOnEdgeHeuristicCheckBox.Name = "largeValuesOnEdgeHeuristicCheckBox";
             this.largeValuesOnEdgeHeuristicCheckBox.Size = new System.Drawing.Size(129, 17);
             this.largeValuesOnEdgeHeuristicCheckBox.TabIndex = 1;
             this.largeValuesOnEdgeHeuristicCheckBox.Text = "Large values on edge";
             this.largeValuesOnEdgeHeuristicCheckBox.UseVisualStyleBackColor = true;
-            this.largeValuesOnEdgeHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.largeValuesOnEdgeHeuristicCheckBox_CheckedChanged);
             // 
             // openSquareBonusHeuristicCheckBox
             // 
             this.openSquareBonusHeuristicCheckBox.AutoSize = true;
+            this.openSquareBonusHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.OpenSquaresBonusHeuristic;
+            this.openSquareBonusHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "OpenSquaresBonusHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.openSquareBonusHeuristicCheckBox.Location = new System.Drawing.Point(7, 20);
             this.openSquareBonusHeuristicCheckBox.Name = "openSquareBonusHeuristicCheckBox";
             this.openSquareBonusHeuristicCheckBox.Size = new System.Drawing.Size(119, 17);
             this.openSquareBonusHeuristicCheckBox.TabIndex = 0;
             this.openSquareBonusHeuristicCheckBox.Text = "Open square bonus";
             this.openSquareBonusHeuristicCheckBox.UseVisualStyleBackColor = true;
-            this.openSquareBonusHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.openSquareBonusHeuristicCheckBox_CheckedChanged);
             // 
             // chooseGameGroupBox
             // 
@@ -312,13 +320,14 @@
             // 
             // recursionDepthMaskedTextBox
             // 
+            this.recursionDepthMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "MaximalRecursionDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.recursionDepthMaskedTextBox.Location = new System.Drawing.Point(7, 43);
             this.recursionDepthMaskedTextBox.Mask = "0";
             this.recursionDepthMaskedTextBox.Name = "recursionDepthMaskedTextBox";
             this.recursionDepthMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.recursionDepthMaskedTextBox.Size = new System.Drawing.Size(20, 20);
             this.recursionDepthMaskedTextBox.TabIndex = 11;
-            this.recursionDepthMaskedTextBox.Leave += new System.EventHandler(this.recursionDepthMaskedTextBox_Leave);
+            this.recursionDepthMaskedTextBox.Text = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.MaximalRecursionDepth;
             // 
             // purgeDynamicHeuristicDataButton
             // 
@@ -347,25 +356,25 @@
             // saveStatisticsCheckBox
             // 
             this.saveStatisticsCheckBox.AutoSize = true;
-            this.saveStatisticsCheckBox.Checked = true;
-            this.saveStatisticsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.saveStatisticsCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.SaveStatistics;
+            this.saveStatisticsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "SaveStatistics", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.saveStatisticsCheckBox.Location = new System.Drawing.Point(7, 69);
             this.saveStatisticsCheckBox.Name = "saveStatisticsCheckBox";
             this.saveStatisticsCheckBox.Size = new System.Drawing.Size(154, 17);
             this.saveStatisticsCheckBox.TabIndex = 8;
             this.saveStatisticsCheckBox.Text = "Save statistics after the run";
             this.saveStatisticsCheckBox.UseVisualStyleBackColor = true;
-            this.saveStatisticsCheckBox.CheckedChanged += new System.EventHandler(this.saveStatisticsCheckBox_CheckedChanged);
             // 
             // numberOfRunsMaskedTextBox
             // 
+            this.numberOfRunsMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NumberOfRuns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numberOfRunsMaskedTextBox.Location = new System.Drawing.Point(7, 19);
             this.numberOfRunsMaskedTextBox.Mask = "00000";
             this.numberOfRunsMaskedTextBox.Name = "numberOfRunsMaskedTextBox";
             this.numberOfRunsMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.numberOfRunsMaskedTextBox.Size = new System.Drawing.Size(54, 20);
             this.numberOfRunsMaskedTextBox.TabIndex = 7;
-            this.numberOfRunsMaskedTextBox.Leave += new System.EventHandler(this.numberOfRunsMaskedTextBox_Leave);
+            this.numberOfRunsMaskedTextBox.Text = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NumberOfRuns;
             // 
             // numberOfRunsLabel
             // 
