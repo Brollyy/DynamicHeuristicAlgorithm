@@ -1,0 +1,4 @@
+1. Wybraæ rodzaj sieci neuronowej do heurystyki dynamicznej.
+2. Zbieranie statystyk z gry TicTacToe.
+3. Zaimplementowaæ grê CennectFour.
+4. Zaimplementowaæ grê 2048.

@@ -18,11 +18,31 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
         private byte startingPlayerIndex;
         private const byte MAX_PLAYERS = 2;
         private GameView gameView;
+        private Player opponent;
+
+        private List<TicTacToeGameStateImpl> playerGameStates;
+        private TicTacToeGameStateImpl currentGameState;
+
 
         public TicTacToeGameImpl()
         {
             game = new TicTacToeGame();
+            currentGameState = GameStateFactory<TicTacToeGameStateImpl>.GetNewGameState();
             currentPlayerIndex = 1;
+            opponent = new PerfectTicTacToePlayer();
+            playerGameStates = new List<TicTacToeGameStateImpl>();
+        }
+
+        ~TicTacToeGameImpl()
+        {
+            GameStateFactory<TicTacToeGameStateImpl>.ReturnGameState(currentGameState);
+        }
+
+        private void RestartGame()
+        {
+            game.RestartGame();
+            ReturnStatesToPool();
+            GameStateFactory<TicTacToeGameStateImpl>.ReturnGameState(currentGameState);
         }
 
         public GameStatistics GetGameStatistics()
@@ -54,9 +74,10 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                 {
                     if(ticTacToeState.GetSquare(i, j) == 0)
                     {
-                        TicTacToeGameStateImpl newState = new TicTacToeGameStateImpl(ticTacToeState);
-                        newState.SetSquare(i, j, 1);
+                        TicTacToeGameStateImpl newState = GameStateFactory<TicTacToeGameStateImpl>.GetNewGameState(ticTacToeState);
+                        newState.SetSquare(i, j, (byte)(GetCurrentPlayerIndex() + 1));
                         possibleMoves.Add(newState);
+                        playerGameStates.Add(newState);
                     }
                 }
             }
@@ -73,9 +94,10 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                 {
                     if (ticTacToeState.GetSquare(i, j) == 0)
                     {
-                        TicTacToeGameStateImpl newState = new TicTacToeGameStateImpl(ticTacToeState);
-                        newState.SetSquare(i, j, 2);
+                        TicTacToeGameStateImpl newState = GameStateFactory<TicTacToeGameStateImpl>.GetNewGameState(ticTacToeState);
+                        newState.SetSquare(i, j, (byte)(GetNextPlayerIndex((byte)GetCurrentPlayerIndex()) + 1));
                         possibleOpponentMoves.Add(new OpponentMove(newState, 1));
+                        playerGameStates.Add(newState);
                     }
                 }
             }
@@ -93,7 +115,10 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                     {
                         if(game.MakeMove(i, j))
                         {
-                            gameView.ShowMoveInView(Tuple.Create<byte, byte, int>(i, j, currentPlayerIndex));
+                            if (gameView != null)
+                            {
+                                gameView.ShowMoveInView(Tuple.Create<byte, byte, int>(i, j, GetCurrentPlayerIndex()));
+                            }
                             return true;
                         }
                     }
@@ -105,22 +130,23 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
         public bool PerformMove(byte i, byte j)
         {
             bool valid = game.MakeMove(i, j);
-            if(valid)
+            if(valid && gameView != null)
             {
-                gameView.ShowMoveInView(Tuple.Create<byte, byte, int>(i, j, currentPlayerIndex));
+                gameView.ShowMoveInView(Tuple.Create<byte, byte, int>(i, j, GetCurrentPlayerIndex()));
             }
             return valid;
         }
 
         public HashSet<Player> PlayGame(HashSet<Player> players)
         {
+            RestartGame();
             if(players.Count != 1)
             {
                 throw new NotImplementedException("Tic tac toe is only for 2 players.");
             }
             Logger.LogInfo("Starting Tic Tac Toe game.");
 
-            players.Add(new PerfectTicTacToePlayer());
+            players.Add(opponent);
 
             Random rng = new Random();
             currentPlayerIndex = (byte)rng.Next(2);
@@ -132,6 +158,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                 Player currentPlayer = GetCurrentPlayer(players);
                 Logger.LogDebug(currentPlayer.GetType().Name + "'s move.");
                 currentPlayer.PerformMove(this, GetCurrentGameState());
+                ReturnStatesToPool();
                 ChangeToNextPlayer();
             }
             while (!game.IsGameFinished());
@@ -162,6 +189,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
 
         public HashSet<Player> PlayGameInView(HashSet<Player> players, GameView view, AutoResetEvent manualMoveAcceptBlock)
         {
+            RestartGame();
             gameView = view;
             if (players.Count != 1)
             {
@@ -169,7 +197,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             }
             Logger.LogInfo("Starting Tic Tac Toe game.");
 
-            players.Add(new PerfectTicTacToePlayer());
+            players.Add(opponent);
 
             Random rng = new Random();
             currentPlayerIndex = (byte)rng.Next(2);
@@ -185,6 +213,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                 Player currentPlayer = GetCurrentPlayer(players);
                 Logger.LogDebug(currentPlayer.GetType().Name + "'s move.");
                 currentPlayer.PerformMove(this, GetCurrentGameState());
+                ReturnStatesToPool();
                 ChangeToNextPlayer();
             }
             while (!game.IsGameFinished());
@@ -213,6 +242,15 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             return new HashSet<Player>();
         }
 
+        private void ReturnStatesToPool()
+        {
+            if (playerGameStates.Any())
+            {
+                GameStateFactory<TicTacToeGameStateImpl>.ReturnGameStates(playerGameStates);
+                playerGameStates.Clear();
+            }
+        }
+
         private void ChangeToNextPlayer()
         {
             currentPlayerIndex = GetNextPlayerIndex(currentPlayerIndex);
@@ -225,7 +263,8 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
 
         private GameState GetCurrentGameState()
         {
-            return new TicTacToeGameStateImpl(game.GetBoardState());
+            currentGameState.SetState(game.GetBoardState().Board);
+            return new TicTacToeGameStateImpl(currentGameState);
         }
 
         private Player GetCurrentPlayer(HashSet<Player> players)
@@ -238,6 +277,11 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             {
                 throw new IndexOutOfRangeException("Invalid player index " + currentPlayerIndex + ".");
             }
+        }
+
+        public int GetCurrentPlayerIndex()
+        {
+            return (startingPlayerIndex + currentPlayerIndex) % 2;
         }
     }
 }

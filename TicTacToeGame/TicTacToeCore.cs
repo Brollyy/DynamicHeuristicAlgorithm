@@ -12,9 +12,14 @@ namespace TicTacToeCore
 
         public TicTacToeBoardState()
         {
-            for(int i = 0; i < 3; ++i)
+            Clear();
+        }
+        
+        public void Clear()
+        {
+            for (int i = 0; i < 3; ++i)
             {
-                for(int j = 0; j < 3; ++j)
+                for (int j = 0; j < 3; ++j)
                 {
                     Board[i, j] = 0;
                 }
@@ -23,27 +28,26 @@ namespace TicTacToeCore
 
         public TicTacToeBoardState(TicTacToeBoardState state)
         {
-            for (int i = 0; i < 3; ++i)
-            {
-                for (int j = 0; j < 3; ++j)
-                {
-                    Board[i, j] = state.Board[i , j];
-                }
-            }
+            SetBoard(state.Board);
         }
 
-        public TicTacToeBoardState(byte[,] state) : base()
-        { 
-            if(state.GetLength(0) == 3 && state.GetLength(1) == 3)
+        public void SetBoard(byte[,] state)
+        {
+            if (state.GetLength(0) == 3 && state.GetLength(1) == 3)
             {
-                for(int i = 0; i < 3; ++i)
+                for (int i = 0; i < 3; ++i)
                 {
-                    for(int j = 0; j < 3; ++j)
+                    for (int j = 0; j < 3; ++j)
                     {
                         Board[i, j] = state[i, j];
                     }
                 }
             }
+        }
+
+        public TicTacToeBoardState(byte[,] state) : base()
+        {
+            SetBoard(state);
         }
     }
 
@@ -57,6 +61,14 @@ namespace TicTacToeCore
         public TicTacToeGame()
         {
             boardState = new TicTacToeBoardState();
+            playing = true;
+            currentPlayer = 1;
+            filledSquaresCount = 0;
+        }
+
+        public void RestartGame()
+        {
+            boardState.Clear();
             playing = true;
             currentPlayer = 1;
             filledSquaresCount = 0;

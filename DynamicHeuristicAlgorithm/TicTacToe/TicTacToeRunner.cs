@@ -197,6 +197,11 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                     manualMoveAcceptEvent = new AutoResetEvent(false);
                 }
                 game.PlayGameInView(new HashSet<Player>() { player }, this, manualMoveAcceptEvent);
+
+                if(!(player is RealPlayer))
+                {
+                    Invoke(new Action(Close));
+                }
             }
             catch (Exception ex)
             {

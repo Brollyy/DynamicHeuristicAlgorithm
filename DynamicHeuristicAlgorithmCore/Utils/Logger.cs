@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace DynamicHeuristicAlgorithmCore.Utils
 {
@@ -22,6 +23,7 @@ namespace DynamicHeuristicAlgorithmCore.Utils
         private static string logFilename = null;
         private static StreamWriter allLogTarget = null;
         private static StreamWriter errorLogTarget = null;
+        private static Dictionary<int, StreamWriter> threadsLogTargets = new Dictionary<int, StreamWriter>(); 
         private static Encoding allLogEncoding; // UTF8 default
         private static readonly int MAX_LOG_FILES = 10;
         private static long MAX_LOG_LENGTH = 0;  // 100MB default
@@ -40,7 +42,7 @@ namespace DynamicHeuristicAlgorithmCore.Utils
         {
             if(logFilename == null)
             {
-                LogExternal(LogLevel.ERROR, "Can't open log, file not specified.");
+                LogExternal(LogLevel.ERROR, "Can't open log, file path not specified.");
                 return false;
             }
 
@@ -49,7 +51,7 @@ namespace DynamicHeuristicAlgorithmCore.Utils
                 try
                 {
                     Logger.allLogTarget = new StreamWriter(logFilename + i, true, allLogEncoding);
-                    checkFileForWrite();
+                    checkFileForWrite(allLogTarget);
                     return true;
                 }
                 catch (Exception e)
@@ -64,6 +66,34 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             }
             LogExternal(LogLevel.ERROR, "Can't open log file at" + new DirectoryInfo(logFilename).Parent.FullName);
             LogInternalError("Can't open log file at" + new DirectoryInfo(logFilename).Parent.FullName);
+            return false;
+        }
+
+        private static bool OpenThreadLogFile(int threadId)
+        {
+            if(logFilename == null)
+            {
+                LogExternal(LogLevel.ERROR, "Can't open thread log, file path not specified.");
+                return false;
+            }
+
+            try
+            {
+                StreamWriter threadLog = new StreamWriter(logFilename + "Thread" + threadId, true, allLogEncoding);
+                checkFileForWrite(threadLog);
+                threadsLogTargets.Add(threadId, threadLog);
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (e is IOException || e is DirectoryNotFoundException)
+                {
+                    LogExternal(LogLevel.ERROR, e.Message);
+                    LogInternalError(e.Message);
+                }
+            }
+            LogExternal(LogLevel.ERROR, "Can't open thread log file at" + new DirectoryInfo(logFilename).Parent.FullName);
+            LogInternalError("Can't open thread log file at" + new DirectoryInfo(logFilename).Parent.FullName);
             return false;
         }
 
@@ -90,6 +120,7 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             string logMessage = "[" + DateTime.Now.ToString() + " " + logLevel.ToString() + "]: " + message;
             LogExternal(logLevel, logMessage);
             LogInternal(logLevel, logMessage);
+            LogInternalThread(logLevel, logMessage);
             if (logLevel == LogLevel.ERROR)
             {
                 LogInternalError(logMessage);
@@ -111,7 +142,7 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             {
                 try
                 {
-                    checkFileForWrite();
+                    checkFileForWrite(allLogTarget);
                 }
                 catch (FileFullException e)
                 {
@@ -126,6 +157,28 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             }
         }
 
+        private static void LogInternalThread(LogLevel logLevel, string message)
+        {
+            if(Thread.CurrentThread.IsBackground)
+            {
+                int threadId = Thread.CurrentThread.ManagedThreadId;
+                if(!threadsLogTargets.ContainsKey(threadId))
+                {
+                    OpenThreadLogFile(threadId);
+                }
+
+                try
+                {
+                    checkFileForWrite(threadsLogTargets[threadId]);
+                }
+                catch (FileFullException e)
+                {
+                    return;
+                }
+                threadsLogTargets[threadId].WriteLine(message);
+            }
+        }
+
         private static void LogExternal(LogLevel logLevel, string message)
         {
             if (logLevel >= Logger.logLevel)
@@ -134,9 +187,9 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             }
         }
 
-        private static void checkFileForWrite()
+        private static void checkFileForWrite(StreamWriter logTarget)
         {
-            if(allLogTarget.BaseStream.Length > MAX_LOG_LENGTH)
+            if(logTarget.BaseStream.Length > MAX_LOG_LENGTH)
             {
                 throw new FileFullException("File's size exceeded maximum size of " + MAX_LOG_LENGTH + ".");
             }
@@ -163,6 +216,7 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             string header = "[" + DateTime.Now.ToString() + " ERROR]: ";
             LogExternal(LogLevel.ERROR, header + ex.Message);
             LogInternal(LogLevel.ERROR, header + ex.GetType().Name + ": " + ex.Message + "\n" + ex.StackTrace);
+            LogInternalThread(LogLevel.ERROR, header + ex.GetType().Name + ": " + ex.Message + "\n" + ex.StackTrace);
             LogInternalError(header + ex.GetType().Name + ": " + ex.Message + "\n" + ex.StackTrace);
             FlushAllLogs();
         }
@@ -201,7 +255,23 @@ namespace DynamicHeuristicAlgorithmCore.Utils
             OpenErrorLogFile();
         }
 
-        private static void FlushAllLogs()
+        public static string LoggerPath
+        {
+            get
+            {
+                string path = logFilename;
+                string replaced = path;
+                do
+                {
+                    path = replaced;
+                    replaced = path.Replace("\\\\", "\\");
+                }
+                while (!path.Equals(replaced));
+                return path.Replace("\\log","");
+            }
+        }
+
+        public static void FlushAllLogs()
         {
             if (allLogTarget != null)
             {

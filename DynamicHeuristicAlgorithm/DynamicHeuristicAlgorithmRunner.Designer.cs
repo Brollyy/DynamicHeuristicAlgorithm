@@ -57,6 +57,8 @@
             this.numberOfRunsLabel = new System.Windows.Forms.Label();
             this.clearConsoleButton = new System.Windows.Forms.Button();
             this.purgeLogsButton = new System.Windows.Forms.Button();
+            this.playInViewButton = new System.Windows.Forms.Button();
+            this.openLogsButton = new System.Windows.Forms.Button();
             this.modeGroupBox.SuspendLayout();
             this.setHeuristicsGroupBox.SuspendLayout();
             this.chooseGameGroupBox.SuspendLayout();
@@ -65,10 +67,11 @@
             // 
             // playButton
             // 
+            this.playButton.Enabled = false;
             this.playButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playButton.Location = new System.Drawing.Point(391, 383);
+            this.playButton.Location = new System.Drawing.Point(384, 349);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(218, 28);
+            this.playButton.Size = new System.Drawing.Size(166, 51);
             this.playButton.TabIndex = 1;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = true;
@@ -81,7 +84,7 @@
             this.consoleOutputTextBox.Name = "consoleOutputTextBox";
             this.consoleOutputTextBox.ReadOnly = true;
             this.consoleOutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.consoleOutputTextBox.Size = new System.Drawing.Size(597, 193);
+            this.consoleOutputTextBox.Size = new System.Drawing.Size(693, 193);
             this.consoleOutputTextBox.TabIndex = 2;
             this.consoleOutputTextBox.TabStop = false;
             this.consoleOutputTextBox.TextChanged += new System.EventHandler(this.consoleOutputTextBox_TextChanged);
@@ -132,6 +135,7 @@
             this.playYourselfRadioButton.TabStop = true;
             this.playYourselfRadioButton.Text = "Play yourself";
             this.playYourselfRadioButton.UseVisualStyleBackColor = true;
+            this.playYourselfRadioButton.CheckedChanged += new System.EventHandler(this.playYourselfRadioButton_CheckedChanged);
             // 
             // setHeuristicsGroupBox
             // 
@@ -154,7 +158,7 @@
             // numberOfMergesHeuristicWeightMaskedTextBox
             // 
             this.numberOfMergesHeuristicWeightMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NumberOfMergesHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numberOfMergesHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 90);
+            this.numberOfMergesHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(172, 89);
             this.numberOfMergesHeuristicWeightMaskedTextBox.Mask = "0000";
             this.numberOfMergesHeuristicWeightMaskedTextBox.Name = "numberOfMergesHeuristicWeightMaskedTextBox";
             this.numberOfMergesHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -166,7 +170,7 @@
             // nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox
             // 
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NonMonotonicLinesPenaltyHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 67);
+            this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(172, 66);
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Mask = "0000";
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Name = "nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox";
             this.nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -178,7 +182,7 @@
             // largeValuesOnEdgeHeuristicWeightMaskedTextBox
             // 
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "LargeValuesOnEdgeHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 43);
+            this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(172, 42);
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Mask = "0000";
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.Name = "largeValuesOnEdgeHeuristicWeightMaskedTextBox";
             this.largeValuesOnEdgeHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -190,7 +194,7 @@
             // openSquareBonusHeuristicWeightMaskedTextBox
             // 
             this.openSquareBonusHeuristicWeightMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "OpenSquaresBonusHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.openSquareBonusHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(176, 19);
+            this.openSquareBonusHeuristicWeightMaskedTextBox.Location = new System.Drawing.Point(172, 18);
             this.openSquareBonusHeuristicWeightMaskedTextBox.Mask = "0000";
             this.openSquareBonusHeuristicWeightMaskedTextBox.Name = "openSquareBonusHeuristicWeightMaskedTextBox";
             this.openSquareBonusHeuristicWeightMaskedTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -387,7 +391,7 @@
             // 
             // clearConsoleButton
             // 
-            this.clearConsoleButton.Location = new System.Drawing.Point(391, 349);
+            this.clearConsoleButton.Location = new System.Drawing.Point(615, 259);
             this.clearConsoleButton.Name = "clearConsoleButton";
             this.clearConsoleButton.Size = new System.Drawing.Size(103, 28);
             this.clearConsoleButton.TabIndex = 7;
@@ -399,7 +403,7 @@
             // 
             this.purgeLogsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.purgeLogsButton.ForeColor = System.Drawing.Color.Red;
-            this.purgeLogsButton.Location = new System.Drawing.Point(506, 349);
+            this.purgeLogsButton.Location = new System.Drawing.Point(615, 293);
             this.purgeLogsButton.Name = "purgeLogsButton";
             this.purgeLogsButton.Size = new System.Drawing.Size(103, 28);
             this.purgeLogsButton.TabIndex = 8;
@@ -407,11 +411,34 @@
             this.purgeLogsButton.UseVisualStyleBackColor = true;
             this.purgeLogsButton.Click += new System.EventHandler(this.purgeLogsButton_Click);
             // 
+            // playInViewButton
+            // 
+            this.playInViewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playInViewButton.Location = new System.Drawing.Point(556, 349);
+            this.playInViewButton.Name = "playInViewButton";
+            this.playInViewButton.Size = new System.Drawing.Size(162, 51);
+            this.playInViewButton.TabIndex = 9;
+            this.playInViewButton.Text = "Play in view";
+            this.playInViewButton.UseVisualStyleBackColor = true;
+            this.playInViewButton.Click += new System.EventHandler(this.playInViewButton_Click);
+            // 
+            // openLogsButton
+            // 
+            this.openLogsButton.Location = new System.Drawing.Point(615, 228);
+            this.openLogsButton.Name = "openLogsButton";
+            this.openLogsButton.Size = new System.Drawing.Size(103, 25);
+            this.openLogsButton.TabIndex = 10;
+            this.openLogsButton.Text = "Open logs";
+            this.openLogsButton.UseVisualStyleBackColor = true;
+            this.openLogsButton.Click += new System.EventHandler(this.openLogsButton_Click);
+            // 
             // DynamicHeuristicAlgorithmRunner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 423);
+            this.ClientSize = new System.Drawing.Size(730, 423);
+            this.Controls.Add(this.openLogsButton);
+            this.Controls.Add(this.playInViewButton);
             this.Controls.Add(this.purgeLogsButton);
             this.Controls.Add(this.clearConsoleButton);
             this.Controls.Add(this.AIOptionsGroupBox);
@@ -465,6 +492,8 @@
         private System.Windows.Forms.Label numberOfRunsLabel;
         private System.Windows.Forms.Label recursionDepthLabel;
         private System.Windows.Forms.MaskedTextBox recursionDepthMaskedTextBox;
+        private System.Windows.Forms.Button playInViewButton;
+        private System.Windows.Forms.Button openLogsButton;
     }
 }
 

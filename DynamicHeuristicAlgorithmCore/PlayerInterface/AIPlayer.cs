@@ -10,7 +10,7 @@ namespace DynamicHeuristicAlgorithmCore.PlayerInterface
 {
     public abstract class AIPlayer : Player
     {
-        private Heuristic[] heuristics;
+        protected Heuristic[] heuristics;
 
         public AIPlayer(Heuristic[] heuristics)
         {

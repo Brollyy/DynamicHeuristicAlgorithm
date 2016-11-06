@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using DynamicHeuristicAlgorithmCore.Utils;
 using System.Threading;
+using System.Diagnostics;
 
 namespace DynamicHeuristicAlgorithm
 {
@@ -28,12 +29,19 @@ namespace DynamicHeuristicAlgorithm
             Properties.Settings.Default.SettingsSaving += ChangePlayButtonTextBackEventHandler;
         }
 
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            Environment.Exit(Environment.ExitCode);
+        }
+
         private void ChangePlayButtonTextBackEventHandler(object sender, CancelEventArgs e)
         {
             if (!InvokeRequired)
             {
                 Logger.LogInfo("Settings saved.");
                 playButton.Text = "Play";
+                playInViewButton.Text = "Play in view";
             }
         }
 
@@ -41,7 +49,8 @@ namespace DynamicHeuristicAlgorithm
         {
             if (!InvokeRequired)
             {
-                playButton.Text = "Save settings and play";
+                playButton.Text = "Save and play";
+                playInViewButton.Text = "Save and play in view";
             }
         }
 
@@ -102,6 +111,11 @@ namespace DynamicHeuristicAlgorithm
             }
         }
 
+        private void playYourselfRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            playButton.Enabled = !((RadioButton)sender).Checked;
+        }
+
         private void clearConsoleButton_Click(object sender, EventArgs e)
         {
             consoleOutputTextBox.Text = "";
@@ -132,6 +146,16 @@ namespace DynamicHeuristicAlgorithm
             gameThread.Start();
         }
 
+        private void playInViewButton_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+            BlockUI();
+            Logger.LogDebug("Starting new thread to handle the game in view.");
+            Thread gameThread = new Thread(new ThreadStart(StartInViewThreadStart));
+            Logger.LogDebug("Started new thread " + gameThread.ManagedThreadId);
+            gameThread.Start();
+        }
+
         private void BlockUI()
         {
             if (InvokeRequired)
@@ -141,6 +165,7 @@ namespace DynamicHeuristicAlgorithm
             else
             {
                 playButton.Enabled = false;
+                playInViewButton.Enabled = false;
                 purgeLogsButton.Enabled = false;
                 purgeDynamicHeuristicDataButton.Enabled = false;
                 deleteStatisticsButton.Enabled = false;
@@ -156,7 +181,8 @@ namespace DynamicHeuristicAlgorithm
             }
             else
             {
-                playButton.Enabled = true;
+                if (GetModeName() != "playYourself") playButton.Enabled = true;
+                playInViewButton.Enabled = true;
                 purgeLogsButton.Enabled = true;
                 purgeDynamicHeuristicDataButton.Enabled = true;
                 deleteStatisticsButton.Enabled = true;
@@ -164,7 +190,7 @@ namespace DynamicHeuristicAlgorithm
             }
         }
 
-        private void StartThreadStart()
+        private void StartInViewThreadStart()
         {
             try
             {
@@ -175,7 +201,7 @@ namespace DynamicHeuristicAlgorithm
                     case "playYourself":
                         {
                             Game game = GetGame();
-                            StartNewGame(game, player, block);
+                            StartNewGameInView(game, player, block);
                             block.WaitOne();
                         }
                         break;
@@ -191,7 +217,8 @@ namespace DynamicHeuristicAlgorithm
                             for (uint i = 0; i < runs; ++i)
                             {
                                 Game game = GetGame();
-                                StartNewGame(game, player, block);
+                                Logger.LogInfo("Game no. " + (i + 1) + ".");
+                                StartNewGameInView(game, player, block);
                                 block.WaitOne();
                             }
                         }
@@ -209,9 +236,93 @@ namespace DynamicHeuristicAlgorithm
             }
         }
 
-        private void StartNewGame(Game game, Player player, AutoResetEvent block)
+        private void StartThreadStart()
         {
-            Logger.LogInfo("Starting new game.");
+            try
+            {
+                AutoResetEvent block = new AutoResetEvent(false);
+                Player player = GetPlayer();
+                switch (GetModeName())
+                {
+                    case "setHeuristics":
+                    case "dynamicHeuristic":
+                        {
+                            if (numberOfRunsMaskedTextBox.Text.Equals(""))
+                            {
+                                Logger.LogInfo("Number of runs not set. Setting default 1.");
+                                Invoke(new Action(() => numberOfRunsMaskedTextBox.Text = "1"));
+                            }
+                            uint runs = Convert.ToUInt32(numberOfRunsMaskedTextBox.Text);
+                            Thread[] threads = new Thread[Math.Min(runs, 4)];
+                            for (uint i = 0; i < threads.Length; ++i)
+                            {
+                                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                                parameters.Add("player", player);
+                                parameters.Add("startIndex", (uint)Math.Floor((double)(i * runs) / threads.Length));
+                                parameters.Add("endIndex", (uint)Math.Floor((double)((i + 1) * runs) / threads.Length));
+                                threads[i] = new Thread(new ParameterizedThreadStart(RunGamesThreadStart));
+                                threads[i].IsBackground = true;
+                                threads[i].Start(parameters);
+                            }
+                            for(uint i = 0; i < threads.Length; ++i)
+                            {
+                                threads[i].Join();
+                            }
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex);
+            }
+            finally
+            {
+                Logger.LogDebug("Thread " + Thread.CurrentThread.ManagedThreadId + " ended.");
+                Logger.FlushAllLogs();
+                UnblockUI();
+            }
+        }
+
+        private void RunGamesThreadStart(object parameters)
+        {
+            try
+            {
+                Dictionary<string, object> p = (Dictionary<string, object>)parameters;
+                uint start = (uint)p["startIndex"];
+                uint end = (uint)p["endIndex"];
+                Player player = (Player)p["player"];
+                Game game = GetGame();
+                for (uint i = start; i < end; ++i)
+                {
+                    try
+                    {
+                        Logger.LogInfo("Game no. " + (i + 1) + ".");
+                        StartNewGame(game, player);
+                    }
+                    catch(Exception e)
+                    {
+                        Logger.LogError(e);
+                        Logger.LogError("Running game no. + " + (i + 1) + " failed.");
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                try
+                {
+                    Logger.LogError(e);
+                }
+                catch(Exception ex)
+                {
+                    return;
+                }
+            }
+        }
+
+        private void StartNewGameInView(Game game, Player player, AutoResetEvent block)
+        {
+            Logger.LogInfo("Starting new game in view.");
             Form newGameForm = GameViewFactory.GetGameViewAsForm(game, player);
             newGameForm.FormClosed += new FormClosedEventHandler((sender, args) =>
             {
@@ -219,6 +330,20 @@ namespace DynamicHeuristicAlgorithm
             });
 
             Application.Run(newGameForm);
+        }
+
+        private void StartNewGame(Game game, Player player)
+        {
+            Logger.LogInfo("Starting new game.");
+            try
+            {
+                game.PlayGame(new HashSet<Player>() { player });
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex);
+            }
+            
         }
 
         private Player GetPlayer()
@@ -257,7 +382,7 @@ namespace DynamicHeuristicAlgorithm
             if (recursionDepthMaskedTextBox.Text.Equals("") || recursionDepthMaskedTextBox.Text.Equals("0"))
             {
                 Logger.LogInfo("Recursion depth isn't set properly. Setting to default 4.");
-                recursionDepthMaskedTextBox.Text = "4";
+                Invoke(new Action(() => recursionDepthMaskedTextBox.Text = "4"));
             }
             uint recursionDepth = Convert.ToUInt32(recursionDepthMaskedTextBox.Text);
             parameters.Add("recursionDepth", recursionDepth);
@@ -412,6 +537,11 @@ namespace DynamicHeuristicAlgorithm
         private void numberOfMergesHeuristicWeightMaskedTextBox_Leave(object sender, EventArgs e)
         {
             Properties.Settings.Default.NumberOfMergesHeuristicWeight = ((MaskedTextBox)sender).Text;
+        }
+
+        private void openLogsButton_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", @Logger.LoggerPath);
         }
     }
 }

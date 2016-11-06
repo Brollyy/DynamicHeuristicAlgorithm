@@ -13,6 +13,7 @@ namespace DynamicHeuristicAlgorithmCore.GameInterface
         #region PlayerInteraction
         // Game info
         GameStatistics GetGameStatistics();
+        int GetCurrentPlayerIndex();
 
         // Possibilites info
         HashSet<GameState> GetPossibleMovesForGameState(GameState state);

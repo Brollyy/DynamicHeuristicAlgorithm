@@ -10,11 +10,11 @@ namespace DynamicHeuristicAlgorithm.Utils
 {
     public class ControlWriter : TextWriter
     {
-        private Control textbox;
+        private TextBox textbox;
         private delegate void WriteCharCallback(char value);
         private delegate void WriteStringCallback(string value);
 
-        public ControlWriter(Control textbox)
+        public ControlWriter(TextBox textbox)
         {
             this.textbox = textbox;
         }
@@ -46,7 +46,11 @@ namespace DynamicHeuristicAlgorithm.Utils
                 }
                 else
                 {
-                    textbox.Text += value + Environment.NewLine;
+                    textbox.AppendText(value + Environment.NewLine);
+                    if(textbox.Text.Length > textbox.MaxLength)
+                    {
+                        textbox.Text = textbox.Text.Substring(textbox.Text.Length - textbox.MaxLength);
+                    }
                 }
             }
         }

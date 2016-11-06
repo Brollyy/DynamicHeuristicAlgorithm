@@ -1,4 +1,5 @@
-﻿using DynamicHeuristicAlgorithmCore.HeuristicInterface;
+﻿using DynamicHeuristicAlgorithm.TicTacToe;
+using DynamicHeuristicAlgorithmCore.HeuristicInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,8 +39,8 @@ namespace DynamicHeuristicAlgorithm.Utils
                     throw new NotImplementedException("Non-monotonic lines penalty heuristic is not implemented.");
                 case "numberOfMergesHeuristic":
                     throw new NotImplementedException("Number of merges heuristic is not implemented.");
-                case "ticTacToeHeurisitc":
-                    throw new NotImplementedException("Tic Tac Toe heuristic is not implemented.");
+                case "ticTacToeHeuristic":
+                    return new TicTacToeHeuristic(weight);
                 case "connectFourHeuristic":
                     throw new NotImplementedException("Connect four heuristic is not implemented.");
                 default:

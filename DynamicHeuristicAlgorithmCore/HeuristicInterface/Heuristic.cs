@@ -9,13 +9,13 @@ namespace DynamicHeuristicAlgorithmCore.HeuristicInterface
 {
     public abstract class Heuristic
     {
-        private uint weight;
+        protected uint weight;
 
         public Heuristic(uint weight)
         {
             this.weight = weight;
         }
 
-        public abstract ulong Evaluate(GameState state);
+        public abstract int Evaluate(GameState state, int playerIndex);
     }
 }

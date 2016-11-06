@@ -1,4 +1,5 @@
 ﻿using DynamicHeuristicAlgorithm.TicTacToe;
+using DynamicHeuristicAlgorithmCore.HeuristicInterface;
 using DynamicHeuristicAlgorithmCore.PlayerInterface;
 using System;
 using System.Collections.Generic;
@@ -27,13 +28,14 @@ namespace DynamicHeuristicAlgorithm.Utils
 
         private static Player GetRealPlayer(Dictionary<string, object> parameters)
         {
-            // Temporary
             return new RealPlayer();
         }
 
         private static Player GetAIPlayerWithHeuristics(Dictionary<string, object> parameters)
         {
-            throw new NotImplementedException("AI player support is not implemented.");
+            Heuristic[] heuristics = (Heuristic[])parameters["setHeuristics"];
+            uint recursionDepth = (uint)parameters["recursionDepth"];
+            return new MinimaxPlayer(heuristics, recursionDepth);
         }
 
         private static Player GetAIPlayerWithDynamicHeuristic(Dictionary<string, object> parameters)

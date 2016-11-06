@@ -10,6 +10,9 @@ namespace DynamicHeuristicAlgorithmCore.GameInterface
     {
         byte[] GetByteState();
         ulong GetStateHashCode();
+        byte GetBoard(byte i, byte j);
+        void SetState(GameState gameState);
+        void Clear();
     }
 
     public struct OpponentMove

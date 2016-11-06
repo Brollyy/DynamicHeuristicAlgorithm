@@ -22,9 +22,20 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             state = new TicTacToeBoardState(gameState.state);
         }
 
-        public TicTacToeGameStateImpl(TicTacToeBoardState boardState)
+        public void SetState(GameState gameState)
         {
-            state = new TicTacToeBoardState(boardState);
+            TicTacToeGameStateImpl state = (TicTacToeGameStateImpl)gameState;
+            this.state.SetBoard(state.state.Board);
+        }
+
+        public void SetState(byte[,] boardState)
+        {
+            this.state.SetBoard(boardState);
+        }
+
+        public void Clear()
+        {
+            this.state.Clear();
         }
 
         public byte GetSquare(byte i, byte j)
@@ -63,6 +74,11 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                 }
             }
             return state;
+        }
+
+        public byte GetBoard(byte i, byte j)
+        {
+            return GetSquare(i, j);
         }
     }
 }

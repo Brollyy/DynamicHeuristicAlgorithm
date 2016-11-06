@@ -52,13 +52,16 @@
     <Compile Include="DynamicHeuristicAlgorithmRunner.Designer.cs">
       <DependentUpon>DynamicHeuristicAlgorithmRunner.cs</DependentUpon>
     </Compile>
+    <Compile Include="MinimaxPlayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="TicTacToe\PerfectTicTacToePlayer.cs" />
     <Compile Include="TicTacToe\TicTacToeGameImpl.cs" />
+    <Compile Include="Utils\GameStateFactory.cs" />
     <Compile Include="TicTacToe\TicTacToeGameStateImpl.cs" />
     <Compile Include="TicTacToe\TicTacToeGameStatistics.cs" />
+    <Compile Include="TicTacToe\TicTacToeHeuristic.cs" />
     <Compile Include="TicTacToe\TicTacToeRunner.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +108,10 @@
     <ProjectReference Include="..\DynamicHeuristicAlgorithmCore\DynamicHeuristicAlgorithmCore.csproj">
       <Project>{c5a7f813-2bbf-4e56-9bf0-dda02cfa82d7}</Project>
       <Name>DynamicHeuristicAlgorithmCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MinimaxAlgorithmCore\MinimaxAlgorithmCore.csproj">
+      <Project>{f0b19d23-c810-4240-a350-6c82c9f1c4ff}</Project>
+      <Name>MinimaxAlgorithmCore</Name>
     </ProjectReference>
     <ProjectReference Include="..\TicTacToeGame\TicTacToeGame.csproj">
       <Project>{29a16aed-36af-4057-bfe6-ccc29b652ea2}</Project>

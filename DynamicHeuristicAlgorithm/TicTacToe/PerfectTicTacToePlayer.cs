@@ -24,7 +24,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #region 1st turn
             #region [{0,0,0},{0,0,0},{0,0,0}] -> [{0,0,0},{0,0,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,] 
+                TicTacToeGameStateImpl state = GetGameState((new byte[,] 
                 {
                     {0, 0, 0},
                     {0, 0, 0},
@@ -38,7 +38,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #region 2nd turn
             #region [{2,0,0},{0,0,0},{1,0,0}] -> [{2,0,1},{0,0,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {0, 0, 0},
@@ -49,7 +49,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,0},{0,0,0},{1,0,0}] -> [{1,2,0},{0,0,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 0},
                     {0, 0, 0},
@@ -60,7 +60,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,2},{0,0,0},{1,0,0}] -> [{1,0,2},{0,0,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 2},
                     {0, 0, 0},
@@ -71,7 +71,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{2,0,0},{1,0,0}] -> [{0,0,0},{2,0,0},{1,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {2, 0, 0},
@@ -82,7 +82,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,2,0},{1,0,0}] -> [{0,0,1},{0,2,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 0},
@@ -93,7 +93,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,0,2},{1,0,0}] -> [{1,0,0},{0,0,2},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 0, 2},
@@ -104,7 +104,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,0,0},{1,2,0}] -> [{1,0,0},{0,0,0},{1,2,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 0, 0},
@@ -115,7 +115,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,0,0},{1,0,2}] -> [{0,0,1},{0,0,0},{1,0,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 0, 0},
@@ -129,7 +129,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #region 2rd turn
             #region [{2,2,1},{0,0,0},{1,0,0}] -> [{2,2,1},{0,1,0},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 1},
                     {0, 0, 0},
@@ -140,7 +140,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{2,0,0},{1,0,0}] -> [{2,0,1},{2,1,0},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {2, 1, 0},
@@ -151,7 +151,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{0,2,0},{1,0,0}] -> [{2,0,1},{0,2,0},{1,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {0, 2, 0},
@@ -162,7 +162,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{0,0,2},{1,0,0}] -> [{2,0,1},{0,1,2},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {0, 0, 2},
@@ -173,7 +173,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{0,0,0},{1,2,0}] -> [{2,0,1},{0,1,0},{1,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {0, 0, 0},
@@ -184,7 +184,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{0,0,0},{1,0,2}] -> [{2,0,1},{0,1,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {0, 0, 0},
@@ -195,7 +195,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,2},{0,0,0},{1,0,0}] -> [{1,2,2},{1,0,0},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 2},
                     {0, 0, 0},
@@ -206,7 +206,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{2,0,0},{1,0,0}] -> [{1,2,0},{2,1,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {2, 0, 0},
@@ -217,7 +217,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{0,2,0},{1,0,0}] -> [{1,2,0},{1,2,0},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {0, 2, 0},
@@ -228,7 +228,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{0,0,2},{1,0,0}] -> [{1,2,0},{1,0,2},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {0, 0, 2},
@@ -239,7 +239,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{0,0,0},{1,2,0}] -> [{1,2,0},{1,0,0},{1,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {0, 0, 0},
@@ -250,7 +250,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{0,0,0},{1,0,2}] -> [{1,2,0},{1,0,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {0, 0, 0},
@@ -261,7 +261,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{2,0,0},{1,0,0}] -> [{1,0,2},{2,0,0},{1,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {2, 0, 0},
@@ -272,7 +272,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{0,2,0},{1,0,0}] -> [{1,0,2},{1,2,0},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {0, 2, 0},
@@ -283,7 +283,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{0,0,2},{1,0,0}] -> [{1,0,2},{1,0,2},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {0, 0, 2},
@@ -294,7 +294,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{0,0,0},{1,2,0}] -> [{1,0,2},{1,0,0},{1,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {0, 0, 0},
@@ -305,7 +305,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{0,0,0},{1,0,2}] -> [{1,0,2},{1,0,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {0, 0, 0},
@@ -316,7 +316,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{2,0,0},{1,0,1}] -> [{2,0,0},{2,0,0},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {2, 0, 0},
@@ -327,7 +327,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,0},{2,0,0},{1,0,1}] -> [{0,2,0},{2,0,0},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 0},
                     {2, 0, 0},
@@ -338,7 +338,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,2},{2,0,0},{1,0,1}] -> [{0,0,2},{2,0,0},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 2},
                     {2, 0, 0},
@@ -349,7 +349,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{2,2,0},{1,0,1}] -> [{0,0,0},{2,2,0},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {2, 2, 0},
@@ -360,7 +360,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{2,0,2},{1,0,1}] -> [{0,0,0},{2,0,2},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {2, 0, 2},
@@ -371,7 +371,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{2,0,0},{1,2,1}] -> [{0,0,0},{2,1,0},{1,2,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {2, 0, 0},
@@ -382,7 +382,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,1},{0,2,0},{1,0,0}] -> [{0,2,1},{0,2,0},{1,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 1},
                     {0, 2, 0},
@@ -393,7 +393,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{2,2,0},{1,0,0}] -> [{0,0,1},{2,2,1},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {2, 2, 0},
@@ -404,7 +404,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,2},{1,0,0}] -> [{0,0,1},{1,2,2},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 2},
@@ -415,7 +415,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,0},{1,2,0}] -> [{0,1,1},{0,2,0},{1,2,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 0},
@@ -426,7 +426,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,0},{1,0,2}] -> [{1,0,1},{0,2,0},{1,0,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 0},
@@ -437,7 +437,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,0,2},{1,0,0}] -> [{1,0,0},{2,1,2},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 0, 2},
@@ -448,7 +448,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,2},{1,0,0}] -> [{1,0,0},{1,2,2},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 2},
@@ -459,7 +459,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,0,2},{1,2,0}] -> [{1,0,0},{1,0,2},{1,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 0, 2},
@@ -470,7 +470,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,0,2},{1,0,2}] -> [{1,0,0},{1,0,2},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 0, 2},
@@ -481,7 +481,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,0,0},{1,2,0}] -> [{1,0,0},{2,1,0},{1,2,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 0, 0},
@@ -492,7 +492,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,0},{1,2,0}] -> [{1,0,0},{1,2,0},{1,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 0},
@@ -503,7 +503,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,0,0},{1,2,2}] -> [{1,0,0},{1,0,0},{1,2,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 0, 0},
@@ -514,7 +514,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,1},{0,0,0},{1,0,2}] -> [{0,2,1},{0,0,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 1},
                     {0, 0, 0},
@@ -525,7 +525,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{2,0,0},{1,0,2}] -> [{0,0,1},{2,0,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {2, 0, 0},
@@ -536,7 +536,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,0,2},{1,0,2}] -> [{0,0,1},{0,0,2},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 0, 2},
@@ -547,7 +547,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,0,0},{1,2,2}] -> [{0,0,1},{0,0,0},{1,2,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 0, 0},
@@ -558,10 +558,10 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #endregion
 
-            #region 1th turn
+            #region 4th turn
             #region [{2,2,1},{0,2,0},{1,0,1}] -> [{2,2,1},{0,2,0},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 1},
                     {0, 2, 0},
@@ -572,7 +572,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{2,2,0},{1,0,1}] -> [{2,0,1},{2,2,0},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {2, 2, 0},
@@ -583,7 +583,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{0,2,2},{1,0,1}] -> [{2,0,1},{0,2,2},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {0, 2, 2},
@@ -594,7 +594,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{0,2,0},{1,2,1}] -> [{2,0,1},{0,2,1},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {0, 2, 0},
@@ -605,7 +605,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,2},{2,1,0},{1,0,0}] -> [{1,2,2},{2,1,0},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 2},
                     {2, 1, 0},
@@ -616,7 +616,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{2,1,2},{1,0,0}] -> [{1,2,0},{2,1,2},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {2, 1, 2},
@@ -627,7 +627,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{2,1,0},{1,2,0}] -> [{1,2,0},{2,1,0},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {2, 1, 0},
@@ -638,7 +638,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{2,1,0},{1,0,2}] -> [{1,2,1},{2,1,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {2, 1, 0},
@@ -649,7 +649,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,2},{2,0,0},{1,0,1}] -> [{1,2,2},{2,0,0},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 2},
                     {2, 0, 0},
@@ -660,7 +660,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{2,2,0},{1,0,1}] -> [{1,2,0},{2,2,0},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {2, 2, 0},
@@ -671,7 +671,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{2,0,2},{1,0,1}] -> [{1,2,0},{2,0,2},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {2, 0, 2},
@@ -682,7 +682,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{2,0,0},{1,2,1}] -> [{1,2,0},{2,1,0},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {2, 0, 0},
@@ -693,7 +693,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{2,1,0},{1,2,1}] -> [{2,0,1},{2,1,0},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {2, 1, 0},
@@ -704,7 +704,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,0},{2,1,0},{1,2,1}] -> [{0,2,1},{2,1,0},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 0},
                     {2, 1, 0},
@@ -715,7 +715,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,2},{2,1,0},{1,2,1}] -> [{1,0,2},{2,1,0},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 2},
                     {2, 1, 0},
@@ -726,7 +726,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{2,1,2},{1,2,1}] -> [{0,0,1},{2,1,2},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {2, 1, 2},
@@ -737,7 +737,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,1},{0,2,0},{1,1,0}] -> [{2,2,1},{0,2,0},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 1},
                     {0, 2, 0},
@@ -748,7 +748,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,1},{2,2,0},{1,1,0}] -> [{0,2,1},{2,2,0},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 1},
                     {2, 2, 0},
@@ -759,7 +759,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,1},{0,2,2},{1,1,0}] -> [{0,2,1},{0,2,2},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 1},
                     {0, 2, 2},
@@ -770,7 +770,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,1},{0,2,0},{1,1,2}] -> [{1,2,1},{0,2,0},{1,1,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 1},
                     {0, 2, 0},
@@ -781,7 +781,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{2,2,1},{1,0,0}] -> [{2,0,1},{2,2,1},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {2, 2, 1},
@@ -792,7 +792,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,1},{2,2,1},{1,0,0}] -> [{0,2,1},{2,2,1},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 1},
                     {2, 2, 1},
@@ -803,7 +803,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{2,2,1},{1,2,0}] -> [{0,0,1},{2,2,1},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {2, 2, 1},
@@ -814,7 +814,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{2,2,1},{1,0,2}] -> [{1,0,1},{2,2,1},{1,0,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {2, 2, 1},
@@ -825,7 +825,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,2},{1,0,0}] -> [{2,0,1},{1,2,2},{1,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 2},
@@ -836,7 +836,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,1},{1,2,2},{1,0,0}] -> [{1,2,1},{1,2,2},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 1},
                     {1, 2, 2},
@@ -847,7 +847,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{1,2,2},{1,2,0}] -> [{1,0,1},{1,2,2},{1,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {1, 2, 2},
@@ -858,7 +858,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{1,2,2},{1,0,2}] -> [{1,0,1},{1,2,2},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {1, 2, 2},
@@ -869,7 +869,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,2,0},{1,2,0}] -> [{2,1,1},{0,2,0},{1,2,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 2, 0},
@@ -880,7 +880,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{2,2,0},{1,2,0}] -> [{1,1,1},{2,2,0},{1,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {2, 2, 0},
@@ -891,7 +891,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{0,2,2},{1,2,0}] -> [{1,1,1},{0,2,2},{1,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {0, 2, 2},
@@ -902,7 +902,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{0,2,0},{1,2,2}] -> [{1,1,1},{0,2,0},{1,2,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {0, 2, 0},
@@ -913,7 +913,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,0},{1,0,2}] -> [{1,2,1},{0,2,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 0},
@@ -924,7 +924,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{2,2,0},{1,0,2}] -> [{1,1,1},{2,2,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {2, 2, 0},
@@ -935,7 +935,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{0,2,2},{1,0,2}] -> [{1,1,1},{0,2,2},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {0, 2, 2},
@@ -946,7 +946,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{0,2,0},{1,2,2}] -> [{1,1,1},{0,2,0},{1,2,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {0, 2, 0},
@@ -957,7 +957,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,1,2},{1,2,0}] -> [{1,0,0},{2,1,2},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 1, 2},
@@ -968,7 +968,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,1,2},{1,0,2}] -> [{1,0,1},{2,1,2},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 1, 2},
@@ -979,7 +979,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{2,1,0},{1,2,0}] -> [{1,0,2},{2,1,0},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {2, 1, 0},
@@ -990,7 +990,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,1,0},{1,2,2}] -> [{1,0,1},{2,1,0},{1,2,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 1, 0},
@@ -999,12 +999,23 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                 perfectMoves.Add(state.GetStateHashCode(), GetChangedStateWhenFirst(state, 0, 2));
             }
             #endregion
+            #region [{1,0,2},{2,2,0},{1,0,1}] -> [{1,0,2},{2,2,0},{1,1,1}] WIN
+            {
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
+                {
+                    {1, 0, 2},
+                    {2, 2, 0},
+                    {1, 0, 1}
+                }));
+                perfectMoves.Add(state.GetStateHashCode(), GetChangedStateWhenFirst(state, 2, 1));
+            }
+            #endregion
             #endregion
 
             #region 5th turn
             #region [{1,2,1},{2,2,0},{1,1,2}] -> [{1,2,1},{2,2,1},{1,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {2, 2, 0},
@@ -1015,7 +1026,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,2},{1,1,2}] -> [{1,2,1},{1,2,2},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 2},
@@ -1026,7 +1037,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{2,2,1},{1,0,2}] -> [{1,2,1},{2,2,1},{1,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {2, 2, 1},
@@ -1037,7 +1048,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{2,2,1},{1,2,2}] -> [{1,1,1},{2,2,1},{1,2,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {2, 2, 1},
@@ -1048,7 +1059,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,1},{1,2,2},{1,0,1}] -> [{2,2,1},{1,2,2},{1,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 1},
                     {1, 2, 2},
@@ -1059,7 +1070,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,2},{1,2,1}] -> [{2,1,1},{1,2,2},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 2},
@@ -1070,7 +1081,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{2,2,0},{1,2,1}] -> [{2,1,1},{2,2,1},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {2, 2, 0},
@@ -1081,7 +1092,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,2,2},{1,2,1}] -> [{2,1,1},{1,2,2},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 2, 2},
@@ -1099,7 +1110,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #region 1st move
             #region [{1,0,0},{0,0,0},{0,0,0}] -> [{1,0,0},{0,2,0},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 0, 0},
@@ -1110,7 +1121,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{0,0,0},{0,0,0}] -> [{0,1,0},{0,2,0},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {0, 0, 0},
@@ -1121,7 +1132,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,0,0},{0,0,0}] -> [{0,0,1},{0,2,0},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 0, 0},
@@ -1132,7 +1143,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,0,0},{0,0,0}] -> [{0,0,0},{1,2,0},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 0, 0},
@@ -1143,7 +1154,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,1,0},{0,0,0}] -> [{2,0,0},{0,1,0},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 1, 0},
@@ -1154,7 +1165,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,0,1},{0,0,0}] -> [{0,0,0},{0,2,1},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 0, 1},
@@ -1165,7 +1176,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,0,0},{1,0,0}] -> [{0,0,0},{0,2,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 0, 0},
@@ -1176,7 +1187,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,0,0},{0,0,0}] -> [{0,0,0},{0,2,0},{0,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 0, 0},
@@ -1187,7 +1198,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,0,0},{0,0,1}] -> [{0,0,0},{0,2,0},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 0, 0},
@@ -1201,7 +1212,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #region 2nd move
             #region [{1,1,0},{0,2,0},{0,0,0}] -> [{1,1,2},{0,2,0},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 0},
                     {0, 2, 0},
@@ -1212,7 +1223,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{0,2,0},{0,0,0}] -> [{1,2,1},{0,2,0},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {0, 2, 0},
@@ -1223,7 +1234,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{1,2,0},{0,0,0}] -> [{1,0,0},{1,2,0},{2,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {1, 2, 0},
@@ -1234,7 +1245,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,1},{0,0,0}] -> [{1,0,2},{0,2,1},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 1},
@@ -1245,7 +1256,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,0},{1,0,0}] -> [{1,0,0},{2,2,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 0},
@@ -1256,7 +1267,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,0},{0,1,0}] -> [{1,0,0},{0,2,0},{2,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 0},
@@ -1267,7 +1278,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,0},{0,0,1}] -> [{1,0,0},{2,2,0},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 0},
@@ -1278,7 +1289,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{0,2,0},{0,0,0}] -> [{2,1,1},{0,2,0},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {0, 2, 0},
@@ -1289,7 +1300,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{1,2,0},{0,0,0}] -> [{2,1,0},{1,2,0},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {1, 2, 0},
@@ -1300,7 +1311,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{0,2,1},{0,0,0}] -> [{0,1,2},{0,2,1},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {0, 2, 1},
@@ -1311,7 +1322,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{0,2,0},{1,0,0}] -> [{2,1,0},{0,2,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {0, 2, 0},
@@ -1322,7 +1333,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{0,2,0},{0,1,0}] -> [{2,1,0},{0,2,0},{0,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {0, 2, 0},
@@ -1333,7 +1344,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{0,2,0},{0,0,1}] -> [{0,1,2},{0,2,0},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {0, 2, 0},
@@ -1344,7 +1355,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{1,2,0},{0,0,0}] -> [{2,0,1},{1,2,0},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {1, 2, 0},
@@ -1355,7 +1366,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,1},{0,0,0}] -> [{0,0,1},{0,2,1},{0,0,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 1},
@@ -1366,7 +1377,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,0},{1,0,0}] -> [{0,0,1},{2,2,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 0},
@@ -1377,7 +1388,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,0},{0,1,0}] -> [{0,0,1},{0,2,0},{0,1,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 0},
@@ -1388,7 +1399,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,0},{0,0,1}] -> [{0,0,1},{0,2,2},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 0},
@@ -1399,7 +1410,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,1},{0,0,0}] -> [{2,0,0},{1,2,1},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 2, 1},
@@ -1410,7 +1421,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,0},{1,0,0}] -> [{2,0,0},{1,2,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 2, 0},
@@ -1421,7 +1432,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,0},{0,1,0}] -> [{0,0,0},{1,2,0},{2,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 2, 0},
@@ -1432,7 +1443,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,0},{0,0,1}] -> [{0,0,0},{1,2,0},{2,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 2, 0},
@@ -1443,7 +1454,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,1,0},{0,0,0}] -> [{2,1,0},{0,1,0},{0,2,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 1, 0},
@@ -1454,7 +1465,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{0,1,0},{0,0,0}] -> [{2,0,1},{0,1,0},{2,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {0, 1, 0},
@@ -1465,7 +1476,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{1,1,0},{0,0,0}] -> [{2,0,0},{1,1,2},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {1, 1, 0},
@@ -1476,7 +1487,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{0,1,1},{0,0,0}] -> [{2,0,0},{2,1,1},{0,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {0, 1, 1},
@@ -1487,7 +1498,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{0,1,0},{1,0,0}] -> [{2,0,2},{0,1,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {0, 1, 0},
@@ -1498,7 +1509,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{0,1,0},{0,1,0}] -> [{2,2,0},{0,1,0},{0,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {0, 1, 0},
@@ -1509,7 +1520,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{0,1,0},{0,0,1}] -> [{2,0,2},{0,1,0},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {0, 1, 0},
@@ -1520,7 +1531,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,2,1},{1,0,0}] -> [{0,0,0},{0,2,1},{1,0,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 1},
@@ -1531,7 +1542,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,2,1},{0,1,0}] -> [{0,0,0},{0,2,1},{0,1,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 1},
@@ -1542,7 +1553,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,2,1},{0,0,1}] -> [{0,0,2},{0,2,1},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 1},
@@ -1553,7 +1564,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,2,0},{1,1,0}] -> [{0,0,0},{0,2,0},{1,1,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 0},
@@ -1564,7 +1575,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,2,0},{1,0,1}] -> [{0,0,0},{0,2,0},{1,2,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 0},
@@ -1575,7 +1586,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,2,0},{0,1,1}] -> [{0,0,0},{0,2,0},{2,1,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 0},
@@ -1589,18 +1600,18 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #region 3rd move
             #region [{1,1,2},{1,2,0},{0,0,0}] -> [{1,1,2},{1,2,0},{2,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {1, 2, 0},
-                    {2, 0, 0}
+                    {0, 0, 0}
                 }));
                 perfectMoves.Add(state.GetStateHashCode(), GetChangedStateWhenSecond(state, 2, 0));
             }
             #endregion
             #region [{1,1,2},{0,2,1},{0,0,0}] -> [{1,1,2},{0,2,1},{2,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {0, 2, 1},
@@ -1611,7 +1622,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,2},{0,2,0},{1,0,0}] -> [{1,1,2},{2,2,0},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {0, 2, 0},
@@ -1622,7 +1633,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,2},{0,2,0},{0,1,0}] -> [{1,1,2},{0,2,0},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {0, 2, 0},
@@ -1633,7 +1644,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,2},{0,2,0},{0,0,1}] -> [{1,1,2},{0,2,0},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {0, 2, 0},
@@ -1644,7 +1655,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{1,2,0},{0,0,0}] -> [{1,2,1},{1,2,0},{0,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {1, 2, 0},
@@ -1655,7 +1666,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,1},{0,0,0}] -> [{1,2,1},{0,2,1},{0,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 1},
@@ -1666,7 +1677,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,0},{1,0,0}] -> [{1,2,1},{0,2,0},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 0},
@@ -1677,7 +1688,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,0},{0,1,0}] -> [{1,2,1},{2,2,0},{0,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 0},
@@ -1688,7 +1699,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,0},{0,0,1}] -> [{1,2,1},{0,2,0},{0,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 0},
@@ -1699,7 +1710,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,0},{1,2,0},{2,0,0}] -> [{1,1,2},{1,2,0},{2,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 0},
                     {1, 2, 0},
@@ -1710,7 +1721,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{1,2,0},{2,0,0}] -> [{1,2,1},{1,2,0},{2,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {1, 2, 0},
@@ -1721,7 +1732,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{1,2,1},{2,0,0}] -> [{1,0,2},{1,2,1},{2,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {1, 2, 1},
@@ -1732,7 +1743,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{1,2,0},{2,1,0}] -> [{1,0,2},{1,2,0},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {1, 2, 0},
@@ -1743,7 +1754,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{1,2,0},{2,0,1}] -> [{1,0,2},{1,2,0},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {1, 2, 0},
@@ -1754,7 +1765,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{1,2,1},{0,0,0}] -> [{1,0,2},{1,2,1},{2,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {1, 2, 1},
@@ -1765,7 +1776,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{0,2,1},{1,0,0}] -> [{1,0,2},{2,2,1},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {0, 2, 1},
@@ -1776,7 +1787,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{0,2,1},{0,1,0}] -> [{1,0,2},{0,2,1},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {0, 2, 1},
@@ -1787,7 +1798,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{0,2,1},{0,0,1}] -> [{1,0,2},{0,2,1},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {0, 2, 1},
@@ -1798,7 +1809,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,0},{2,2,0},{1,0,0}] -> [{1,1,0},{2,2,2},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 0},
                     {2, 2, 0},
@@ -1809,7 +1820,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{2,2,0},{1,0,0}] -> [{1,0,1},{2,2,2},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {2, 2, 0},
@@ -1820,7 +1831,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,2,1},{1,0,0}] -> [{1,2,0},{2,2,1},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 2, 1},
@@ -1831,7 +1842,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,2,0},{1,1,0}] -> [{1,0,0},{2,2,2},{1,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 2, 0},
@@ -1842,7 +1853,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,2,0},{1,0,1}] -> [{1,0,0},{2,2,2},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 2, 0},
@@ -1853,7 +1864,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,0},{0,2,0},{2,1,0}] -> [{1,1,2},{0,2,0},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 0},
                     {0, 2, 0},
@@ -1864,7 +1875,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{0,2,0},{2,1,0}] -> [{1,2,1},{0,2,0},{2,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {0, 2, 0},
@@ -1875,7 +1886,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,1},{2,1,0}] -> [{1,0,2},{0,2,1},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 1},
@@ -1886,7 +1897,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,0},{2,1,1}] -> [{1,0,2},{0,2,0},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 0},
@@ -1897,7 +1908,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,0},{2,2,0},{0,0,1}] -> [{1,1,0},{2,2,2},{0,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 0},
                     {2, 2, 0},
@@ -1908,7 +1919,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{2,2,0},{0,0,1}] -> [{1,0,1},{2,2,2},{0,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {2, 2, 0},
@@ -1919,7 +1930,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,2,1},{0,0,1}] -> [{1,0,2},{2,2,1},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 2, 1},
@@ -1930,7 +1941,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,2,0},{0,1,1}] -> [{1,0,0},{2,2,2},{0,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 2, 0},
@@ -1941,7 +1952,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{1,2,0},{0,0,0}] -> [{2,1,1},{1,2,0},{0,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {1, 2, 0},
@@ -1952,7 +1963,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,2,1},{0,0,0}] -> [{2,1,1},{0,2,1},{0,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 2, 1},
@@ -1963,7 +1974,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,2,0},{1,0,0}] -> [{2,1,1},{0,2,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 2, 0},
@@ -1974,7 +1985,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,2,0},{0,1,0}] -> [{2,1,1},{0,2,0},{0,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 2, 0},
@@ -1985,7 +1996,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,2,0},{0,0,1}] -> [{2,1,1},{0,2,2},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 2, 0},
@@ -1996,7 +2007,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{1,2,1},{0,0,0}] -> [{2,1,0},{1,2,1},{0,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {1, 2, 1},
@@ -2007,7 +2018,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{1,2,0},{1,0,0}] -> [{2,1,0},{1,2,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {1, 2, 0},
@@ -2018,7 +2029,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{1,2,0},{0,1,0}] -> [{2,1,0},{1,2,0},{0,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {1, 2, 0},
@@ -2029,7 +2040,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{1,2,0},{0,0,1}] -> [{2,1,2},{1,2,0},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {1, 2, 0},
@@ -2040,7 +2051,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,2},{1,2,1},{0,0,0}] -> [{0,1,2},{1,2,1},{2,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 2},
                     {1, 2, 1},
@@ -2051,7 +2062,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,2},{0,2,1},{1,0,0}] -> [{2,1,2},{0,2,1},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 2},
                     {0, 2, 1},
@@ -2062,7 +2073,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,2},{0,2,1},{0,1,0}] -> [{0,1,2},{0,2,1},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 2},
                     {0, 2, 1},
@@ -2073,7 +2084,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,2},{0,2,1},{0,0,1}] -> [{0,1,2},{0,2,1},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 2},
                     {0, 2, 1},
@@ -2084,7 +2095,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,2,1},{1,0,0}] -> [{2,1,0},{0,2,1},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 2, 1},
@@ -2095,7 +2106,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,2,0},{1,1,0}] -> [{2,1,0},{0,2,0},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 2, 0},
@@ -2106,7 +2117,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,2,0},{1,0,1}] -> [{2,1,0},{0,2,0},{1,2,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 2, 0},
@@ -2117,7 +2128,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,2,1},{0,1,0}] -> [{2,1,0},{0,2,1},{0,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 2, 1},
@@ -2128,7 +2139,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,2,0},{0,1,1}] -> [{2,1,0},{0,2,0},{2,1,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 2, 0},
@@ -2139,7 +2150,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,2},{1,2,0},{0,0,1}] -> [{0,1,2},{1,2,0},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 2},
                     {1, 2, 0},
@@ -2150,7 +2161,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,2},{0,2,0},{1,0,1}] -> [{0,1,2},{0,2,0},{1,2,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 2},
                     {0, 2, 0},
@@ -2161,7 +2172,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,2},{0,2,0},{0,1,1}] -> [{0,1,2},{0,2,0},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 2},
                     {0, 2, 0},
@@ -2172,7 +2183,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,1},{0,0,0}] -> [{2,0,1},{1,2,1},{0,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 1},
@@ -2183,7 +2194,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,0},{1,0,0}] -> [{2,0,1},{1,2,0},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 0},
@@ -2194,7 +2205,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,0},{0,1,0}] -> [{2,0,1},{1,2,0},{0,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 0},
@@ -2205,7 +2216,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,0},{0,0,1}] -> [{2,0,1},{1,2,2},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 0},
@@ -2216,7 +2227,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{0,2,1},{0,0,2}] -> [{1,2,1},{0,2,1},{0,0,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {0, 2, 1},
@@ -2227,7 +2238,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{0,2,1},{0,0,2}] -> [{2,1,1},{0,2,1},{0,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {0, 2, 1},
@@ -2238,7 +2249,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{1,2,1},{0,0,2}] -> [{2,0,1},{1,2,1},{0,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {1, 2, 1},
@@ -2249,7 +2260,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,1},{1,0,2}] -> [{2,0,1},{0,2,1},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 1},
@@ -2260,7 +2271,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,1},{0,1,2}] -> [{2,0,1},{0,2,1},{0,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 1},
@@ -2271,7 +2282,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{2,2,0},{1,0,0}] -> [{0,1,1},{2,2,2},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {2, 2, 0},
@@ -2282,7 +2293,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{2,2,1},{1,0,0}] -> [{0,0,1},{2,2,1},{1,0,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {2, 2, 1},
@@ -2293,7 +2304,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{2,2,0},{1,1,0}] -> [{0,0,1},{2,2,2},{1,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {2, 2, 0},
@@ -2304,7 +2315,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{2,2,0},{1,0,1}] -> [{0,0,1},{2,2,2},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {2, 2, 0},
@@ -2315,7 +2326,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{0,2,0},{0,1,2}] -> [{1,2,1},{0,2,0},{0,1,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {0, 2, 0},
@@ -2326,7 +2337,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{0,2,0},{0,1,2}] -> [{2,1,1},{0,2,0},{0,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {0, 2, 0},
@@ -2337,7 +2348,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{1,2,0},{0,1,2}] -> [{2,0,1},{1,2,0},{0,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {1, 2, 0},
@@ -2348,7 +2359,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,0},{1,1,2}] -> [{2,0,1},{0,2,0},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 0},
@@ -2359,7 +2370,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{0,2,2},{0,0,1}] -> [{1,0,1},{2,2,2},{0,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {0, 2, 2},
@@ -2370,7 +2381,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{0,2,2},{0,0,1}] -> [{0,1,1},{2,2,2},{0,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {0, 2, 2},
@@ -2381,7 +2392,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{1,2,2},{0,0,1}] -> [{0,2,1},{1,2,2},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {1, 2, 2},
@@ -2392,7 +2403,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,2},{1,0,1}] -> [{0,0,1},{2,2,2},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 2},
@@ -2403,7 +2414,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,2},{0,1,1}] -> [{0,0,1},{2,2,2},{0,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 2},
@@ -2414,7 +2425,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{1,2,1},{1,0,0}] -> [{2,0,0},{1,2,1},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {1, 2, 1},
@@ -2425,7 +2436,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{1,2,1},{0,1,0}] -> [{2,0,0},{1,2,1},{0,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {1, 2, 1},
@@ -2436,7 +2447,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{1,2,1},{0,0,1}] -> [{2,0,2},{1,2,1},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {1, 2, 1},
@@ -2447,7 +2458,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{1,2,0},{1,1,0}] -> [{2,0,0},{1,2,0},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {1, 2, 0},
@@ -2458,7 +2469,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{1,2,0},{1,0,1}] -> [{2,0,0},{1,2,0},{1,2,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {1, 2, 0},
@@ -2469,7 +2480,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{1,2,0},{2,1,0}] -> [{0,1,2},{1,2,0},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {1, 2, 0},
@@ -2480,7 +2491,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{1,2,0},{2,1,0}] -> [{2,0,1},{1,2,0},{2,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {1, 2, 0},
@@ -2491,7 +2502,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,1},{2,1,0}] -> [{0,0,2},{1,2,1},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 2, 1},
@@ -2502,7 +2513,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,0},{2,1,1}] -> [{0,0,2},{1,2,0},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 2, 0},
@@ -2513,7 +2524,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{1,2,0},{2,0,1}] -> [{0,1,2},{1,2,0},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {1, 2, 0},
@@ -2524,7 +2535,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{1,2,0},{2,0,1}] -> [{0,0,1},{1,2,2},{2,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {1, 2, 0},
@@ -2535,7 +2546,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,1},{2,0,1}] -> [{0,0,2},{1,2,1},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 2, 1},
@@ -2546,7 +2557,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,1,0},{0,2,0}] -> [{2,1,1},{0,1,0},{2,2,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 1, 0},
@@ -2557,7 +2568,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{1,1,0},{0,2,0}] -> [{2,1,0},{1,1,2},{0,2,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {1, 1, 0},
@@ -2568,7 +2579,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,1,1},{0,2,0}] -> [{2,1,0},{2,1,1},{0,2,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 1, 1},
@@ -2579,7 +2590,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,1,0},{1,2,0}] -> [{2,1,2},{0,1,0},{1,2,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 1, 0},
@@ -2590,7 +2601,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,1,0},{0,2,1}] -> [{2,1,0},{2,1,0},{0,2,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 1, 0},
@@ -2601,7 +2612,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,1,0},{2,0,0}] -> [{2,1,1},{2,1,0},{2,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 1, 0},
@@ -2612,7 +2623,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,1,0},{2,0,0}] -> [{2,0,1},{1,1,2},{2,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 1, 0},
@@ -2623,7 +2634,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{0,1,1},{2,0,0}] -> [{2,0,1},{2,1,1},{2,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {0, 1, 1},
@@ -2634,7 +2645,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{0,1,0},{2,1,0}] -> [{2,0,1},{2,1,0},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {0, 1, 0},
@@ -2645,7 +2656,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{0,1,0},{2,0,1}] -> [{2,0,1},{2,1,0},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {0, 1, 0},
@@ -2656,7 +2667,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{1,1,2},{0,0,0}] -> [{2,1,0},{1,1,2},{0,2,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {1, 1, 2},
@@ -2667,7 +2678,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,1,2},{0,0,0}] -> [{2,0,1},{1,1,2},{2,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 1, 2},
@@ -2678,7 +2689,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{1,1,2},{1,0,0}] -> [{2,0,2},{1,1,2},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {1, 1, 2},
@@ -2689,7 +2700,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{1,1,2},{0,1,0}] -> [{2,2,0},{1,1,2},{0,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {1, 1, 2},
@@ -2700,7 +2711,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{1,1,2},{0,0,1}] -> [{2,2,0},{1,1,2},{0,0,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {1, 1, 2},
@@ -2711,7 +2722,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{2,1,1},{0,0,0}] -> [{2,1,0},{2,1,1},{2,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {2, 1, 1},
@@ -2722,7 +2733,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{2,1,1},{0,0,0}] -> [{2,0,1},{2,1,1},{2,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {2, 1, 1},
@@ -2733,7 +2744,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{2,1,1},{1,0,0}] -> [{2,0,2},{2,1,1},{1,0,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {2, 1, 1},
@@ -2744,7 +2755,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{2,1,1},{0,1,0}] -> [{2,0,0},{2,1,1},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {2, 1, 1},
@@ -2755,7 +2766,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{2,1,1},{0,0,1}] -> [{2,0,0},{2,1,1},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {2, 1, 1},
@@ -2766,7 +2777,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{0,1,0},{1,0,0}] -> [{2,1,2},{0,1,0},{1,2,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {0, 1, 0},
@@ -2777,7 +2788,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{1,1,0},{1,0,0}] -> [{2,2,2},{1,1,0},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {1, 1, 0},
@@ -2788,7 +2799,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{0,1,1},{1,0,0}] -> [{2,2,2},{0,1,1},{1,0,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {0, 1, 1},
@@ -2799,7 +2810,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{0,1,0},{1,1,0}] -> [{2,2,2},{0,1,0},{1,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {0, 1, 0},
@@ -2810,7 +2821,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{0,1,0},{1,0,1}] -> [{2,2,2},{0,1,0},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {0, 1, 0},
@@ -2821,7 +2832,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,1},{0,1,0},{0,1,0}] -> [{2,2,1},{0,1,0},{2,1,0}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 1},
                     {0, 1, 0},
@@ -2832,7 +2843,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,0},{1,1,0},{0,1,0}] -> [{2,2,2},{1,1,0},{0,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 0},
                     {1, 1, 0},
@@ -2843,7 +2854,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,0},{0,1,1},{0,1,0}] -> [{2,2,2},{0,1,1},{0,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 0},
                     {0, 1, 1},
@@ -2854,7 +2865,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,0},{0,1,0},{1,1,0}] -> [{2,2,2},{0,1,0},{1,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 0},
                     {0, 1, 0},
@@ -2865,7 +2876,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,0},{0,1,0},{0,1,1}] -> [{2,2,2},{0,1,0},{0,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 0},
                     {0, 1, 0},
@@ -2876,7 +2887,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{0,1,0},{0,0,1}] -> [{2,1,2},{0,1,0},{0,2,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {0, 1, 0},
@@ -2887,7 +2898,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{1,1,0},{0,0,1}] -> [{2,2,2},{1,1,0},{0,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {1, 1, 0},
@@ -2898,7 +2909,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{0,1,1},{0,0,1}] -> [{2,2,2},{0,1,1},{0,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {0, 1, 1},
@@ -2909,7 +2920,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{0,1,0},{0,1,1}] -> [{2,2,2},{0,1,0},{0,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {0, 1, 0},
@@ -2920,7 +2931,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,1},{1,0,2}] -> [{1,0,0},{2,2,1},{1,0,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 1},
@@ -2931,7 +2942,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{0,2,1},{1,0,2}] -> [{2,1,0},{0,2,1},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {0, 2, 1},
@@ -2942,7 +2953,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,1},{1,0,2}] -> [{2,0,0},{1,2,1},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 2, 1},
@@ -2953,7 +2964,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,2,1},{1,1,2}] -> [{2,0,0},{0,2,1},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 1},
@@ -2964,7 +2975,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,1},{0,1,2}] -> [{1,0,2},{0,2,1},{0,1,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 1},
@@ -2975,7 +2986,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{0,2,1},{0,1,2}] -> [{2,1,0},{0,2,1},{0,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {0, 2, 1},
@@ -2986,7 +2997,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,1},{0,1,2}] -> [{2,0,0},{1,2,1},{0,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 1},
@@ -2997,7 +3008,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,2},{1,2,1},{0,0,1}] -> [{0,0,2},{1,2,1},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 2},
                     {1, 2, 1},
@@ -3008,7 +3019,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,2},{0,2,1},{1,0,1}] -> [{0,0,2},{0,2,1},{1,2,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 2},
                     {0, 2, 1},
@@ -3019,7 +3030,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,2},{0,2,1},{0,1,1}] -> [{0,0,2},{0,2,1},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 2},
                     {0, 2, 1},
@@ -3030,7 +3041,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,0},{1,1,2}] -> [{1,0,0},{2,2,0},{1,1,2}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 0},
@@ -3041,7 +3052,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{0,2,0},{1,1,2}] -> [{2,1,0},{0,2,0},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {0, 2, 0},
@@ -3052,7 +3063,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,0},{1,1,2}] -> [{2,0,0},{1,2,0},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 2, 0},
@@ -3063,7 +3074,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{0,2,0},{1,2,1}] -> [{1,2,0},{0,2,0},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {0, 2, 0},
@@ -3074,7 +3085,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{0,2,0},{1,2,1}] -> [{0,1,0},{2,2,0},{1,2,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {0, 2, 0},
@@ -3085,7 +3096,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,0},{1,2,1}] -> [{0,2,1},{0,2,0},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 0},
@@ -3096,7 +3107,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{1,2,0},{1,2,1}] -> [{0,2,0},{1,2,0},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {1, 2, 0},
@@ -3107,7 +3118,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,2,1},{1,2,1}] -> [{0,2,0},{0,2,1},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 1},
@@ -3118,7 +3129,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{0,2,0},{2,1,1}] -> [{0,1,2},{0,2,0},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {0, 2, 0},
@@ -3129,7 +3140,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{0,2,0},{2,1,1}] -> [{0,0,1},{0,2,2},{2,1,1}]
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {0, 2, 0},
@@ -3140,7 +3151,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,0},{0,2,1},{2,1,1}] -> [{0,0,2},{0,2,1},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 0},
                     {0, 2, 1},
@@ -3154,7 +3165,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #region 4th move
             #region [{1,1,2},{2,2,1},{1,0,0}] -> [{1,1,2},{2,2,1},{1,0,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {2, 2, 1},
@@ -3165,7 +3176,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,2},{2,2,0},{1,1,0}] -> [{1,1,2},{2,2,2},{1,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {2, 2, 0},
@@ -3176,7 +3187,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,2},{2,2,0},{1,0,1}] -> [{1,1,2},{2,2,0},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {2, 2, 0},
@@ -3187,7 +3198,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{2,2,1},{0,1,0}] -> [{1,2,1},{2,2,1},{0,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {2, 2, 1},
@@ -3198,7 +3209,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{2,2,0},{1,1,0}] -> [{1,2,1},{2,2,2},{1,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {2, 2, 0},
@@ -3209,7 +3220,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{2,2,0},{0,1,1}] -> [{1,2,1},{2,2,2},{0,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {2, 2, 0},
@@ -3220,7 +3231,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{1,2,1},{2,0,0}] -> [{1,2,1},{1,2,1},{2,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {1, 2, 1},
@@ -3231,7 +3242,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{1,2,0},{2,1,0}] -> [{1,2,1},{1,2,0},{2,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {1, 2, 0},
@@ -3242,7 +3253,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{1,2,0},{2,0,1}] -> [{1,2,1},{1,2,0},{2,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {1, 2, 0},
@@ -3253,7 +3264,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{2,2,1},{1,1,0}] -> [{1,0,2},{2,2,1},{1,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {2, 2, 1},
@@ -3264,7 +3275,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{2,2,1},{1,0,1}] -> [{1,0,2},{2,2,1},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {2, 2, 1},
@@ -3275,7 +3286,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{2,2,1},{1,0,0}] -> [{1,2,1},{2,2,1},{1,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {2, 2, 1},
@@ -3286,7 +3297,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{2,2,1},{1,1,0}] -> [{1,2,0},{2,2,1},{1,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {2, 2, 1},
@@ -3297,7 +3308,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,0},{2,2,1},{1,0,1}] -> [{1,2,0},{2,2,1},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 0},
                     {2, 2, 1},
@@ -3308,7 +3319,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,1},{2,1,0}] -> [{1,2,1},{0,2,1},{2,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 1},
@@ -3319,7 +3330,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,0},{2,1,1}] -> [{1,2,1},{0,2,2},{2,1,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 0},
@@ -3330,7 +3341,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,2},{2,2,1},{0,0,1}] -> [{1,1,2},{2,2,1},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {2, 2, 1},
@@ -3341,7 +3352,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{2,2,1},{0,1,1}] -> [{1,0,2},{2,2,1},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {2, 2, 1},
@@ -3352,7 +3363,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{1,2,2},{0,0,1}] -> [{2,1,1},{1,2,2},{2,0,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {1, 2, 2},
@@ -3363,7 +3374,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,2,2},{1,0,1}] -> [{2,1,1},{2,2,2},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 2, 2},
@@ -3374,7 +3385,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,2,2},{0,1,1}] -> [{2,1,1},{0,2,2},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 2, 2},
@@ -3385,7 +3396,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{1,2,1},{0,0,1}] -> [{2,1,2},{1,2,1},{2,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {1, 2, 1},
@@ -3396,7 +3407,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{1,2,0},{1,0,1}] -> [{2,1,2},{1,2,0},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {1, 2, 0},
@@ -3407,7 +3418,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{1,2,0},{0,1,1}] -> [{2,1,2},{1,2,0},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {1, 2, 0},
@@ -3418,7 +3429,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{1,2,1},{1,0,0}] -> [{2,1,2},{1,2,1},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {1, 2, 1},
@@ -3429,7 +3440,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{0,2,1},{1,1,0}] -> [{2,1,2},{0,2,1},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {0, 2, 1},
@@ -3440,7 +3451,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{0,2,1},{1,0,1}] -> [{2,1,2},{0,2,1},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {0, 2, 1},
@@ -3451,7 +3462,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,2,0},{1,2,1}] -> [{2,1,1},{0,2,2},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 2, 0},
@@ -3462,7 +3473,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{1,2,0},{1,2,1}] -> [{2,1,2},{1,2,0},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {1, 2, 0},
@@ -3473,7 +3484,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,2,1},{1,2,1}] -> [{2,1,2},{0,2,1},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 2, 1},
@@ -3484,7 +3495,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,2,0},{2,1,1}] -> [{2,1,1},{2,2,0},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 2, 0},
@@ -3495,7 +3506,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{1,2,0},{2,1,1}] -> [{2,1,2},{1,2,0},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {1, 2, 0},
@@ -3506,7 +3517,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{0,2,1},{2,1,1}] -> [{2,1,2},{0,2,1},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {0, 2, 1},
@@ -3517,7 +3528,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,2},{0,2,0},{1,2,1}] -> [{1,1,2},{2,2,0},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {0, 2, 0},
@@ -3528,7 +3539,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,2},{1,2,0},{1,2,1}] -> [{2,1,2},{1,2,0},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 2},
                     {1, 2, 0},
@@ -3539,7 +3550,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,2},{0,2,1},{1,2,1}] -> [{2,1,2},{0,2,1},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 2},
                     {0, 2, 1},
@@ -3550,7 +3561,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,2},{1,0,1}] -> [{2,0,1},{1,2,2},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 2},
@@ -3561,7 +3572,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,2},{0,1,1}] -> [{2,0,1},{1,2,2},{0,1,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 2},
@@ -3572,7 +3583,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{1,2,1},{0,0,2}] -> [{1,2,1},{1,2,1},{0,2,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {1, 2, 1},
@@ -3583,7 +3594,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,1},{1,0,2}] -> [{1,2,1},{0,2,1},{1,2,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 1},
@@ -3594,7 +3605,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,1},{0,1,2}] -> [{1,2,1},{0,2,1},{2,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 1},
@@ -3605,7 +3616,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{2,2,1},{1,0,2}] -> [{1,2,1},{2,2,1},{1,0,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {2, 2, 1},
@@ -3616,7 +3627,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{2,2,1},{1,0,2}] -> [{2,1,1},{2,2,1},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {2, 2, 1},
@@ -3627,7 +3638,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{2,2,1},{1,1,2}] -> [{2,0,1},{2,2,1},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {2, 2, 1},
@@ -3638,7 +3649,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{1,2,0},{0,1,2}] -> [{1,2,1},{1,2,0},{2,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {1, 2, 0},
@@ -3649,7 +3660,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{0,2,0},{1,1,2}] -> [{1,2,1},{2,2,0},{1,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {0, 2, 0},
@@ -3660,7 +3671,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,2,1},{1,2,2},{0,0,1}] -> [{1,2,1},{1,2,2},{0,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 2, 1},
                     {1, 2, 2},
@@ -3671,7 +3682,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,1},{1,2,2},{1,0,1}] -> [{0,2,1},{1,2,2},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 1},
                     {1, 2, 2},
@@ -3682,7 +3693,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,2,1},{1,2,2},{0,1,1}] -> [{0,2,1},{1,2,2},{2,1,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 2, 1},
                     {1, 2, 2},
@@ -3693,7 +3704,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{1,2,1},{1,0,1}] -> [{2,2,2},{1,2,1},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {1, 2, 1},
@@ -3704,7 +3715,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{1,2,1},{0,1,1}] -> [{2,0,2},{1,2,1},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {1, 2, 1},
@@ -3715,7 +3726,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,0},{1,2,1}] -> [{2,2,1},{1,2,0},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 0},
@@ -3726,7 +3737,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,0},{1,2,1},{1,2,1}] -> [{2,2,0},{1,2,1},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 0},
                     {1, 2, 1},
@@ -3737,7 +3748,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{1,2,0},{2,1,0}] -> [{2,1,1},{1,2,0},{2,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {1, 2, 0},
@@ -3748,7 +3759,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,1},{2,1,0}] -> [{2,0,1},{1,2,1},{2,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 1},
@@ -3759,7 +3770,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,2,0},{2,1,1}] -> [{2,0,1},{1,2,2},{2,1,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 2, 0},
@@ -3770,7 +3781,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{1,2,2},{2,0,1}] -> [{1,2,1},{1,2,2},{2,0,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {1, 2, 2},
@@ -3781,7 +3792,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{1,2,2},{2,0,1}] -> [{2,1,1},{1,2,2},{2,0,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {1, 2, 2},
@@ -3792,7 +3803,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,1},{1,2,2},{2,1,1}] -> [{2,0,1},{1,2,2},{2,1,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 1},
                     {1, 2, 2},
@@ -3803,7 +3814,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{1,1,0},{2,2,0}] -> [{2,1,1},{1,1,2},{2,2,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {1, 1, 0},
@@ -3814,7 +3825,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,1,1},{2,2,0}] -> [{2,1,1},{2,1,1},{2,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 1, 1},
@@ -3825,7 +3836,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{0,1,0},{2,2,1}] -> [{2,1,1},{2,1,0},{2,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {0, 1, 0},
@@ -3836,7 +3847,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{1,1,2},{0,2,0}] -> [{2,1,1},{1,1,2},{2,2,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {1, 1, 2},
@@ -3847,7 +3858,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{1,1,2},{1,2,0}] -> [{2,1,2},{1,1,2},{1,2,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {1, 1, 2},
@@ -3858,7 +3869,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{1,1,2},{0,2,1}] -> [{2,1,2},{1,1,2},{0,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {1, 1, 2},
@@ -3869,7 +3880,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{2,1,1},{0,2,0}] -> [{2,1,1},{2,1,1},{2,2,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {2, 1, 1},
@@ -3880,7 +3891,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{2,1,1},{1,2,0}] -> [{2,1,2},{2,1,1},{1,2,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {2, 1, 1},
@@ -3891,7 +3902,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{2,1,1},{0,2,1}] -> [{2,1,0},{2,1,1},{2,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {2, 1, 1},
@@ -3902,7 +3913,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{1,1,0},{1,2,0}] -> [{2,1,2},{1,1,2},{1,2,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {1, 1, 0},
@@ -3913,7 +3924,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{0,1,1},{1,2,0}] -> [{2,1,2},{2,1,1},{1,2,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {0, 1, 1},
@@ -3924,7 +3935,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{0,1,0},{1,2,1}] -> [{2,1,2},{0,1,0},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {0, 1, 0},
@@ -3935,7 +3946,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{2,1,0},{0,2,1}] -> [{2,1,1},{2,1,0},{2,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {2, 1, 0},
@@ -3946,7 +3957,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,0},{2,1,0},{1,2,1}] -> [{2,1,2},{2,1,0},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 0},
                     {2, 1, 0},
@@ -3957,7 +3968,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,1},{1,1,2},{2,0,0}] -> [{2,1,1},{1,1,2},{2,2,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 1},
                     {1, 1, 2},
@@ -3968,7 +3979,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,1,2},{2,1,0}] -> [{2,0,1},{1,1,2},{2,1,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 1, 2},
@@ -3979,7 +3990,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,1},{1,1,2},{2,0,1}] -> [{2,2,1},{1,1,2},{2,0,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 1},
                     {1, 1, 2},
@@ -3990,7 +4001,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{1,1,2},{1,0,0}] -> [{2,1,2},{1,1,2},{1,0,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {1, 1, 2},
@@ -4001,7 +4012,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{1,1,2},{1,1,0}] -> [{2,0,2},{1,1,2},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {1, 1, 2},
@@ -4012,7 +4023,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{1,1,2},{1,0,1}] -> [{2,2,2},{1,1,2},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {1, 1, 2},
@@ -4023,7 +4034,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,1},{1,1,2},{0,1,0}] -> [{2,2,1},{1,1,2},{2,1,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 1},
                     {1, 1, 2},
@@ -4034,7 +4045,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,0},{1,1,2},{1,1,0}] -> [{2,2,2},{1,1,2},{1,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 0},
                     {1, 1, 2},
@@ -4045,7 +4056,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,0},{1,1,2},{0,1,1}] -> [{2,2,2},{1,1,2},{0,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 0},
                     {1, 1, 2},
@@ -4056,7 +4067,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,1},{1,1,2},{0,0,1}] -> [{2,2,1},{1,1,2},{2,0,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 1},
                     {1, 1, 2},
@@ -4067,7 +4078,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,0},{1,1,2},{1,0,1}] -> [{2,2,2},{1,1,2},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 0},
                     {1, 1, 2},
@@ -4078,7 +4089,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{2,1,1},{1,0,0}] -> [{2,1,2},{2,1,1},{1,2,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {2, 1, 1},
@@ -4089,7 +4100,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{2,1,1},{1,1,0}] -> [{2,2,2},{2,1,1},{1,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {2, 1, 1},
@@ -4100,7 +4111,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,0,2},{2,1,1},{1,0,1}] -> [{2,2,2},{2,1,1},{1,0,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 0, 2},
                     {2, 1, 1},
@@ -4111,7 +4122,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,1},{1,1,0},{2,1,0}] -> [{2,2,1},{1,1,2},{2,1,0}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 1},
                     {1, 1, 0},
@@ -4122,7 +4133,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,1},{0,1,1},{2,1,0}] -> [{2,2,1},{2,1,1},{2,1,0}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 1},
                     {0, 1, 1},
@@ -4133,7 +4144,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,2,1},{0,1,0},{2,1,1}] -> [{2,2,1},{2,1,0},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 2, 1},
                     {0, 1, 0},
@@ -4144,7 +4155,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{1,1,0},{0,2,1}] -> [{2,1,2},{1,1,2},{0,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {1, 1, 0},
@@ -4155,7 +4166,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{2,1,2},{0,1,1},{0,2,1}] -> [{2,1,2},{2,1,1},{0,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {2, 1, 2},
                     {0, 1, 1},
@@ -4166,7 +4177,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,0},{2,2,1},{1,0,2}] -> [{1,1,2},{2,2,1},{1,0,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 0},
                     {2, 2, 1},
@@ -4177,7 +4188,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,0},{2,2,1},{1,1,2}] -> [{1,0,2},{2,2,1},{1,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 0},
                     {2, 2, 1},
@@ -4188,7 +4199,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,2},{0,2,1},{0,1,2}] -> [{1,1,2},{0,2,1},{2,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 2},
                     {0, 2, 1},
@@ -4199,7 +4210,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{1,2,1},{0,1,2}] -> [{1,0,2},{1,2,1},{2,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {1, 2, 1},
@@ -4210,7 +4221,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{0,2,1},{1,1,2}] -> [{1,0,2},{2,2,1},{1,1,2}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {0, 2, 1},
@@ -4221,7 +4232,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,2},{0,2,1},{1,2,1}] -> [{1,2,2},{0,2,1},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 2},
                     {0, 2, 1},
@@ -4232,7 +4243,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,0,2},{1,2,1},{1,2,1}] -> [{0,2,2},{1,2,1},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 0, 2},
                     {1, 2, 1},
@@ -4243,7 +4254,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,0},{2,2,0},{1,1,2}] -> [{1,1,0},{2,2,2},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 0},
                     {2, 2, 0},
@@ -4254,7 +4265,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{2,2,0},{1,1,2}] -> [{1,0,1},{2,2,2},{1,1,2}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {2, 2, 0},
@@ -4265,7 +4276,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,1,0},{2,2,0},{1,2,1}] -> [{1,1,0},{2,2,2},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 1, 0},
                     {2, 2, 0},
@@ -4276,7 +4287,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{2,2,0},{1,2,1}] -> [{0,1,1},{2,2,2},{1,2,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {2, 2, 0},
@@ -4287,7 +4298,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,0},{2,2,1},{1,2,1}] -> [{0,1,2},{2,2,1},{1,2,1}] DRAW
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 0},
                     {2, 2, 1},
@@ -4298,7 +4309,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{1,0,1},{0,2,2},{2,1,1}] -> [{1,0,1},{2,2,2},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {1, 0, 1},
                     {0, 2, 2},
@@ -4309,7 +4320,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
             #region [{0,1,1},{0,2,2},{2,1,1}] -> [{0,1,1},{2,2,2},{2,1,1}] WIN
             {
-                TicTacToeGameStateImpl state = new TicTacToeGameStateImpl(new TicTacToeBoardState(new byte[,]
+                TicTacToeGameStateImpl state = GetGameState((new byte[,]
                 {
                     {0, 1, 1},
                     {0, 2, 2},
@@ -4321,6 +4332,18 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             #endregion
 
             #endregion
+        }
+
+        ~PerfectTicTacToePlayer()
+        {
+            GameStateFactory<TicTacToeGameStateImpl>.ReturnGameStates(perfectMoves.Values.ToList());
+        }
+
+        private TicTacToeGameStateImpl GetGameState(byte[,] board)
+        {
+            TicTacToeGameStateImpl gameState = GameStateFactory<TicTacToeGameStateImpl>.GetNewGameState();
+            gameState.SetState(board);
+            return gameState;
         }
 
         private TicTacToeGameStateImpl GetChangedStateWhenFirst(TicTacToeGameStateImpl state, byte i, byte j)
@@ -4339,7 +4362,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
         {
             TicTacToeGameStateImpl perfectMove = perfectMoves[gameState.GetStateHashCode()];
             Logger.LogDebug("Perfect Tic Tac Toe move from " + gameState.GetStateHashCode()
-                            + " to " + perfectMove.GetStateHashCode());
+                            + " to " + perfectMove.GetStateHashCode() + ".");
             game.PerformMove(perfectMove);
         }
     }
