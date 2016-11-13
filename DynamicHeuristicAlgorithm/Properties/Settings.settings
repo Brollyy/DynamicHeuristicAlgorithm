@@ -2,35 +2,35 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DynamicHeuristicAlgorithm.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="MaximalRecursionDepth" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="MaximalRecursionDepth" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="OpenSquaresBonusHeuristic" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="OpenSquaresBonusHeuristicWeight" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="OpenSquaresBonusHeuristicWeight" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="LargeValuesOnEdgeHeuristic" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="LargeValuesOnEdgeHeuristicWeight" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="LargeValuesOnEdgeHeuristicWeight" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="NonMonotonicLinesPenaltyHeuristic" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="NonMonotonicLinesPenaltyHeuristicWeight" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="NonMonotonicLinesPenaltyHeuristicWeight" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="NumberOfMergesHeuristic" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="NumberOfMergesHeuristicWeight" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="NumberOfMergesHeuristicWeight" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="NumberOfRuns" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="NumberOfRuns" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="SaveStatistics" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

@@ -18,5 +18,15 @@ namespace DynamicHeuristicAlgorithmCore.PlayerInterface
         }
 
         public abstract void PerformMove(Game game, GameState gameState);
+
+        public string HeuristicsToString()
+        {
+            string s = "";
+            foreach(Heuristic h in heuristics)
+            {
+                s += h.GetType().Name + "_" + h.WeightToString() + "_";
+            }
+            return s.TrimEnd('_');
+        }
     }
 }

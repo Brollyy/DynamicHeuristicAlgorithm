@@ -17,5 +17,10 @@ namespace DynamicHeuristicAlgorithmCore.HeuristicInterface
         }
 
         public abstract int Evaluate(GameState state, int playerIndex);
+
+        public string WeightToString()
+        {
+            return weight.ToString();
+        }
     }
 }

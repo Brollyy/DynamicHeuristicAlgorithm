@@ -8,6 +8,7 @@ using DynamicHeuristicAlgorithmCore.PlayerInterface;
 using TicTacToeCore;
 using DynamicHeuristicAlgorithmCore.Utils;
 using System.Threading;
+using System.Diagnostics;
 
 namespace DynamicHeuristicAlgorithm.TicTacToe
 {
@@ -23,6 +24,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
         private List<TicTacToeGameStateImpl> playerGameStates;
         private TicTacToeGameStateImpl currentGameState;
 
+        private TicTacToeGameStatistics statistics;
 
         public TicTacToeGameImpl()
         {
@@ -31,6 +33,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             currentPlayerIndex = 1;
             opponent = new PerfectTicTacToePlayer();
             playerGameStates = new List<TicTacToeGameStateImpl>();
+            statistics = new TicTacToeGameStatistics();
         }
 
         ~TicTacToeGameImpl()
@@ -41,27 +44,14 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
         private void RestartGame()
         {
             game.RestartGame();
+            statistics.Clear();
             ReturnStatesToPool();
             GameStateFactory<TicTacToeGameStateImpl>.ReturnGameState(currentGameState);
         }
 
         public GameStatistics GetGameStatistics()
         {
-            TicTacToeGameStatistics stats = new TicTacToeGameStatistics();
-            // 0 for lost game, 1 for draw, 2 for won game
-            if (game.IsGameFinished())
-            {
-                byte winner = game.GetWinner();
-                if(winner == 0)
-                {
-                    stats.Score = 1;
-                }
-                else if(winner == 1)
-                {
-                    stats.Score = 2;
-                }
-            }
-            return stats;
+            return statistics;
         }
 
         public HashSet<GameState> GetPossibleMovesForGameState(GameState state)
@@ -153,19 +143,31 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             startingPlayerIndex = currentPlayerIndex;
             Logger.LogInfo("Starting player is " + GetCurrentPlayer(players).GetType().Name + ".");
 
+            Stopwatch gameTimer = Stopwatch.StartNew();
             do
             {
                 Player currentPlayer = GetCurrentPlayer(players);
                 Logger.LogDebug(currentPlayer.GetType().Name + "'s move.");
-                currentPlayer.PerformMove(this, GetCurrentGameState());
+                GameState currentGameState = GetCurrentGameState();
+                Stopwatch moveTimer = Stopwatch.StartNew();
+                currentPlayer.PerformMove(this, currentGameState);
+                moveTimer.Stop();
+                if (currentPlayerIndex == 0)
+                {
+                    statistics.Moves.Add(new Tuple<GameState, GameState>(currentGameState, GetCurrentGameState()));
+                    statistics.MovesDurations.Add(moveTimer.Elapsed.TotalMilliseconds);
+                }
                 ReturnStatesToPool();
                 ChangeToNextPlayer();
             }
             while (!game.IsGameFinished());
+            gameTimer.Stop();
+            statistics.GameDuration = gameTimer.Elapsed.TotalMilliseconds;
 
             byte winner = game.GetWinner();
             if (winner == 0)
             {
+                statistics.Score = 0;
                 Logger.LogInfo("Tic Tac Toe game ended in a tie.");
                 return new HashSet<Player>();
             }
@@ -173,6 +175,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             if ((winner == 1 && startingPlayerIndex == 0) ||
                 (winner == 2 && startingPlayerIndex == 1))
             {
+                statistics.Score = 1000;
                 Logger.LogInfo("Tic Tac Toe game ended in a win");
                 return new HashSet<Player>() { players.ElementAt(0) };
             }
@@ -180,6 +183,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             if ((winner == 1 && startingPlayerIndex == 1) ||
                 (winner == 2 && startingPlayerIndex == 0))
             {
+                statistics.Score = -1000;
                 Logger.LogInfo("Tic Tac Toe game ended in a lose");
                 return new HashSet<Player>() { players.ElementAt(1) };
             }
@@ -204,6 +208,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             startingPlayerIndex = currentPlayerIndex;
             Logger.LogInfo("Starting player is " + GetCurrentPlayer(players).GetType().Name + ".");
 
+            Stopwatch gameTimer = Stopwatch.StartNew();
             do
             {
                 if (manualMoveAcceptBlock != null)
@@ -212,15 +217,26 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                 }
                 Player currentPlayer = GetCurrentPlayer(players);
                 Logger.LogDebug(currentPlayer.GetType().Name + "'s move.");
-                currentPlayer.PerformMove(this, GetCurrentGameState());
+                GameState currentGameState = GetCurrentGameState();
+                Stopwatch moveTimer = Stopwatch.StartNew();
+                currentPlayer.PerformMove(this, currentGameState);
+                moveTimer.Stop();
+                if (currentPlayerIndex == 0)
+                {
+                    statistics.Moves.Add(new Tuple<GameState, GameState>(currentGameState, GetCurrentGameState()));
+                    statistics.MovesDurations.Add(moveTimer.Elapsed.TotalMilliseconds);
+                }
                 ReturnStatesToPool();
                 ChangeToNextPlayer();
             }
             while (!game.IsGameFinished());
+            gameTimer.Stop();
+            statistics.GameDuration = gameTimer.Elapsed.TotalMilliseconds;
 
             byte winner = game.GetWinner();
             if (winner == 0)
             {
+                statistics.Score = 0;
                 Logger.LogInfo("Tic Tac Toe game ended in a tie.");
                 return new HashSet<Player>();
             }
@@ -228,6 +244,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             if ((winner == 1 && startingPlayerIndex == 0) ||
                 (winner == 2 && startingPlayerIndex == 1))
             {
+                statistics.Score = 1000;
                 Logger.LogInfo("Tic Tac Toe game ended in a win");
                 return new HashSet<Player>() { players.ElementAt(0) };
             }
@@ -235,6 +252,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             if ((winner == 1 && startingPlayerIndex == 1) ||
                 (winner == 2 && startingPlayerIndex == 0))
             {
+                statistics.Score = -1000;
                 Logger.LogInfo("Tic Tac Toe game ended in a lose");
                 return new HashSet<Player>() { players.ElementAt(1) };
             }

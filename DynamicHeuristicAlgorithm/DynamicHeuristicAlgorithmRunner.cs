@@ -21,12 +21,15 @@ namespace DynamicHeuristicAlgorithm
 {
     public partial class DynamicHeuristicAlgorithmRunner : Form
     {
-        public DynamicHeuristicAlgorithmRunner()
+        private string statisticsFilePath;
+
+        public DynamicHeuristicAlgorithmRunner(string statisticsFilePath)
         {
             InitializeComponent();
             Console.SetOut(new MultiTextWriter(new ControlWriter(consoleOutputTextBox), Console.Out));
             Properties.Settings.Default.SettingChanging += ChangePlayButtonTextEventHandler;
             Properties.Settings.Default.SettingsSaving += ChangePlayButtonTextBackEventHandler;
+            this.statisticsFilePath = statisticsFilePath;
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -123,12 +126,32 @@ namespace DynamicHeuristicAlgorithm
 
         private void purgeLogsButton_Click(object sender, EventArgs e)
         {
-            Logger.PurgeAllLogs();
+            if (MessageBox.Show("Are you sure you want to delete all the logs?",
+                "Deleting logs.", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Logger.PurgeAllLogs();
+            }
         }
 
         private void deleteStatisticsButton_Click(object sender, EventArgs e)
         {
-            Logger.LogError("Statistics not implemented.");
+            string filepath = GetGameName() + "\\" + GetModeName() + "\\" +
+                                  recursionDepthCounter.Value;
+            if (MessageBox.Show("Are you sure you want to delete all files from " + filepath + "?",
+                "Deleting statistics.", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                IEnumerable<string> files = Directory.Exists(statisticsFilePath + filepath) ? 
+                    Directory.EnumerateFiles(statisticsFilePath + filepath) : new List<string>();
+                foreach(string file in files)
+                {
+                    File.Delete(file);
+                    Logger.LogInfo("Deleted file " + file + ".");
+                }
+                if(files.Count() == 0)
+                {
+                    Logger.LogInfo("No files found at " + filepath + ".");
+                }
+            }
         }
 
         private void purgeDynamicHeuristicDataButton_Click(object sender, EventArgs e)
@@ -208,18 +231,17 @@ namespace DynamicHeuristicAlgorithm
                     case "setHeuristics":
                     case "dynamicHeuristic":
                         {
-                            if (numberOfRunsMaskedTextBox.Text.Equals(""))
-                            {
-                                Logger.LogInfo("Number of runs not set. Setting default 1.");
-                                numberOfRunsMaskedTextBox.Text = "1";
-                            }
-                            uint runs = Convert.ToUInt32(numberOfRunsMaskedTextBox.Text);
+                            uint runs = (uint)numberOfRunsCounter.Value;
                             for (uint i = 0; i < runs; ++i)
                             {
                                 Game game = GetGame();
                                 Logger.LogInfo("Game no. " + (i + 1) + ".");
                                 StartNewGameInView(game, player, block);
                                 block.WaitOne();
+                                if (saveStatisticsCheckBox.Checked)
+                                {
+                                    SaveStatistics(game, player);
+                                }
                             }
                         }
                         break;
@@ -247,12 +269,7 @@ namespace DynamicHeuristicAlgorithm
                     case "setHeuristics":
                     case "dynamicHeuristic":
                         {
-                            if (numberOfRunsMaskedTextBox.Text.Equals(""))
-                            {
-                                Logger.LogInfo("Number of runs not set. Setting default 1.");
-                                Invoke(new Action(() => numberOfRunsMaskedTextBox.Text = "1"));
-                            }
-                            uint runs = Convert.ToUInt32(numberOfRunsMaskedTextBox.Text);
+                            uint runs = (uint)numberOfRunsCounter.Value;
                             Thread[] threads = new Thread[Math.Min(runs, 4)];
                             for (uint i = 0; i < threads.Length; ++i)
                             {
@@ -299,6 +316,10 @@ namespace DynamicHeuristicAlgorithm
                     {
                         Logger.LogInfo("Game no. " + (i + 1) + ".");
                         StartNewGame(game, player);
+                        if (saveStatisticsCheckBox.Checked)
+                        {
+                            SaveStatistics(game, player);
+                        }
                     }
                     catch(Exception e)
                     {
@@ -346,6 +367,25 @@ namespace DynamicHeuristicAlgorithm
             
         }
 
+        private ReaderWriterLockSlim statisticsFileLock = new ReaderWriterLockSlim();
+
+        private void SaveStatistics(Game game, Player player)
+        {
+            AIPlayer ai = player as AIPlayer;
+            if (ai != null)
+            {
+                string filepath = GetGameName() + "\\" + GetModeName() + "\\" +
+                                  recursionDepthCounter.Value + "\\";
+                Directory.CreateDirectory(statisticsFilePath + filepath);
+                string filename = filepath + ai.HeuristicsToString() + ".csv";
+                Logger.LogDebug("Thread " + Thread.CurrentThread.ManagedThreadId + " - Waiting to get access to statistics file.");
+                statisticsFileLock.EnterWriteLock();
+                Logger.LogInfo("Saving statistics to " + filename + ".");
+                game.GetGameStatistics().SaveStatistics(statisticsFilePath + filename);
+                statisticsFileLock.ExitWriteLock();
+            }
+        }
+
         private Player GetPlayer()
         {
             string modeName = GetModeName();
@@ -379,12 +419,7 @@ namespace DynamicHeuristicAlgorithm
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             Logger.LogInfo("Setting recursion depth.");
-            if (recursionDepthMaskedTextBox.Text.Equals("") || recursionDepthMaskedTextBox.Text.Equals("0"))
-            {
-                Logger.LogInfo("Recursion depth isn't set properly. Setting to default 4.");
-                Invoke(new Action(() => recursionDepthMaskedTextBox.Text = "4"));
-            }
-            uint recursionDepth = Convert.ToUInt32(recursionDepthMaskedTextBox.Text);
+            uint recursionDepth = (uint)recursionDepthCounter.Value;
             parameters.Add("recursionDepth", recursionDepth);
             Logger.LogInfo("Recursion depth set to " + recursionDepth + ".");
 
@@ -397,12 +432,7 @@ namespace DynamicHeuristicAlgorithm
 
             #region RecursionDepth
             Logger.LogInfo("Setting recursion depth.");
-            if(recursionDepthMaskedTextBox.Text.Equals("") || recursionDepthMaskedTextBox.Text.Equals("0"))
-            {
-                Logger.LogInfo("Recursion depth isn't set properly. Setting to default 4.");
-                recursionDepthMaskedTextBox.Text = "4";
-            }
-            uint recursionDepth = Convert.ToUInt32(recursionDepthMaskedTextBox.Text);
+            uint recursionDepth = (uint)recursionDepthCounter.Value;
             parameters.Add("recursionDepth", recursionDepth);
             Logger.LogInfo("Recursion depth set to " + recursionDepth + ".");
             #endregion
@@ -476,72 +506,14 @@ namespace DynamicHeuristicAlgorithm
                         selectedModeRadioButtonName.IndexOf("RadioButton"));
         }
 
-        #region Settings
-
-        private void numberOfRunsMaskedTextBox_Leave(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.NumberOfRuns = ((MaskedTextBox)sender).Text;
-        }
-
-        private void recursionDepthMaskedTextBox_Leave(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.MaximalRecursionDepth = ((MaskedTextBox)sender).Text;
-        }
-
-        #endregion
-
-        private void saveStatisticsCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.SaveStatistics = ((CheckBox)sender).Checked;
-        }
-
-        private void openSquareBonusHeuristicCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            openSquareBonusHeuristicWeightMaskedTextBox.Visible = ((CheckBox)sender).Checked;
-            Properties.Settings.Default.OpenSquaresBonusHeuristic = ((CheckBox)sender).Checked;
-        }
-
-        private void largeValuesOnEdgeHeuristicCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            largeValuesOnEdgeHeuristicWeightMaskedTextBox.Visible = ((CheckBox)sender).Checked;
-            Properties.Settings.Default.LargeValuesOnEdgeHeuristic = ((CheckBox)sender).Checked;
-        }
-
-        private void nonMonotonicLinesPenaltyHeuristicCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox.Visible = ((CheckBox)sender).Checked;
-            Properties.Settings.Default.NonMonotonicLinesPenaltyHeuristic = ((CheckBox)sender).Checked;
-        }
-
-        private void numberOfMergesHeuristicCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            numberOfMergesHeuristicWeightMaskedTextBox.Visible = ((CheckBox)sender).Checked;
-            Properties.Settings.Default.NumberOfMergesHeuristic = ((CheckBox)sender).Checked;
-        }
-
-        private void openSquareBonusHeuristicWeightMaskedTextBox_Leave(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.OpenSquaresBonusHeuristicWeight = ((MaskedTextBox)sender).Text;
-        }
-
-        private void largeValuesOnEdgeHeuristicWeightMaskedTextBox_Leave(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.LargeValuesOnEdgeHeuristicWeight = ((MaskedTextBox)sender).Text;
-        }
-
-        private void nonMonotonicLinesPenaltyHeuristicWeightMaskedTextBox_Leave(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.NonMonotonicLinesPenaltyHeuristicWeight = ((MaskedTextBox)sender).Text;
-        }
-
-        private void numberOfMergesHeuristicWeightMaskedTextBox_Leave(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.NumberOfMergesHeuristicWeight = ((MaskedTextBox)sender).Text;
-        }
-
         private void openLogsButton_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", @Logger.LoggerPath);
+            Process.Start("explorer.exe", Logger.LoggerPath);
+        }
+
+        private void openStatisticsButton_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", statisticsFilePath.TrimEnd('\\'));
         }
     }
 }

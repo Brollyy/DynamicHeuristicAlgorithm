@@ -25,10 +25,10 @@ namespace DynamicHeuristicAlgorithm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string MaximalRecursionDepth {
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public decimal MaximalRecursionDepth {
             get {
-                return ((string)(this["MaximalRecursionDepth"]));
+                return ((decimal)(this["MaximalRecursionDepth"]));
             }
             set {
                 this["MaximalRecursionDepth"] = value;
@@ -49,10 +49,10 @@ namespace DynamicHeuristicAlgorithm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string OpenSquaresBonusHeuristicWeight {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal OpenSquaresBonusHeuristicWeight {
             get {
-                return ((string)(this["OpenSquaresBonusHeuristicWeight"]));
+                return ((decimal)(this["OpenSquaresBonusHeuristicWeight"]));
             }
             set {
                 this["OpenSquaresBonusHeuristicWeight"] = value;
@@ -73,10 +73,10 @@ namespace DynamicHeuristicAlgorithm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LargeValuesOnEdgeHeuristicWeight {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal LargeValuesOnEdgeHeuristicWeight {
             get {
-                return ((string)(this["LargeValuesOnEdgeHeuristicWeight"]));
+                return ((decimal)(this["LargeValuesOnEdgeHeuristicWeight"]));
             }
             set {
                 this["LargeValuesOnEdgeHeuristicWeight"] = value;
@@ -97,10 +97,10 @@ namespace DynamicHeuristicAlgorithm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string NonMonotonicLinesPenaltyHeuristicWeight {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal NonMonotonicLinesPenaltyHeuristicWeight {
             get {
-                return ((string)(this["NonMonotonicLinesPenaltyHeuristicWeight"]));
+                return ((decimal)(this["NonMonotonicLinesPenaltyHeuristicWeight"]));
             }
             set {
                 this["NonMonotonicLinesPenaltyHeuristicWeight"] = value;
@@ -121,10 +121,10 @@ namespace DynamicHeuristicAlgorithm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string NumberOfMergesHeuristicWeight {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal NumberOfMergesHeuristicWeight {
             get {
-                return ((string)(this["NumberOfMergesHeuristicWeight"]));
+                return ((decimal)(this["NumberOfMergesHeuristicWeight"]));
             }
             set {
                 this["NumberOfMergesHeuristicWeight"] = value;
@@ -133,10 +133,10 @@ namespace DynamicHeuristicAlgorithm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string NumberOfRuns {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public decimal NumberOfRuns {
             get {
-                return ((string)(this["NumberOfRuns"]));
+                return ((decimal)(this["NumberOfRuns"]));
             }
             set {
                 this["NumberOfRuns"] = value;

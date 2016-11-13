@@ -21,6 +21,7 @@ namespace DynamicHeuristicAlgorithm
         static long logSize = 100L * 1024L * 1024L;
         static string logFileName = GetProjectFolderPath() + "\\\\Logs\\\\Release\\\\log";
 #endif
+        static string statisticsFilePath = GetProjectFolderPath() + "Statistics\\";
 
 
         [STAThread]
@@ -31,7 +32,7 @@ namespace DynamicHeuristicAlgorithm
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DynamicHeuristicAlgorithmRunner());
+            Application.Run(new DynamicHeuristicAlgorithmRunner(statisticsFilePath));
         }
 
         static void OnExit(object sender, EventArgs args)
