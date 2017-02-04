@@ -21,12 +21,39 @@ namespace DynamicHeuristicAlgorithmCore.PlayerInterface
 
         public string HeuristicsToString()
         {
-            string s = "";
-            foreach(Heuristic h in heuristics)
+            StringBuilder s = new StringBuilder();
+            if (heuristics.Length == 1 && heuristics[0] is DynamicHeuristicImpl)
             {
-                s += h.GetType().Name + "_" + h.WeightToString() + "_";
+                s.Append(((DynamicHeuristicImpl)heuristics[0]).GetHeuristicName());
             }
-            return s.TrimEnd('_');
+            else
+            {
+                foreach (Heuristic h in heuristics)
+                {
+                    s.Append(h.GetType().Name.Substring(5, 2));
+                    s.Append("_");
+                    s.Append(h.WeightToString());
+                    s.Append("_");
+                }
+                s.Length--;
+            }
+            return s.ToString();
+        }
+
+        public void SaveDynamicHeuristicData(string filename)
+        {
+            if(heuristics.Length == 1 && heuristics[0] is DynamicHeuristicImpl)
+            {
+                ((DynamicHeuristicImpl)heuristics[0]).SaveDynamicHeuristicData(filename);
+            }
+        }
+
+        public void TeachDynamicHeuristic(GameStatistics statistics)
+        {
+            if (heuristics.Length == 1 && heuristics[0] is DynamicHeuristicImpl)
+            {
+                ((DynamicHeuristicImpl)heuristics[0]).TeachDynamicHeuristic(statistics);
+            }
         }
     }
 }

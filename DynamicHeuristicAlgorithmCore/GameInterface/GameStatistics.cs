@@ -4,18 +4,25 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace DynamicHeuristicAlgorithmCore.GameInterface
 {
-    public class GameStatistics
+    public abstract class GameStatistics
     {
+        public bool StartedPlaying;
         public long Score;
         public List<Tuple<GameState, GameState>> Moves = new List<Tuple<GameState, GameState>>();
         public List<double> MovesDurations = new List<double>();
         public double GameDuration;
+
+        ~GameStatistics()
+        {
+            ReturnMovesStates();
+        }
 
         public void SaveStatistics(string filename)
         {
@@ -37,6 +44,8 @@ namespace DynamicHeuristicAlgorithmCore.GameInterface
 
         protected virtual void WriteStatistics(StreamWriter stream)
         {
+            stream.Write(StartedPlaying + ";");
+
             stream.Write(Score + ";");
 
             stream.Write(Moves.Count + ";");
@@ -53,8 +62,8 @@ namespace DynamicHeuristicAlgorithmCore.GameInterface
             stream.Write(averageMoveDuration + ";");
 
             double moveDurationMedian = (n % 2 == 0 ? 
-                (MovesDurations[n / 2] + MovesDurations[n / 2 + 1]) / 2 : 
-                MovesDurations[(n + 1) / 2]);
+                (MovesDurations[n / 2 - 1] + MovesDurations[n / 2]) / 2 : 
+                MovesDurations[(n - 1) / 2]);
             stream.Write(moveDurationMedian + ";");
 
             double moveDurationStandardDeviation = 0;
@@ -70,6 +79,7 @@ namespace DynamicHeuristicAlgorithmCore.GameInterface
 
         protected virtual void WriteHeader(StreamWriter stream)
         {
+            stream.Write("STARTED_PLAYING;");
             stream.Write("SCORE;");
             stream.Write("NUMBER_OF_MOVES;");
             stream.Write("GAME_DURATION;");
@@ -80,10 +90,27 @@ namespace DynamicHeuristicAlgorithmCore.GameInterface
 
         public virtual void Clear()
         {
+            StartedPlaying = true;
             Score = 0;
+            ReturnMovesStates();
             Moves.Clear();
             MovesDurations.Clear();
             GameDuration = 0;
         }
+
+        private void ReturnMovesStates()
+        {
+            Type gameStateFactoryType = typeof(GameStateFactory<>);
+            Type[] typeArgs = { GetGameStateType() };
+            Type gameStateFactory = gameStateFactoryType.MakeGenericType(typeArgs);
+            MethodInfo returnStateMethod = gameStateFactory.GetMethod("ReturnGameState");
+            foreach(Tuple<GameState, GameState> move in Moves)
+            {
+                returnStateMethod.Invoke(null, new object[] { move.Item1 });
+                returnStateMethod.Invoke(null, new object[] { move.Item2 });
+            }
+        }
+
+        protected abstract Type GetGameStateType();
     }
 }

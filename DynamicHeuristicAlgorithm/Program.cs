@@ -1,4 +1,5 @@
-﻿using DynamicHeuristicAlgorithmCore.Utils;
+﻿using _2048Core;
+using DynamicHeuristicAlgorithmCore.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,7 @@ namespace DynamicHeuristicAlgorithm
         static string logFileName = GetProjectFolderPath() + "\\\\Logs\\\\Release\\\\log";
 #endif
         static string statisticsFilePath = GetProjectFolderPath() + "Statistics\\";
+        static string dynamicHeuristicsFilePath = GetProjectFolderPath() + "DynamicHeuristics\\";
 
 
         [STAThread]
@@ -32,7 +34,7 @@ namespace DynamicHeuristicAlgorithm
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DynamicHeuristicAlgorithmRunner(statisticsFilePath));
+            Application.Run(new DynamicHeuristicAlgorithmRunner(statisticsFilePath, dynamicHeuristicsFilePath));
         }
 
         static void OnExit(object sender, EventArgs args)

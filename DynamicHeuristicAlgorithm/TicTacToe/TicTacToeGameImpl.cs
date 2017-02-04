@@ -9,6 +9,8 @@ using TicTacToeCore;
 using DynamicHeuristicAlgorithmCore.Utils;
 using System.Threading;
 using System.Diagnostics;
+using DynamicHeuristicAlgorithmCore.HeuristicInterface;
+using DynamicHeuristicAlgorithm.Utils;
 
 namespace DynamicHeuristicAlgorithm.TicTacToe
 {
@@ -31,7 +33,8 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             game = new TicTacToeGame();
             currentGameState = GameStateFactory<TicTacToeGameStateImpl>.GetNewGameState();
             currentPlayerIndex = 1;
-            opponent = new PerfectTicTacToePlayer();
+            //opponent = new RandomPlayer();
+            opponent = new MinimaxPlayer(new Heuristic[] { HeuristicFactory.GetHeuristicByName("ticTacToeHeuristic", 1, null) }, 6);
             playerGameStates = new List<TicTacToeGameStateImpl>();
             statistics = new TicTacToeGameStatistics();
         }
@@ -46,7 +49,6 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             game.RestartGame();
             statistics.Clear();
             ReturnStatesToPool();
-            GameStateFactory<TicTacToeGameStateImpl>.ReturnGameState(currentGameState);
         }
 
         public GameStatistics GetGameStatistics()
@@ -141,6 +143,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             Random rng = new Random();
             currentPlayerIndex = (byte)rng.Next(2);
             startingPlayerIndex = currentPlayerIndex;
+            statistics.StartedPlaying = startingPlayerIndex == 0;
             Logger.LogInfo("Starting player is " + GetCurrentPlayer(players).GetType().Name + ".");
 
             Stopwatch gameTimer = Stopwatch.StartNew();
@@ -148,13 +151,15 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             {
                 Player currentPlayer = GetCurrentPlayer(players);
                 Logger.LogDebug(currentPlayer.GetType().Name + "'s move.");
-                GameState currentGameState = GetCurrentGameState();
+                TicTacToeGameStateImpl currentGameState = (TicTacToeGameStateImpl)GetCurrentGameState();
                 Stopwatch moveTimer = Stopwatch.StartNew();
                 currentPlayer.PerformMove(this, currentGameState);
                 moveTimer.Stop();
                 if (currentPlayerIndex == 0)
                 {
-                    statistics.Moves.Add(new Tuple<GameState, GameState>(currentGameState, GetCurrentGameState()));
+                    TicTacToeGameStateImpl startMove = GameStateFactory<TicTacToeGameStateImpl>.GetNewGameState(currentGameState);
+                    TicTacToeGameStateImpl endMove = GameStateFactory<TicTacToeGameStateImpl>.GetNewGameState((TicTacToeGameStateImpl)GetCurrentGameState());
+                    statistics.Moves.Add(new Tuple<GameState, GameState>(startMove, endMove));
                     statistics.MovesDurations.Add(moveTimer.Elapsed.TotalMilliseconds);
                 }
                 ReturnStatesToPool();
@@ -206,6 +211,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             Random rng = new Random();
             currentPlayerIndex = (byte)rng.Next(2);
             startingPlayerIndex = currentPlayerIndex;
+            statistics.StartedPlaying = startingPlayerIndex == 0;
             Logger.LogInfo("Starting player is " + GetCurrentPlayer(players).GetType().Name + ".");
 
             Stopwatch gameTimer = Stopwatch.StartNew();
@@ -217,13 +223,15 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                 }
                 Player currentPlayer = GetCurrentPlayer(players);
                 Logger.LogDebug(currentPlayer.GetType().Name + "'s move.");
-                GameState currentGameState = GetCurrentGameState();
+                TicTacToeGameStateImpl currentGameState = (TicTacToeGameStateImpl)GetCurrentGameState();
                 Stopwatch moveTimer = Stopwatch.StartNew();
                 currentPlayer.PerformMove(this, currentGameState);
                 moveTimer.Stop();
                 if (currentPlayerIndex == 0)
                 {
-                    statistics.Moves.Add(new Tuple<GameState, GameState>(currentGameState, GetCurrentGameState()));
+                    TicTacToeGameStateImpl startMove = GameStateFactory<TicTacToeGameStateImpl>.GetNewGameState(currentGameState);
+                    TicTacToeGameStateImpl endMove = GameStateFactory<TicTacToeGameStateImpl>.GetNewGameState((TicTacToeGameStateImpl)GetCurrentGameState());
+                    statistics.Moves.Add(new Tuple<GameState, GameState>(startMove, endMove));
                     statistics.MovesDurations.Add(moveTimer.Elapsed.TotalMilliseconds);
                 }
                 ReturnStatesToPool();
@@ -282,7 +290,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
         private GameState GetCurrentGameState()
         {
             currentGameState.SetState(game.GetBoardState().Board);
-            return new TicTacToeGameStateImpl(currentGameState);
+            return currentGameState;
         }
 
         private Player GetCurrentPlayer(HashSet<Player> players)

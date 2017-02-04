@@ -10,7 +10,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
 {
     public class TicTacToeHeuristic : Heuristic
     {
-        public TicTacToeHeuristic(uint weight): base(weight)
+        public TicTacToeHeuristic(double weight): base(weight)
         {
         }
 
@@ -99,7 +99,7 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
                 value += heuristicArray[players][others];
             }
 
-            return (int)weight * value;
+            return (int)(weight * value);
         }
     }
 }

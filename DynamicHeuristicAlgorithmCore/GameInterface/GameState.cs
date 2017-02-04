@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DynamicHeuristicAlgorithmCore.HeuristicInterface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,10 @@ namespace DynamicHeuristicAlgorithmCore.GameInterface
         byte[] GetByteState();
         ulong GetStateHashCode();
         byte GetBoard(byte i, byte j);
+        int[] GetBoardSize();
         void SetState(GameState gameState);
         void Clear();
+        bool IsTerminal();
     }
 
     public struct OpponentMove

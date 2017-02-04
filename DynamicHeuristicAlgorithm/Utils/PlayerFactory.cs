@@ -40,7 +40,9 @@ namespace DynamicHeuristicAlgorithm.Utils
 
         private static Player GetAIPlayerWithDynamicHeuristic(Dictionary<string, object> parameters)
         {
-            throw new NotImplementedException("AI player support is not implemented.");
+            Heuristic heuristic = (Heuristic)parameters["dynamicHeuristic"];
+            uint recursionDepth = (uint)parameters["recursionDepth"];
+            return new MinimaxPlayer(new Heuristic[] { heuristic }, recursionDepth);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using DynamicHeuristicAlgorithm.TicTacToe;
+﻿using DynamicHeuristicAlgorithm._2048;
+using DynamicHeuristicAlgorithm.TicTacToe;
 using DynamicHeuristicAlgorithmCore.HeuristicInterface;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace DynamicHeuristicAlgorithm.Utils
 {
     public static class HeuristicFactory
     {
-        public static Heuristic[] GetHeuristicsByNames(string[] names, uint[] weights)
+        public static Heuristic[] GetHeuristicsByNames(string[] names, double[] weights)
         {
             if(names.Length != weights.Length)
             {
@@ -20,25 +21,28 @@ namespace DynamicHeuristicAlgorithm.Utils
             Heuristic[] heuristics = new Heuristic[names.Length];
             for(int i = 0; i < names.Length; ++i)
             {
-                heuristics[i] = GetHeuristicByName(names[i], weights[i]);
+                heuristics[i] = GetHeuristicByName(names[i], weights[i], null);
             }
             return heuristics;
         }
 
-        public static Heuristic GetHeuristicByName(string name, uint weight)
+        public static Heuristic GetHeuristicByName(string name, double weight, Dictionary<string, object> additionalParams)
         {
             switch(name)
             {
-                case "dynamicHeuristic":
-                    throw new NotImplementedException("Dynamic heuristic is not implemented.");
+                case "mapDynamicHeuristic":
+                case "neuralNetworkDynamicHeuristic":
+                    return new DynamicHeuristicImpl(DynamicHeuristicFactory.GetDynamicHeuristicByName(name, additionalParams), weight);
+                case "2048Heuristic":
+                    return new _2048ScoreHeuristic(weight);
                 case "openSquareBonusHeuristic":
-                    throw new NotImplementedException("Open square bonus heuristic is not implemented.");
+                    return new _2048OpenSquareBonusHeuristic(weight);
                 case "largeValuesOnEdgeHeuristic":
-                    throw new NotImplementedException("Large values on edge heuristic is not implemented.");
+                    return new _2048LargeValuesOnEdgeHeuristic(weight);
                 case "nonMonotonicLinesPenaltyHeuristic":
-                    throw new NotImplementedException("Non-monotonic lines penalty heuristic is not implemented.");
+                    return new _2048NonMonotonicLinesPenaltyHeuristic(weight);
                 case "numberOfMergesHeuristic":
-                    throw new NotImplementedException("Number of merges heuristic is not implemented.");
+                    return new _2048NumberOfMergesHeuristic(weight);
                 case "ticTacToeHeuristic":
                     return new TicTacToeHeuristic(weight);
                 case "connectFourHeuristic":

@@ -80,5 +80,30 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
         {
             return GetSquare(i, j);
         }
+
+        private static int[] boardSize = new int[] { 3, 3 };
+
+        public int[] GetBoardSize()
+        {
+            return boardSize;
+        }
+
+        public override string ToString()
+        {
+            string s = "";
+            for (byte i = 0; i < 3; ++i)
+            {
+                for(byte j = 0; j < 3; ++j)
+                {
+                    s += state.Board[i, j] + ",";
+                }
+            }
+            return s.Substring(0, s.Length - 1);
+        }
+
+        public bool IsTerminal()
+        {
+            return state.IsTerminal();
+        }
     }
 }

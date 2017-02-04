@@ -35,22 +35,6 @@
             this.setHeuristicsRadioButton = new System.Windows.Forms.RadioButton();
             this.playYourselfRadioButton = new System.Windows.Forms.RadioButton();
             this.setHeuristicsGroupBox = new System.Windows.Forms.GroupBox();
-            this.chooseGameGroupBox = new System.Windows.Forms.GroupBox();
-            this.gameConnectFourRadioButton = new System.Windows.Forms.RadioButton();
-            this.game2048RadioButton = new System.Windows.Forms.RadioButton();
-            this.gameTicTacToeRadioButton = new System.Windows.Forms.RadioButton();
-            this.AIOptionsGroupBox = new System.Windows.Forms.GroupBox();
-            this.recursionDepthLabel = new System.Windows.Forms.Label();
-            this.purgeDynamicHeuristicDataButton = new System.Windows.Forms.Button();
-            this.deleteStatisticsButton = new System.Windows.Forms.Button();
-            this.numberOfRunsLabel = new System.Windows.Forms.Label();
-            this.clearConsoleButton = new System.Windows.Forms.Button();
-            this.purgeLogsButton = new System.Windows.Forms.Button();
-            this.playInViewButton = new System.Windows.Forms.Button();
-            this.openLogsButton = new System.Windows.Forms.Button();
-            this.recursionDepthCounter = new System.Windows.Forms.NumericUpDown();
-            this.numberOfRunsCounter = new System.Windows.Forms.NumericUpDown();
-            this.saveStatisticsCheckBox = new System.Windows.Forms.CheckBox();
             this.numberOfMergesHeuristicWeightCounter = new System.Windows.Forms.NumericUpDown();
             this.nonMonotonicLinesPenaltyHeuristicWeightCounter = new System.Windows.Forms.NumericUpDown();
             this.largeValuesOnEdgeHeuristicWeightCounter = new System.Windows.Forms.NumericUpDown();
@@ -59,17 +43,38 @@
             this.nonMonotonicLinesPenaltyHeuristicCheckBox = new System.Windows.Forms.CheckBox();
             this.largeValuesOnEdgeHeuristicCheckBox = new System.Windows.Forms.CheckBox();
             this.openSquareBonusHeuristicCheckBox = new System.Windows.Forms.CheckBox();
+            this.dynamicHeuristicsGroupBox = new System.Windows.Forms.GroupBox();
+            this.evolutionaryDynamicHeuristicRadioButton = new System.Windows.Forms.RadioButton();
+            this.neuralNetworkDynamicHeuristicRadioButton = new System.Windows.Forms.RadioButton();
+            this.mapDynamicHeuristicRadioButton = new System.Windows.Forms.RadioButton();
+            this.purgeDynamicHeuristicDataButton = new System.Windows.Forms.Button();
+            this.chooseGameGroupBox = new System.Windows.Forms.GroupBox();
+            this.gameConnectFourRadioButton = new System.Windows.Forms.RadioButton();
+            this.game2048RadioButton = new System.Windows.Forms.RadioButton();
+            this.gameTicTacToeRadioButton = new System.Windows.Forms.RadioButton();
+            this.AIOptionsGroupBox = new System.Windows.Forms.GroupBox();
             this.openStatisticsButton = new System.Windows.Forms.Button();
+            this.recursionDepthCounter = new System.Windows.Forms.NumericUpDown();
+            this.numberOfRunsCounter = new System.Windows.Forms.NumericUpDown();
+            this.recursionDepthLabel = new System.Windows.Forms.Label();
+            this.deleteStatisticsButton = new System.Windows.Forms.Button();
+            this.saveStatisticsCheckBox = new System.Windows.Forms.CheckBox();
+            this.numberOfRunsLabel = new System.Windows.Forms.Label();
+            this.clearConsoleButton = new System.Windows.Forms.Button();
+            this.purgeLogsButton = new System.Windows.Forms.Button();
+            this.playInViewButton = new System.Windows.Forms.Button();
+            this.openLogsButton = new System.Windows.Forms.Button();
             this.modeGroupBox.SuspendLayout();
             this.setHeuristicsGroupBox.SuspendLayout();
-            this.chooseGameGroupBox.SuspendLayout();
-            this.AIOptionsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recursionDepthCounter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numberOfRunsCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfMergesHeuristicWeightCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nonMonotonicLinesPenaltyHeuristicWeightCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.largeValuesOnEdgeHeuristicWeightCounter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.openSquaresBonusHeuristicWeightCounter)).BeginInit();
+            this.dynamicHeuristicsGroupBox.SuspendLayout();
+            this.chooseGameGroupBox.SuspendLayout();
+            this.AIOptionsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recursionDepthCounter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberOfRunsCounter)).BeginInit();
             this.SuspendLayout();
             // 
             // playButton
@@ -162,6 +167,200 @@
             this.setHeuristicsGroupBox.Text = "2048 Heuristics";
             this.setHeuristicsGroupBox.Visible = false;
             // 
+            // numberOfMergesHeuristicWeightCounter
+            // 
+            this.numberOfMergesHeuristicWeightCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NumberOfMergesHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numberOfMergesHeuristicWeightCounter.DecimalPlaces = 1;
+            this.numberOfMergesHeuristicWeightCounter.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numberOfMergesHeuristicWeightCounter.Location = new System.Drawing.Point(172, 91);
+            this.numberOfMergesHeuristicWeightCounter.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numberOfMergesHeuristicWeightCounter.Name = "numberOfMergesHeuristicWeightCounter";
+            this.numberOfMergesHeuristicWeightCounter.Size = new System.Drawing.Size(64, 20);
+            this.numberOfMergesHeuristicWeightCounter.TabIndex = 13;
+            this.numberOfMergesHeuristicWeightCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NumberOfMergesHeuristicWeight;
+            this.numberOfMergesHeuristicWeightCounter.Visible = false;
+            // 
+            // nonMonotonicLinesPenaltyHeuristicWeightCounter
+            // 
+            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NonMonotonicLinesPenaltyHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.DecimalPlaces = 1;
+            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Location = new System.Drawing.Point(172, 67);
+            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Name = "nonMonotonicLinesPenaltyHeuristicWeightCounter";
+            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Size = new System.Drawing.Size(64, 20);
+            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.TabIndex = 12;
+            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NonMonotonicLinesPenaltyHeuristicWeight;
+            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Visible = false;
+            // 
+            // largeValuesOnEdgeHeuristicWeightCounter
+            // 
+            this.largeValuesOnEdgeHeuristicWeightCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "LargeValuesOnEdgeHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.largeValuesOnEdgeHeuristicWeightCounter.DecimalPlaces = 1;
+            this.largeValuesOnEdgeHeuristicWeightCounter.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.largeValuesOnEdgeHeuristicWeightCounter.Location = new System.Drawing.Point(172, 44);
+            this.largeValuesOnEdgeHeuristicWeightCounter.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.largeValuesOnEdgeHeuristicWeightCounter.Name = "largeValuesOnEdgeHeuristicWeightCounter";
+            this.largeValuesOnEdgeHeuristicWeightCounter.Size = new System.Drawing.Size(64, 20);
+            this.largeValuesOnEdgeHeuristicWeightCounter.TabIndex = 11;
+            this.largeValuesOnEdgeHeuristicWeightCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.LargeValuesOnEdgeHeuristicWeight;
+            this.largeValuesOnEdgeHeuristicWeightCounter.Visible = false;
+            // 
+            // openSquaresBonusHeuristicWeightCounter
+            // 
+            this.openSquaresBonusHeuristicWeightCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "OpenSquaresBonusHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.openSquaresBonusHeuristicWeightCounter.DecimalPlaces = 1;
+            this.openSquaresBonusHeuristicWeightCounter.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.openSquaresBonusHeuristicWeightCounter.Location = new System.Drawing.Point(172, 20);
+            this.openSquaresBonusHeuristicWeightCounter.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.openSquaresBonusHeuristicWeightCounter.Name = "openSquaresBonusHeuristicWeightCounter";
+            this.openSquaresBonusHeuristicWeightCounter.Size = new System.Drawing.Size(64, 20);
+            this.openSquaresBonusHeuristicWeightCounter.TabIndex = 10;
+            this.openSquaresBonusHeuristicWeightCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.OpenSquaresBonusHeuristicWeight;
+            this.openSquaresBonusHeuristicWeightCounter.Visible = false;
+            // 
+            // numberOfMergesHeuristicCheckBox
+            // 
+            this.numberOfMergesHeuristicCheckBox.AutoSize = true;
+            this.numberOfMergesHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NumberOfMergesHeuristic;
+            this.numberOfMergesHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NumberOfMergesHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numberOfMergesHeuristicCheckBox.Location = new System.Drawing.Point(7, 92);
+            this.numberOfMergesHeuristicCheckBox.Name = "numberOfMergesHeuristicCheckBox";
+            this.numberOfMergesHeuristicCheckBox.Size = new System.Drawing.Size(112, 17);
+            this.numberOfMergesHeuristicCheckBox.TabIndex = 3;
+            this.numberOfMergesHeuristicCheckBox.Text = "Number of merges";
+            this.numberOfMergesHeuristicCheckBox.UseVisualStyleBackColor = true;
+            this.numberOfMergesHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.numberOfMergesHeuristicCheckBox_CheckedChanged);
+            // 
+            // nonMonotonicLinesPenaltyHeuristicCheckBox
+            // 
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.AutoSize = true;
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NonMonotonicLinesPenaltyHeuristic;
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NonMonotonicLinesPenaltyHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Location = new System.Drawing.Point(7, 68);
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Name = "nonMonotonicLinesPenaltyHeuristicCheckBox";
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Size = new System.Drawing.Size(159, 17);
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.TabIndex = 2;
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Text = "Non-monotonic lines penalty";
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.UseVisualStyleBackColor = true;
+            this.nonMonotonicLinesPenaltyHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.nonMonotonicLinesPenaltyHeuristicCheckBox_CheckedChanged);
+            // 
+            // largeValuesOnEdgeHeuristicCheckBox
+            // 
+            this.largeValuesOnEdgeHeuristicCheckBox.AutoSize = true;
+            this.largeValuesOnEdgeHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.LargeValuesOnEdgeHeuristic;
+            this.largeValuesOnEdgeHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "LargeValuesOnEdgeHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.largeValuesOnEdgeHeuristicCheckBox.Location = new System.Drawing.Point(7, 44);
+            this.largeValuesOnEdgeHeuristicCheckBox.Name = "largeValuesOnEdgeHeuristicCheckBox";
+            this.largeValuesOnEdgeHeuristicCheckBox.Size = new System.Drawing.Size(129, 17);
+            this.largeValuesOnEdgeHeuristicCheckBox.TabIndex = 1;
+            this.largeValuesOnEdgeHeuristicCheckBox.Text = "Large values on edge";
+            this.largeValuesOnEdgeHeuristicCheckBox.UseVisualStyleBackColor = true;
+            this.largeValuesOnEdgeHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.largeValuesOnEdgeHeuristicCheckBox_CheckedChanged);
+            // 
+            // openSquareBonusHeuristicCheckBox
+            // 
+            this.openSquareBonusHeuristicCheckBox.AutoSize = true;
+            this.openSquareBonusHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.OpenSquaresBonusHeuristic;
+            this.openSquareBonusHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "OpenSquaresBonusHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.openSquareBonusHeuristicCheckBox.Location = new System.Drawing.Point(7, 20);
+            this.openSquareBonusHeuristicCheckBox.Name = "openSquareBonusHeuristicCheckBox";
+            this.openSquareBonusHeuristicCheckBox.Size = new System.Drawing.Size(119, 17);
+            this.openSquareBonusHeuristicCheckBox.TabIndex = 0;
+            this.openSquareBonusHeuristicCheckBox.Text = "Open square bonus";
+            this.openSquareBonusHeuristicCheckBox.UseVisualStyleBackColor = true;
+            this.openSquareBonusHeuristicCheckBox.CheckedChanged += new System.EventHandler(this.openSquareBonusHeuristicCheckBox_CheckedChanged);
+            // 
+            // dynamicHeuristicsGroupBox
+            // 
+            this.dynamicHeuristicsGroupBox.Controls.Add(this.evolutionaryDynamicHeuristicRadioButton);
+            this.dynamicHeuristicsGroupBox.Controls.Add(this.neuralNetworkDynamicHeuristicRadioButton);
+            this.dynamicHeuristicsGroupBox.Controls.Add(this.mapDynamicHeuristicRadioButton);
+            this.dynamicHeuristicsGroupBox.Controls.Add(this.purgeDynamicHeuristicDataButton);
+            this.dynamicHeuristicsGroupBox.Location = new System.Drawing.Point(384, 212);
+            this.dynamicHeuristicsGroupBox.Name = "dynamicHeuristicsGroupBox";
+            this.dynamicHeuristicsGroupBox.Size = new System.Drawing.Size(242, 118);
+            this.dynamicHeuristicsGroupBox.TabIndex = 14;
+            this.dynamicHeuristicsGroupBox.TabStop = false;
+            this.dynamicHeuristicsGroupBox.Text = "Dynamic heuristics";
+            this.dynamicHeuristicsGroupBox.Visible = false;
+            // 
+            // evolutionaryDynamicHeuristicRadioButton
+            // 
+            this.evolutionaryDynamicHeuristicRadioButton.AutoSize = true;
+            this.evolutionaryDynamicHeuristicRadioButton.Location = new System.Drawing.Point(7, 68);
+            this.evolutionaryDynamicHeuristicRadioButton.Name = "evolutionaryDynamicHeuristicRadioButton";
+            this.evolutionaryDynamicHeuristicRadioButton.Size = new System.Drawing.Size(224, 17);
+            this.evolutionaryDynamicHeuristicRadioButton.TabIndex = 2;
+            this.evolutionaryDynamicHeuristicRadioButton.Text = "Neural network with evolutionary algorithm";
+            this.evolutionaryDynamicHeuristicRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // neuralNetworkDynamicHeuristicRadioButton
+            // 
+            this.neuralNetworkDynamicHeuristicRadioButton.AutoSize = true;
+            this.neuralNetworkDynamicHeuristicRadioButton.Location = new System.Drawing.Point(7, 44);
+            this.neuralNetworkDynamicHeuristicRadioButton.Name = "neuralNetworkDynamicHeuristicRadioButton";
+            this.neuralNetworkDynamicHeuristicRadioButton.Size = new System.Drawing.Size(120, 17);
+            this.neuralNetworkDynamicHeuristicRadioButton.TabIndex = 1;
+            this.neuralNetworkDynamicHeuristicRadioButton.Text = "MLP neural network";
+            this.neuralNetworkDynamicHeuristicRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // mapDynamicHeuristicRadioButton
+            // 
+            this.mapDynamicHeuristicRadioButton.AutoSize = true;
+            this.mapDynamicHeuristicRadioButton.Checked = true;
+            this.mapDynamicHeuristicRadioButton.Location = new System.Drawing.Point(7, 20);
+            this.mapDynamicHeuristicRadioButton.Name = "mapDynamicHeuristicRadioButton";
+            this.mapDynamicHeuristicRadioButton.Size = new System.Drawing.Size(185, 17);
+            this.mapDynamicHeuristicRadioButton.TabIndex = 0;
+            this.mapDynamicHeuristicRadioButton.TabStop = true;
+            this.mapDynamicHeuristicRadioButton.Text = "Mapping game states to a number";
+            this.mapDynamicHeuristicRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // purgeDynamicHeuristicDataButton
+            // 
+            this.purgeDynamicHeuristicDataButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.purgeDynamicHeuristicDataButton.ForeColor = System.Drawing.Color.Red;
+            this.purgeDynamicHeuristicDataButton.Location = new System.Drawing.Point(7, 86);
+            this.purgeDynamicHeuristicDataButton.Name = "purgeDynamicHeuristicDataButton";
+            this.purgeDynamicHeuristicDataButton.Size = new System.Drawing.Size(193, 26);
+            this.purgeDynamicHeuristicDataButton.TabIndex = 10;
+            this.purgeDynamicHeuristicDataButton.Text = "Purge dynamic heuristic data";
+            this.purgeDynamicHeuristicDataButton.UseVisualStyleBackColor = true;
+            this.purgeDynamicHeuristicDataButton.Click += new System.EventHandler(this.purgeDynamicHeuristicDataButton_Click);
+            // 
             // chooseGameGroupBox
             // 
             this.chooseGameGroupBox.Controls.Add(this.gameConnectFourRadioButton);
@@ -213,7 +412,6 @@
             this.AIOptionsGroupBox.Controls.Add(this.recursionDepthCounter);
             this.AIOptionsGroupBox.Controls.Add(this.numberOfRunsCounter);
             this.AIOptionsGroupBox.Controls.Add(this.recursionDepthLabel);
-            this.AIOptionsGroupBox.Controls.Add(this.purgeDynamicHeuristicDataButton);
             this.AIOptionsGroupBox.Controls.Add(this.deleteStatisticsButton);
             this.AIOptionsGroupBox.Controls.Add(this.saveStatisticsCheckBox);
             this.AIOptionsGroupBox.Controls.Add(this.numberOfRunsLabel);
@@ -225,6 +423,49 @@
             this.AIOptionsGroupBox.Text = "AI options";
             this.AIOptionsGroupBox.Visible = false;
             // 
+            // openStatisticsButton
+            // 
+            this.openStatisticsButton.Location = new System.Drawing.Point(213, 21);
+            this.openStatisticsButton.Name = "openStatisticsButton";
+            this.openStatisticsButton.Size = new System.Drawing.Size(147, 23);
+            this.openStatisticsButton.TabIndex = 15;
+            this.openStatisticsButton.Text = "Open statistics";
+            this.openStatisticsButton.UseVisualStyleBackColor = true;
+            this.openStatisticsButton.Click += new System.EventHandler(this.openStatisticsButton_Click);
+            // 
+            // recursionDepthCounter
+            // 
+            this.recursionDepthCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "MaximalRecursionDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.recursionDepthCounter.Location = new System.Drawing.Point(7, 24);
+            this.recursionDepthCounter.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.recursionDepthCounter.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.recursionDepthCounter.Name = "recursionDepthCounter";
+            this.recursionDepthCounter.Size = new System.Drawing.Size(54, 20);
+            this.recursionDepthCounter.TabIndex = 14;
+            this.recursionDepthCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.MaximalRecursionDepth;
+            // 
+            // numberOfRunsCounter
+            // 
+            this.numberOfRunsCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NumberOfRuns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numberOfRunsCounter.Location = new System.Drawing.Point(7, 47);
+            this.numberOfRunsCounter.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numberOfRunsCounter.Name = "numberOfRunsCounter";
+            this.numberOfRunsCounter.Size = new System.Drawing.Size(54, 20);
+            this.numberOfRunsCounter.TabIndex = 13;
+            this.numberOfRunsCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NumberOfRuns;
+            // 
             // recursionDepthLabel
             // 
             this.recursionDepthLabel.AutoSize = true;
@@ -234,29 +475,28 @@
             this.recursionDepthLabel.TabIndex = 12;
             this.recursionDepthLabel.Text = "Maximal recursion depth ";
             // 
-            // purgeDynamicHeuristicDataButton
-            // 
-            this.purgeDynamicHeuristicDataButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.purgeDynamicHeuristicDataButton.ForeColor = System.Drawing.Color.Red;
-            this.purgeDynamicHeuristicDataButton.Location = new System.Drawing.Point(167, 65);
-            this.purgeDynamicHeuristicDataButton.Name = "purgeDynamicHeuristicDataButton";
-            this.purgeDynamicHeuristicDataButton.Size = new System.Drawing.Size(193, 26);
-            this.purgeDynamicHeuristicDataButton.TabIndex = 10;
-            this.purgeDynamicHeuristicDataButton.Text = "Purge dynamic heuristic data";
-            this.purgeDynamicHeuristicDataButton.UseVisualStyleBackColor = true;
-            this.purgeDynamicHeuristicDataButton.Visible = false;
-            this.purgeDynamicHeuristicDataButton.Click += new System.EventHandler(this.purgeDynamicHeuristicDataButton_Click);
-            // 
             // deleteStatisticsButton
             // 
             this.deleteStatisticsButton.ForeColor = System.Drawing.Color.Red;
-            this.deleteStatisticsButton.Location = new System.Drawing.Point(213, 36);
+            this.deleteStatisticsButton.Location = new System.Drawing.Point(213, 50);
             this.deleteStatisticsButton.Name = "deleteStatisticsButton";
             this.deleteStatisticsButton.Size = new System.Drawing.Size(147, 26);
             this.deleteStatisticsButton.TabIndex = 9;
             this.deleteStatisticsButton.Text = "Delete statistics";
             this.deleteStatisticsButton.UseVisualStyleBackColor = true;
             this.deleteStatisticsButton.Click += new System.EventHandler(this.deleteStatisticsButton_Click);
+            // 
+            // saveStatisticsCheckBox
+            // 
+            this.saveStatisticsCheckBox.AutoSize = true;
+            this.saveStatisticsCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.SaveStatistics;
+            this.saveStatisticsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "SaveStatistics", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.saveStatisticsCheckBox.Location = new System.Drawing.Point(7, 69);
+            this.saveStatisticsCheckBox.Name = "saveStatisticsCheckBox";
+            this.saveStatisticsCheckBox.Size = new System.Drawing.Size(154, 17);
+            this.saveStatisticsCheckBox.TabIndex = 8;
+            this.saveStatisticsCheckBox.Text = "Save statistics after the run";
+            this.saveStatisticsCheckBox.UseVisualStyleBackColor = true;
             // 
             // numberOfRunsLabel
             // 
@@ -310,194 +550,6 @@
             this.openLogsButton.UseVisualStyleBackColor = true;
             this.openLogsButton.Click += new System.EventHandler(this.openLogsButton_Click);
             // 
-            // recursionDepthCounter
-            // 
-            this.recursionDepthCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "MaximalRecursionDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.recursionDepthCounter.Location = new System.Drawing.Point(7, 24);
-            this.recursionDepthCounter.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.recursionDepthCounter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.recursionDepthCounter.Name = "recursionDepthCounter";
-            this.recursionDepthCounter.Size = new System.Drawing.Size(54, 20);
-            this.recursionDepthCounter.TabIndex = 14;
-            this.recursionDepthCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.MaximalRecursionDepth;
-            // 
-            // numberOfRunsCounter
-            // 
-            this.numberOfRunsCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NumberOfRuns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numberOfRunsCounter.Location = new System.Drawing.Point(7, 47);
-            this.numberOfRunsCounter.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numberOfRunsCounter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numberOfRunsCounter.Name = "numberOfRunsCounter";
-            this.numberOfRunsCounter.Size = new System.Drawing.Size(54, 20);
-            this.numberOfRunsCounter.TabIndex = 13;
-            this.numberOfRunsCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NumberOfRuns;
-            // 
-            // saveStatisticsCheckBox
-            // 
-            this.saveStatisticsCheckBox.AutoSize = true;
-            this.saveStatisticsCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.SaveStatistics;
-            this.saveStatisticsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "SaveStatistics", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.saveStatisticsCheckBox.Location = new System.Drawing.Point(7, 69);
-            this.saveStatisticsCheckBox.Name = "saveStatisticsCheckBox";
-            this.saveStatisticsCheckBox.Size = new System.Drawing.Size(154, 17);
-            this.saveStatisticsCheckBox.TabIndex = 8;
-            this.saveStatisticsCheckBox.Text = "Save statistics after the run";
-            this.saveStatisticsCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // numberOfMergesHeuristicWeightCounter
-            // 
-            this.numberOfMergesHeuristicWeightCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NumberOfMergesHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numberOfMergesHeuristicWeightCounter.DecimalPlaces = 1;
-            this.numberOfMergesHeuristicWeightCounter.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numberOfMergesHeuristicWeightCounter.Location = new System.Drawing.Point(172, 91);
-            this.numberOfMergesHeuristicWeightCounter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numberOfMergesHeuristicWeightCounter.Name = "numberOfMergesHeuristicWeightCounter";
-            this.numberOfMergesHeuristicWeightCounter.Size = new System.Drawing.Size(64, 20);
-            this.numberOfMergesHeuristicWeightCounter.TabIndex = 13;
-            this.numberOfMergesHeuristicWeightCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NumberOfMergesHeuristicWeight;
-            // 
-            // nonMonotonicLinesPenaltyHeuristicWeightCounter
-            // 
-            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NonMonotonicLinesPenaltyHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.DecimalPlaces = 1;
-            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Location = new System.Drawing.Point(172, 67);
-            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Name = "nonMonotonicLinesPenaltyHeuristicWeightCounter";
-            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Size = new System.Drawing.Size(64, 20);
-            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.TabIndex = 12;
-            this.nonMonotonicLinesPenaltyHeuristicWeightCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NonMonotonicLinesPenaltyHeuristicWeight;
-            // 
-            // largeValuesOnEdgeHeuristicWeightCounter
-            // 
-            this.largeValuesOnEdgeHeuristicWeightCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "LargeValuesOnEdgeHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.largeValuesOnEdgeHeuristicWeightCounter.DecimalPlaces = 1;
-            this.largeValuesOnEdgeHeuristicWeightCounter.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.largeValuesOnEdgeHeuristicWeightCounter.Location = new System.Drawing.Point(172, 44);
-            this.largeValuesOnEdgeHeuristicWeightCounter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.largeValuesOnEdgeHeuristicWeightCounter.Name = "largeValuesOnEdgeHeuristicWeightCounter";
-            this.largeValuesOnEdgeHeuristicWeightCounter.Size = new System.Drawing.Size(64, 20);
-            this.largeValuesOnEdgeHeuristicWeightCounter.TabIndex = 11;
-            this.largeValuesOnEdgeHeuristicWeightCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.LargeValuesOnEdgeHeuristicWeight;
-            // 
-            // openSquaresBonusHeuristicWeightCounter
-            // 
-            this.openSquaresBonusHeuristicWeightCounter.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "OpenSquaresBonusHeuristicWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.openSquaresBonusHeuristicWeightCounter.DecimalPlaces = 1;
-            this.openSquaresBonusHeuristicWeightCounter.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.openSquaresBonusHeuristicWeightCounter.Location = new System.Drawing.Point(172, 20);
-            this.openSquaresBonusHeuristicWeightCounter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.openSquaresBonusHeuristicWeightCounter.Name = "openSquaresBonusHeuristicWeightCounter";
-            this.openSquaresBonusHeuristicWeightCounter.Size = new System.Drawing.Size(64, 20);
-            this.openSquaresBonusHeuristicWeightCounter.TabIndex = 10;
-            this.openSquaresBonusHeuristicWeightCounter.Value = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.OpenSquaresBonusHeuristicWeight;
-            // 
-            // numberOfMergesHeuristicCheckBox
-            // 
-            this.numberOfMergesHeuristicCheckBox.AutoSize = true;
-            this.numberOfMergesHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NumberOfMergesHeuristic;
-            this.numberOfMergesHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NumberOfMergesHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numberOfMergesHeuristicCheckBox.Location = new System.Drawing.Point(7, 92);
-            this.numberOfMergesHeuristicCheckBox.Name = "numberOfMergesHeuristicCheckBox";
-            this.numberOfMergesHeuristicCheckBox.Size = new System.Drawing.Size(112, 17);
-            this.numberOfMergesHeuristicCheckBox.TabIndex = 3;
-            this.numberOfMergesHeuristicCheckBox.Text = "Number of merges";
-            this.numberOfMergesHeuristicCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // nonMonotonicLinesPenaltyHeuristicCheckBox
-            // 
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.AutoSize = true;
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.NonMonotonicLinesPenaltyHeuristic;
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "NonMonotonicLinesPenaltyHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Location = new System.Drawing.Point(7, 68);
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Name = "nonMonotonicLinesPenaltyHeuristicCheckBox";
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Size = new System.Drawing.Size(159, 17);
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.TabIndex = 2;
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.Text = "Non-monotonic lines penalty";
-            this.nonMonotonicLinesPenaltyHeuristicCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // largeValuesOnEdgeHeuristicCheckBox
-            // 
-            this.largeValuesOnEdgeHeuristicCheckBox.AutoSize = true;
-            this.largeValuesOnEdgeHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.LargeValuesOnEdgeHeuristic;
-            this.largeValuesOnEdgeHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "LargeValuesOnEdgeHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.largeValuesOnEdgeHeuristicCheckBox.Location = new System.Drawing.Point(7, 44);
-            this.largeValuesOnEdgeHeuristicCheckBox.Name = "largeValuesOnEdgeHeuristicCheckBox";
-            this.largeValuesOnEdgeHeuristicCheckBox.Size = new System.Drawing.Size(129, 17);
-            this.largeValuesOnEdgeHeuristicCheckBox.TabIndex = 1;
-            this.largeValuesOnEdgeHeuristicCheckBox.Text = "Large values on edge";
-            this.largeValuesOnEdgeHeuristicCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // openSquareBonusHeuristicCheckBox
-            // 
-            this.openSquareBonusHeuristicCheckBox.AutoSize = true;
-            this.openSquareBonusHeuristicCheckBox.Checked = global::DynamicHeuristicAlgorithm.Properties.Settings.Default.OpenSquaresBonusHeuristic;
-            this.openSquareBonusHeuristicCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::DynamicHeuristicAlgorithm.Properties.Settings.Default, "OpenSquaresBonusHeuristic", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.openSquareBonusHeuristicCheckBox.Location = new System.Drawing.Point(7, 20);
-            this.openSquareBonusHeuristicCheckBox.Name = "openSquareBonusHeuristicCheckBox";
-            this.openSquareBonusHeuristicCheckBox.Size = new System.Drawing.Size(119, 17);
-            this.openSquareBonusHeuristicCheckBox.TabIndex = 0;
-            this.openSquareBonusHeuristicCheckBox.Text = "Open square bonus";
-            this.openSquareBonusHeuristicCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // openStatisticsButton
-            // 
-            this.openStatisticsButton.Location = new System.Drawing.Point(213, 10);
-            this.openStatisticsButton.Name = "openStatisticsButton";
-            this.openStatisticsButton.Size = new System.Drawing.Size(147, 23);
-            this.openStatisticsButton.TabIndex = 15;
-            this.openStatisticsButton.Text = "Open statistics";
-            this.openStatisticsButton.UseVisualStyleBackColor = true;
-            this.openStatisticsButton.Click += new System.EventHandler(this.openStatisticsButton_Click);
-            // 
             // DynamicHeuristicAlgorithmRunner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,26 +561,29 @@
             this.Controls.Add(this.clearConsoleButton);
             this.Controls.Add(this.AIOptionsGroupBox);
             this.Controls.Add(this.chooseGameGroupBox);
-            this.Controls.Add(this.setHeuristicsGroupBox);
             this.Controls.Add(this.modeGroupBox);
             this.Controls.Add(this.consoleOutputTextBox);
             this.Controls.Add(this.playButton);
+            this.Controls.Add(this.setHeuristicsGroupBox);
+            this.Controls.Add(this.dynamicHeuristicsGroupBox);
             this.Name = "DynamicHeuristicAlgorithmRunner";
             this.Text = "Dynamic heuristic algorithm runner";
             this.modeGroupBox.ResumeLayout(false);
             this.modeGroupBox.PerformLayout();
             this.setHeuristicsGroupBox.ResumeLayout(false);
             this.setHeuristicsGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numberOfMergesHeuristicWeightCounter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nonMonotonicLinesPenaltyHeuristicWeightCounter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.largeValuesOnEdgeHeuristicWeightCounter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.openSquaresBonusHeuristicWeightCounter)).EndInit();
+            this.dynamicHeuristicsGroupBox.ResumeLayout(false);
+            this.dynamicHeuristicsGroupBox.PerformLayout();
             this.chooseGameGroupBox.ResumeLayout(false);
             this.chooseGameGroupBox.PerformLayout();
             this.AIOptionsGroupBox.ResumeLayout(false);
             this.AIOptionsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recursionDepthCounter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfRunsCounter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numberOfMergesHeuristicWeightCounter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nonMonotonicLinesPenaltyHeuristicWeightCounter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.largeValuesOnEdgeHeuristicWeightCounter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.openSquaresBonusHeuristicWeightCounter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -567,6 +622,10 @@
         private System.Windows.Forms.NumericUpDown nonMonotonicLinesPenaltyHeuristicWeightCounter;
         private System.Windows.Forms.NumericUpDown numberOfMergesHeuristicWeightCounter;
         private System.Windows.Forms.Button openStatisticsButton;
+        private System.Windows.Forms.GroupBox dynamicHeuristicsGroupBox;
+        private System.Windows.Forms.RadioButton evolutionaryDynamicHeuristicRadioButton;
+        private System.Windows.Forms.RadioButton neuralNetworkDynamicHeuristicRadioButton;
+        private System.Windows.Forms.RadioButton mapDynamicHeuristicRadioButton;
     }
 }
 

@@ -22,14 +22,20 @@ namespace DynamicHeuristicAlgorithm
     public partial class DynamicHeuristicAlgorithmRunner : Form
     {
         private string statisticsFilePath;
+        private string dynamicHeuristicsFilePath;
 
-        public DynamicHeuristicAlgorithmRunner(string statisticsFilePath)
+        public DynamicHeuristicAlgorithmRunner(string statisticsFilePath, string dynamicHeuristicsFilePath)
         {
             InitializeComponent();
             Console.SetOut(new MultiTextWriter(new ControlWriter(consoleOutputTextBox), Console.Out));
             Properties.Settings.Default.SettingChanging += ChangePlayButtonTextEventHandler;
             Properties.Settings.Default.SettingsSaving += ChangePlayButtonTextBackEventHandler;
             this.statisticsFilePath = statisticsFilePath;
+            this.dynamicHeuristicsFilePath = dynamicHeuristicsFilePath;
+            openSquaresBonusHeuristicWeightCounter.Visible = openSquareBonusHeuristicCheckBox.Checked;
+            largeValuesOnEdgeHeuristicWeightCounter.Visible = largeValuesOnEdgeHeuristicCheckBox.Checked;
+            nonMonotonicLinesPenaltyHeuristicWeightCounter.Visible = nonMonotonicLinesPenaltyHeuristicCheckBox.Checked;
+            numberOfMergesHeuristicWeightCounter.Visible = numberOfMergesHeuristicCheckBox.Checked;
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -67,9 +73,9 @@ namespace DynamicHeuristicAlgorithm
             return group.Controls.OfType<CheckBox>().Where(checkBox => checkBox.Checked).ToArray();
         }
 
-        private MaskedTextBox[] GetSelectedMaskedTextBoxesInGroup(GroupBox group)
+        private NumericUpDown[] GetSelectedNumericUpDownsInGroup(GroupBox group)
         {
-            return group.Controls.OfType<MaskedTextBox>().Where(maskedTextBox => maskedTextBox.Visible).ToArray();
+            return group.Controls.OfType<NumericUpDown>().Where(numericUpDown => numericUpDown.Visible).ToArray();
         }
 
         private void consoleOutputTextBox_TextChanged(object sender, EventArgs e)
@@ -98,7 +104,7 @@ namespace DynamicHeuristicAlgorithm
         private void dynamicHeuristicRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             AIOptionsGroupBox.Visible = ((RadioButton)sender).Checked;
-            purgeDynamicHeuristicDataButton.Visible = ((RadioButton)sender).Checked;
+            dynamicHeuristicsGroupBox.Visible = ((RadioButton)sender).Checked;
         }
 
         private void game2048RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -142,21 +148,43 @@ namespace DynamicHeuristicAlgorithm
             {
                 IEnumerable<string> files = Directory.Exists(statisticsFilePath + filepath) ? 
                     Directory.EnumerateFiles(statisticsFilePath + filepath) : new List<string>();
-                foreach(string file in files)
+                if (files.Count() == 0)
+                {
+                    Logger.LogInfo("No files found at " + filepath + ".");
+                }
+                foreach (string file in files)
                 {
                     File.Delete(file);
                     Logger.LogInfo("Deleted file " + file + ".");
-                }
-                if(files.Count() == 0)
-                {
-                    Logger.LogInfo("No files found at " + filepath + ".");
                 }
             }
         }
 
         private void purgeDynamicHeuristicDataButton_Click(object sender, EventArgs e)
         {
-            Logger.LogError("Dynamic heuristic not implemented.");
+            string filepath = GetGameName() + "\\" + GetDynamicHeuristicName();
+            if (MessageBox.Show("Are you sure you want to delete file " + filepath + 
+                "\\" + recursionDepthCounter.Value + "?",
+                "Deleting dynamic heuristic data.", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (Directory.Exists(dynamicHeuristicsFilePath + filepath))
+                {
+                    string file = dynamicHeuristicsFilePath + filepath + "\\" + recursionDepthCounter.Value;
+                    if (File.Exists(file))
+                    {
+                        File.Delete(file);
+                        Logger.LogInfo("Deleted file " + file + ".");
+                    }
+                    else
+                    {
+                        Logger.LogInfo("File not found at " + filepath + ".");
+                    }
+                }
+                else
+                {
+                    Logger.LogInfo("File not found at " + filepath + ".");
+                }
+            }
         }
 
         private void playButton_Click(object sender, EventArgs e)
@@ -242,6 +270,12 @@ namespace DynamicHeuristicAlgorithm
                                 {
                                     SaveStatistics(game, player);
                                 }
+                                if(GetModeName() == "dynamicHeuristic")
+                                {
+                                    AIPlayer aiPlayer = (AIPlayer)player;
+                                    aiPlayer.TeachDynamicHeuristic(game.GetGameStatistics());
+                                    SaveDynamicHeuristicData(aiPlayer);
+                                }
                             }
                         }
                         break;
@@ -262,28 +296,86 @@ namespace DynamicHeuristicAlgorithm
         {
             try
             {
-                AutoResetEvent block = new AutoResetEvent(false);
-                Player player = GetPlayer();
                 switch (GetModeName())
                 {
                     case "setHeuristics":
+                        {
+                            Player player = GetPlayer();
+                            uint runs = (uint)numberOfRunsCounter.Value;
+                            if (GetGameName() == "2048")
+                            {
+                                Game game = GetGame();
+                                for (uint i = 0; i < runs; ++i)
+                                {
+                                    try
+                                    {
+                                        Logger.LogInfo("Game no. " + (i + 1) + ".");
+                                        StartNewGame(game, player);
+                                        if (saveStatisticsCheckBox.Checked)
+                                        {
+                                            SaveStatistics(game, player);
+                                        }
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        Logger.LogError(e);
+                                        Logger.LogError("Running game no. + " + (i + 1) + " failed.");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Thread[] threads = new Thread[Math.Min(runs, 4)];
+                                for (uint i = 0; i < threads.Length; ++i)
+                                {
+                                    Dictionary<string, object> parameters = new Dictionary<string, object>();
+                                    parameters.Add("player", player);
+                                    parameters.Add("startIndex", (uint)Math.Floor((double)(i * runs) / threads.Length));
+                                    parameters.Add("endIndex", (uint)Math.Floor((double)((i + 1) * runs) / threads.Length));
+                                    threads[i] = new Thread(new ParameterizedThreadStart(RunGamesThreadStart));
+                                    threads[i].IsBackground = true;
+                                    threads[i].Start(parameters);
+                                }
+                                for (uint i = 0; i < threads.Length; ++i)
+                                {
+                                    threads[i].Join();
+                                }
+                            }
+                        }
+                        break;
                     case "dynamicHeuristic":
                         {
-                            uint runs = (uint)numberOfRunsCounter.Value;
-                            Thread[] threads = new Thread[Math.Min(runs, 4)];
-                            for (uint i = 0; i < threads.Length; ++i)
+                            switch(GetDynamicHeuristicName())
                             {
-                                Dictionary<string, object> parameters = new Dictionary<string, object>();
-                                parameters.Add("player", player);
-                                parameters.Add("startIndex", (uint)Math.Floor((double)(i * runs) / threads.Length));
-                                parameters.Add("endIndex", (uint)Math.Floor((double)((i + 1) * runs) / threads.Length));
-                                threads[i] = new Thread(new ParameterizedThreadStart(RunGamesThreadStart));
-                                threads[i].IsBackground = true;
-                                threads[i].Start(parameters);
-                            }
-                            for(uint i = 0; i < threads.Length; ++i)
-                            {
-                                threads[i].Join();
+                                case "mapDynamicHeuristic":
+                                case "neuralNetworkDynamicHeuristic":
+                                    {
+                                        Player player = GetPlayer();
+                                        uint runs = (uint)numberOfRunsCounter.Value;
+                                        for(uint i = 0; i < runs; ++i)
+                                        {
+                                            try
+                                            {
+                                                Game game = GetGame();
+                                                Logger.LogInfo("Game no. " + (i + 1) + ".");
+                                                StartNewGame(game, player);
+                                                if (saveStatisticsCheckBox.Checked)
+                                                {
+                                                    SaveStatistics(game, player);
+                                                }
+                                                
+                                                ((AIPlayer)player).TeachDynamicHeuristic(game.GetGameStatistics());
+                                            }
+                                            catch (Exception e)
+                                            {
+                                                Logger.LogError(e);
+                                                Logger.LogError("Running game no. + " + (i + 1) + " failed.");
+                                            }
+                                        }
+                                        AIPlayer aiPlayer = (AIPlayer)player;
+                                        SaveDynamicHeuristicData(aiPlayer);
+                                    }
+                                    break;
                             }
                         }
                         break;
@@ -386,6 +478,15 @@ namespace DynamicHeuristicAlgorithm
             }
         }
 
+        private void SaveDynamicHeuristicData(AIPlayer player)
+        {
+            string filepath = GetGameName() + "\\" + GetDynamicHeuristicName();
+            Directory.CreateDirectory(dynamicHeuristicsFilePath + filepath);
+            string filename = filepath + "\\" + recursionDepthCounter.Value;
+            Logger.LogInfo("Saving dynamic heuristic data to " + filename + ".");
+            player.SaveDynamicHeuristicData(dynamicHeuristicsFilePath + filename);
+        }
+
         private Player GetPlayer()
         {
             string modeName = GetModeName();
@@ -402,7 +503,7 @@ namespace DynamicHeuristicAlgorithm
                 case "setHeuristics":
                     return GetSetHeuristicsAndOptions(gameName);
                 case "dynamicHeuristic":
-                    return GetDynamicHeuristicOptions();
+                    return GetDynamicHeuristicOptions(GetDynamicHeuristicName());
                 default:
                     return new Dictionary<string, object>();
             }
@@ -415,15 +516,37 @@ namespace DynamicHeuristicAlgorithm
             return parameters;
         }
 
-        private Dictionary<string, object> GetDynamicHeuristicOptions()
+        private Dictionary<string, object> GetDynamicHeuristicOptions(string dynamicHeuristicName)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             Logger.LogInfo("Setting recursion depth.");
             uint recursionDepth = (uint)recursionDepthCounter.Value;
             parameters.Add("recursionDepth", recursionDepth);
             Logger.LogInfo("Recursion depth set to " + recursionDepth + ".");
-
+            Logger.LogInfo("Setting dynamic heuristic.");
+            string filename = dynamicHeuristicsFilePath + GetGameName() + "\\" + dynamicHeuristicName +
+                                "\\" + recursionDepth;
+            int numberOfInputs = GetNumberOfInputs();
+            Heuristic heuristic = HeuristicFactory.GetHeuristicByName(dynamicHeuristicName, 1, 
+                                    new Dictionary<string, object>()
+                                    {
+                                        { "filename", filename },
+                                        { "numberOfInputs", numberOfInputs },
+                                        { "gameName", GetGameName() }
+                                    });
+            parameters.Add("dynamicHeuristic", heuristic);
             return parameters;
+        }
+
+        private int GetNumberOfInputs()
+        {
+            string gameName = GetGameName();
+            switch(gameName)
+            {
+                case "TicTacToe": return 9;
+                case "2048": return 16;
+                default: throw new NotImplementedException(gameName + " is not implemented.");
+            }
         }
 
         private Dictionary<string, object> GetSetHeuristicsAndOptions(string gameName)
@@ -440,36 +563,31 @@ namespace DynamicHeuristicAlgorithm
             #region SetHeuristics
             Logger.LogInfo("Setting heuristics.");
             string[] names = new string[0];
-            uint[] weights = new uint[0];
+            double[] weights = new double[0];
             switch (gameName)
             {
                 case "ConnectFour":
                     names = new string[] { "connectFourHeuristic" };
-                    weights = new uint[] { 1 };
+                    weights = new double[] { 1 };
                     break;
                 case "TicTacToe":
                     names = new string[] { "ticTacToeHeuristic" };
-                    weights = new uint[] { 1 };
+                    weights = new double[] { 1 };
                     break;
                 case "2048":
                     {
                         CheckBox[] selectedHeuristics = GetSelectedCheckBoxesInGroup(setHeuristicsGroupBox);
-                        names = selectedHeuristics.OrderBy(checkBox => checkBox.Name)
+                        List<string> namesList = selectedHeuristics.OrderBy(checkBox => checkBox.Name)
                                     .Select(checkBox => checkBox.Name.Substring(0, checkBox.Name.IndexOf("CheckBox")))
-                                    .ToArray();
-                        MaskedTextBox[] selectedWeights = GetSelectedMaskedTextBoxesInGroup(setHeuristicsGroupBox);
-                        foreach(MaskedTextBox maskedTextBox in selectedWeights)
-                        {
-                            if(maskedTextBox.Text.Equals(""))
-                            {
-                                maskedTextBox.Text = "1";
-                                Logger.LogInfo(maskedTextBox.Name.Substring(0, maskedTextBox.Name.IndexOf("MaskedTextBox"))
-                                    + " wasn't set. Setting it to default 1.");
-                            }
-                        }
-                        weights = selectedWeights.OrderBy(maskedTextBox => maskedTextBox.Name)
-                                    .Select(maskedTextBox => Convert.ToUInt32(maskedTextBox.Text))
-                                    .ToArray();
+                                    .ToList();
+                        namesList.Add("2048Heuristic");
+                        names = namesList.ToArray();
+                        NumericUpDown[] selectedWeights = GetSelectedNumericUpDownsInGroup(setHeuristicsGroupBox);
+                        List<double> weightsList = selectedWeights.OrderBy(numericUpDown => numericUpDown.Name)
+                                    .Select(numericUpDown => (double)numericUpDown.Value)
+                                    .ToList();
+                        weightsList.Add(1);
+                        weights = weightsList.ToArray();
                     }
                     break;
             }
@@ -506,6 +624,13 @@ namespace DynamicHeuristicAlgorithm
                         selectedModeRadioButtonName.IndexOf("RadioButton"));
         }
 
+        private string GetDynamicHeuristicName()
+        {
+            string selectedDynamicHeuristicRadioButtonName = GetSelectedRadioButtonInGroup(dynamicHeuristicsGroupBox).Name;
+            return selectedDynamicHeuristicRadioButtonName.Substring(0,
+                        selectedDynamicHeuristicRadioButtonName.IndexOf("RadioButton"));
+        }
+
         private void openLogsButton_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", Logger.LoggerPath);
@@ -514,6 +639,26 @@ namespace DynamicHeuristicAlgorithm
         private void openStatisticsButton_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", statisticsFilePath.TrimEnd('\\'));
+        }
+
+        private void openSquareBonusHeuristicCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            openSquaresBonusHeuristicWeightCounter.Visible = ((CheckBox)sender).Checked;
+        }
+
+        private void largeValuesOnEdgeHeuristicCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            largeValuesOnEdgeHeuristicWeightCounter.Visible = ((CheckBox)sender).Checked;
+        }
+
+        private void nonMonotonicLinesPenaltyHeuristicCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            nonMonotonicLinesPenaltyHeuristicWeightCounter.Visible = ((CheckBox)sender).Checked;
+        }
+
+        private void numberOfMergesHeuristicCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            numberOfMergesHeuristicWeightCounter.Visible = ((CheckBox)sender).Checked;
         }
     }
 }

@@ -49,6 +49,222 @@ namespace TicTacToeCore
         {
             SetBoard(state);
         }
+
+        public bool IsTerminal()
+        {
+            bool done;
+            int player;
+
+            #region HorizontalCheck
+            for (int i = 0; i < 3; ++i)
+            {
+                done = true;
+                player = Board[i, 0];
+                if (player > 0)
+                {
+                    for (int k = 1; k < 3; ++k)
+                    {
+                        if (Board[i, k] != player)
+                        {
+                            done = false;
+                            break;
+                        }
+                    }
+
+                    if(done)
+                    {
+                        return true;
+                    }
+                }
+            }
+            #endregion
+
+            #region VerticalCheck
+            for (int j = 0; j < 3; ++j)
+            {
+                done = true;
+                player = Board[0, j];
+                if (player > 0)
+                {
+                    for (int k = 1; k < 3; ++k)
+                    {
+                        if (Board[k, j] != player)
+                        {
+                            done = false;
+                            break;
+                        }
+                    }
+
+                    if (done)
+                    {
+                        return true;
+                    }
+                }
+            }
+            #endregion
+
+            #region LeftDiagonalCheck
+            done = true;
+            player = Board[0, 0];
+            if (player > 0)
+            {
+                for (int k = 1; k < 3; ++k)
+                {
+                    if (Board[k, k] != player)
+                    {
+                        done = false;
+                        break;
+                    }
+                }
+
+                if (done)
+                {
+                    return true;
+                }
+            }
+            #endregion
+
+            #region RightDiagonalCheck
+            done = true;
+            player = Board[0, 2];
+            if (player > 0)
+            {
+                for (int k = 1; k < 3; ++k)
+                {
+                    if (Board[k, 2 - k] != player)
+                    {
+                        done = false;
+                        break;
+                    }
+                }
+
+                if (done)
+                {
+                    return true;
+                }
+            }
+            #endregion
+
+            #region BoardFilledCheck
+            done = true;
+            for(int i = 0; i < 3; ++i)
+            {
+                for(int j = 0; j < 3; ++j)
+                {
+                    if(Board[i, j] == 0)
+                    {
+                        done = false;
+                        break;
+                    }
+                }
+            }
+
+            if(done)
+            {
+                return true;
+            }
+            #endregion
+
+            return false;
+        }
+
+        public byte GetWinner()
+        {
+            bool done;
+            byte player;
+
+            #region HorizontalCheck
+            for (int i = 0; i < 3; ++i)
+            {
+                done = true;
+                player = Board[i, 0];
+                if (player > 0)
+                {
+                    for (int k = 1; k < 3; ++k)
+                    {
+                        if (Board[i, k] != player)
+                        {
+                            done = false;
+                            break;
+                        }
+                    }
+
+                    if (done)
+                    {
+                        return player;
+                    }
+                }
+            }
+            #endregion
+
+            #region VerticalCheck
+            for (int j = 0; j < 3; ++j)
+            {
+                done = true;
+                player = Board[0, j];
+                if (player > 0)
+                {
+                    for (int k = 1; k < 3; ++k)
+                    {
+                        if (Board[k, j] != player)
+                        {
+                            done = false;
+                            break;
+                        }
+                    }
+
+                    if (done)
+                    {
+                        return player;
+                    }
+                }
+            }
+            #endregion
+
+            #region LeftDiagonalCheck
+            done = true;
+            player = Board[0, 0];
+            if (player > 0)
+            {
+                for (int k = 1; k < 3; ++k)
+                {
+                    if (Board[k, k] != player)
+                    {
+                        done = false;
+                        break;
+                    }
+                }
+
+                if (done)
+                {
+                    return player;
+                }
+            }
+            #endregion
+
+            #region RightDiagonalCheck
+            done = true;
+            player = Board[0, 2];
+            if (player > 0)
+            {
+                for (int k = 1; k < 3; ++k)
+                {
+                    if (Board[k, 2 - k] != player)
+                    {
+                        done = false;
+                        break;
+                    }
+                }
+
+                if (done)
+                {
+                    return player;
+                }
+            }
+            #endregion
+
+            return 0;
+        }
     }
 
     public class TicTacToeGame
@@ -89,104 +305,15 @@ namespace TicTacToeCore
                 {
                     boardState.Board[i, j] = currentPlayer;
                     filledSquaresCount++;
-                    CheckIfGameFinished(i, j);
+                    if(boardState.IsTerminal())
+                    {
+                        playing = false;
+                    }
                     ChangePlayer();
                     return true;
                 }
             }
             return false;
-        }
-
-        private void CheckIfGameFinished(byte i, byte j)
-        {
-            bool done;
-
-            #region HorizontalCheck
-            done = true;
-            for(int k = 0; k < 3; ++k)
-            {
-                if(boardState.Board[i, k] != currentPlayer)
-                {
-                    done = false;
-                    break;
-                }
-            }
-
-            if (done)
-            {
-                playing = false;
-                return;
-            }
-            #endregion
-
-            #region VerticalCheck
-            done = true;
-            for (int k = 0; k < 3; ++k)
-            {
-                if (boardState.Board[k, j] != currentPlayer)
-                {
-                    done = false;
-                    break;
-                }
-            }
-
-            if (done)
-            {
-                playing = false;
-                return;
-            }
-            #endregion
-
-            #region LeftDiagonalCheck
-            if (i == j)
-            {
-                done = true;
-                for (int k = 0; k < 3; ++k)
-                {
-                    if (boardState.Board[k, k] != currentPlayer)
-                    {
-                        done = false;
-                        break;
-                    }
-                }
-
-                if (done)
-                {
-                    playing = false;
-                    return;
-                }
-            }
-            #endregion
-
-            #region RightDiagonalCheck
-            if (i == 2-j)
-            {
-                done = true;
-                for (int k = 0; k < 3; ++k)
-                {
-                    if (boardState.Board[k, 2-k] != currentPlayer)
-                    {
-                        done = false;
-                        break;
-                    }
-                }
-
-                if (done)
-                {
-                    playing = false;
-                    return;
-                }
-            }
-            #endregion
-
-            #region BoardFilledCheck
-            if(filledSquaresCount == 9)
-            {
-                playing = false;
-                currentPlayer = 0;
-                return;
-            }
-            #endregion
         }
 
         private void ChangePlayer()
@@ -204,7 +331,7 @@ namespace TicTacToeCore
 
         public byte GetWinner()
         {
-            return currentPlayer;
+            return boardState.GetWinner();
         }
     }
 }

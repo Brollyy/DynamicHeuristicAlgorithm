@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DynamicHeuristicAlgorithm.TicTacToe
+namespace DynamicHeuristicAlgorithmCore.Utils
 {
     public static class GameStateFactory<T> where T : GameState, new()
     {

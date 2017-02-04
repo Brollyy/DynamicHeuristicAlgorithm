@@ -9,9 +9,9 @@ namespace DynamicHeuristicAlgorithmCore.HeuristicInterface
 {
     public abstract class Heuristic
     {
-        protected uint weight;
+        protected double weight;
 
-        public Heuristic(uint weight)
+        public Heuristic(double weight)
         {
             this.weight = weight;
         }

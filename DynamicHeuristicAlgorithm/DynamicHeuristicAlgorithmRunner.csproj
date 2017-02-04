@@ -46,6 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="2048\_2048Runner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2048\_2048Runner.Designer.cs">
+      <DependentUpon>_2048Runner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="2048\_2048GameImpl.cs" />
+    <Compile Include="2048\_2048GameStateImpl.cs" />
+    <Compile Include="2048\_2048GameStatistics.cs" />
+    <Compile Include="2048\_2048LargeValuesOnEdgeHeuristic.cs" />
+    <Compile Include="2048\_2048NonMonotonicLinesPenaltyHeuristic.cs" />
+    <Compile Include="2048\_2048NumberOfMergesHeuristic.cs" />
+    <Compile Include="2048\_2048OpenSquareBonusHeuristic.cs" />
+    <Compile Include="2048\_2048ScoreHeuristic.cs" />
+    <Compile Include="2048\_2048SystemPlayer.cs" />
     <Compile Include="DynamicHeuristicAlgorithmRunner.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,10 +70,10 @@
     <Compile Include="MinimaxPlayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomPlayer.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="TicTacToe\PerfectTicTacToePlayer.cs" />
     <Compile Include="TicTacToe\TicTacToeGameImpl.cs" />
-    <Compile Include="Utils\GameStateFactory.cs" />
+    <Compile Include="Utils\DynamicHeuristicFactory.cs" />
     <Compile Include="TicTacToe\TicTacToeGameStateImpl.cs" />
     <Compile Include="TicTacToe\TicTacToeGameStatistics.cs" />
     <Compile Include="TicTacToe\TicTacToeHeuristic.cs" />
@@ -74,7 +89,17 @@
     <Compile Include="Utils\GameViewFactory.cs" />
     <Compile Include="Utils\HeuristicFactory.cs" />
     <Compile Include="Utils\MultiTextWriter.cs" />
+    <Compile Include="Utils\NeuralNetworkFactory.cs" />
+    <Compile Include="Utils\NonFocusableButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utils\PlayerFactory.cs" />
+    <Compile Include="Utils\SizeableTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="2048\_2048Runner.resx">
+      <DependentUpon>_2048Runner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DynamicHeuristicAlgorithmRunner.resx">
       <DependentUpon>DynamicHeuristicAlgorithmRunner.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +116,7 @@
     <EmbeddedResource Include="TicTacToe\TicTacToeRunner.resx">
       <DependentUpon>TicTacToeRunner.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,13 +131,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\2048Game\2048Game.csproj">
+      <Project>{fbfaa38c-d74d-4aed-9115-14e3e2e4bc05}</Project>
+      <Name>2048Game</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DynamicHeuristicAlgorithmCore\DynamicHeuristicAlgorithmCore.csproj">
       <Project>{c5a7f813-2bbf-4e56-9bf0-dda02cfa82d7}</Project>
       <Name>DynamicHeuristicAlgorithmCore</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MapDynamicHeuristic\MapDynamicHeuristic.csproj">
+      <Project>{384d3cd7-08f5-4f07-8ef6-d611f0c233c3}</Project>
+      <Name>MapDynamicHeuristic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MinimaxAlgorithmCore\MinimaxAlgorithmCore.csproj">
       <Project>{f0b19d23-c810-4240-a350-6c82c9f1c4ff}</Project>
       <Name>MinimaxAlgorithmCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuralNetworkCore\NeuralNetworkCore.csproj">
+      <Project>{40260912-eecb-48c7-bd16-3e67527219ea}</Project>
+      <Name>NeuralNetworkCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuralNetworkDynamicHeuristic\NeuralNetworkDynamicHeuristic.csproj">
+      <Project>{7f7ce736-acca-4dbd-8974-3ef23342f9f3}</Project>
+      <Name>NeuralNetworkDynamicHeuristic</Name>
     </ProjectReference>
     <ProjectReference Include="..\TicTacToeGame\TicTacToeGame.csproj">
       <Project>{29a16aed-36af-4057-bfe6-ccc29b652ea2}</Project>
@@ -127,6 +169,7 @@
   <ItemGroup>
     <None Include="Resources\ticTacToeNone.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

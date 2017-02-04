@@ -23,7 +23,7 @@ namespace DynamicHeuristicAlgorithm
         public override void PerformMove(Game game, GameState gameState)
         {
             MinimaxAlgorithm minimax = new MinimaxAlgorithm(game, heuristics);
-            GameState bestMove = minimax.Minimax(gameState, depth, true);
+            GameState bestMove = minimax.Minimax(gameState, depth);
             Logger.LogDebug("MinimaxPlayer move from " + gameState.GetStateHashCode()
                 + " to " + bestMove.GetStateHashCode() + ".");
             game.PerformMove(bestMove);
