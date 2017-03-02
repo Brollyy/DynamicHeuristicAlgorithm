@@ -33,8 +33,8 @@ namespace DynamicHeuristicAlgorithm.TicTacToe
             game = new TicTacToeGame();
             currentGameState = GameStateFactory<TicTacToeGameStateImpl>.GetNewGameState();
             currentPlayerIndex = 1;
-            //opponent = new RandomPlayer();
-            opponent = new MinimaxPlayer(new Heuristic[] { HeuristicFactory.GetHeuristicByName("ticTacToeHeuristic", 1, null) }, 6);
+            opponent = new RandomPlayer();
+            //opponent = new MinimaxPlayer(new Heuristic[] { HeuristicFactory.GetHeuristicByName("ticTacToeHeuristic", 1, null) }, 6);
             playerGameStates = new List<TicTacToeGameStateImpl>();
             statistics = new TicTacToeGameStatistics();
         }

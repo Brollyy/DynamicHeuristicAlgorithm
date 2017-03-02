@@ -61,6 +61,8 @@ namespace DynamicHeuristicAlgorithmCore.Utils
                         LogExternal(LogLevel.ERROR, e.Message);
                         LogInternalError(e.Message);
                     }
+                    allLogTarget.Close();
+                    allLogTarget.Dispose();
                     Logger.allLogTarget = null;
                 }
             }
@@ -229,6 +231,14 @@ namespace DynamicHeuristicAlgorithmCore.Utils
                 allLogTarget.Close();
                 allLogTarget.Dispose();
             }
+
+            foreach(KeyValuePair<int, StreamWriter> threadLogTarget in threadsLogTargets)
+            {
+                threadLogTarget.Value.Flush();
+                threadLogTarget.Value.Close();
+                threadLogTarget.Value.Dispose();
+            }
+            threadsLogTargets.Clear();
         }
 
         public static void DisposeError()
@@ -245,11 +255,6 @@ namespace DynamicHeuristicAlgorithmCore.Utils
         {
             Dispose();
             DisposeError();
-            foreach(string file in Directory.GetFiles(new DirectoryInfo(logFilename).Parent.FullName))
-            {
-                File.Delete(file);
-                LogExternal(LogLevel.INFO, "Deleted file " + file + ".");
-            }
             Array.ForEach(Directory.GetFiles(new DirectoryInfo(logFilename).Parent.FullName), File.Delete);
             OpenLogFile();
             OpenErrorLogFile();

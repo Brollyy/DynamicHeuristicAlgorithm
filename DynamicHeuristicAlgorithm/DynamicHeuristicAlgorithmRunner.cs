@@ -221,6 +221,13 @@ namespace DynamicHeuristicAlgorithm
                 purgeDynamicHeuristicDataButton.Enabled = false;
                 deleteStatisticsButton.Enabled = false;
                 clearConsoleButton.Enabled = false;
+                chooseGameGroupBox.Enabled = false;
+                modeGroupBox.Enabled = false;
+                dynamicHeuristicsGroupBox.Enabled = false;
+                setHeuristicsGroupBox.Enabled = false;
+                recursionDepthCounter.Enabled = false;
+                numberOfRunsCounter.Enabled = false;
+                saveStatisticsCheckBox.Enabled = false;
             }
         }
 
@@ -238,6 +245,13 @@ namespace DynamicHeuristicAlgorithm
                 purgeDynamicHeuristicDataButton.Enabled = true;
                 deleteStatisticsButton.Enabled = true;
                 clearConsoleButton.Enabled = true;
+                chooseGameGroupBox.Enabled = true;
+                modeGroupBox.Enabled = true;
+                dynamicHeuristicsGroupBox.Enabled = true;
+                setHeuristicsGroupBox.Enabled = true;
+                recursionDepthCounter.Enabled = true;
+                numberOfRunsCounter.Enabled = true;
+                saveStatisticsCheckBox.Enabled = true;
             }
         }
 

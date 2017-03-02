@@ -1,3 +1,0 @@
-Opcjonalne:
-1. Rozwiniêcie Minimax o cache.
-2. Dodaæ mo¿liwoœæ wyboru przeciwnika.

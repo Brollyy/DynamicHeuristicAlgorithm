@@ -44,12 +44,10 @@
             this.largeValuesOnEdgeHeuristicCheckBox = new System.Windows.Forms.CheckBox();
             this.openSquareBonusHeuristicCheckBox = new System.Windows.Forms.CheckBox();
             this.dynamicHeuristicsGroupBox = new System.Windows.Forms.GroupBox();
-            this.evolutionaryDynamicHeuristicRadioButton = new System.Windows.Forms.RadioButton();
             this.neuralNetworkDynamicHeuristicRadioButton = new System.Windows.Forms.RadioButton();
             this.mapDynamicHeuristicRadioButton = new System.Windows.Forms.RadioButton();
             this.purgeDynamicHeuristicDataButton = new System.Windows.Forms.Button();
             this.chooseGameGroupBox = new System.Windows.Forms.GroupBox();
-            this.gameConnectFourRadioButton = new System.Windows.Forms.RadioButton();
             this.game2048RadioButton = new System.Windows.Forms.RadioButton();
             this.gameTicTacToeRadioButton = new System.Windows.Forms.RadioButton();
             this.AIOptionsGroupBox = new System.Windows.Forms.GroupBox();
@@ -305,7 +303,6 @@
             // 
             // dynamicHeuristicsGroupBox
             // 
-            this.dynamicHeuristicsGroupBox.Controls.Add(this.evolutionaryDynamicHeuristicRadioButton);
             this.dynamicHeuristicsGroupBox.Controls.Add(this.neuralNetworkDynamicHeuristicRadioButton);
             this.dynamicHeuristicsGroupBox.Controls.Add(this.mapDynamicHeuristicRadioButton);
             this.dynamicHeuristicsGroupBox.Controls.Add(this.purgeDynamicHeuristicDataButton);
@@ -316,16 +313,6 @@
             this.dynamicHeuristicsGroupBox.TabStop = false;
             this.dynamicHeuristicsGroupBox.Text = "Dynamic heuristics";
             this.dynamicHeuristicsGroupBox.Visible = false;
-            // 
-            // evolutionaryDynamicHeuristicRadioButton
-            // 
-            this.evolutionaryDynamicHeuristicRadioButton.AutoSize = true;
-            this.evolutionaryDynamicHeuristicRadioButton.Location = new System.Drawing.Point(7, 68);
-            this.evolutionaryDynamicHeuristicRadioButton.Name = "evolutionaryDynamicHeuristicRadioButton";
-            this.evolutionaryDynamicHeuristicRadioButton.Size = new System.Drawing.Size(224, 17);
-            this.evolutionaryDynamicHeuristicRadioButton.TabIndex = 2;
-            this.evolutionaryDynamicHeuristicRadioButton.Text = "Neural network with evolutionary algorithm";
-            this.evolutionaryDynamicHeuristicRadioButton.UseVisualStyleBackColor = true;
             // 
             // neuralNetworkDynamicHeuristicRadioButton
             // 
@@ -363,7 +350,6 @@
             // 
             // chooseGameGroupBox
             // 
-            this.chooseGameGroupBox.Controls.Add(this.gameConnectFourRadioButton);
             this.chooseGameGroupBox.Controls.Add(this.game2048RadioButton);
             this.chooseGameGroupBox.Controls.Add(this.gameTicTacToeRadioButton);
             this.chooseGameGroupBox.Location = new System.Drawing.Point(164, 212);
@@ -373,20 +359,10 @@
             this.chooseGameGroupBox.TabStop = false;
             this.chooseGameGroupBox.Text = "Game";
             // 
-            // gameConnectFourRadioButton
-            // 
-            this.gameConnectFourRadioButton.AutoSize = true;
-            this.gameConnectFourRadioButton.Location = new System.Drawing.Point(6, 44);
-            this.gameConnectFourRadioButton.Name = "gameConnectFourRadioButton";
-            this.gameConnectFourRadioButton.Size = new System.Drawing.Size(86, 17);
-            this.gameConnectFourRadioButton.TabIndex = 2;
-            this.gameConnectFourRadioButton.Text = "Connect four";
-            this.gameConnectFourRadioButton.UseVisualStyleBackColor = true;
-            // 
             // game2048RadioButton
             // 
             this.game2048RadioButton.AutoSize = true;
-            this.game2048RadioButton.Location = new System.Drawing.Point(6, 68);
+            this.game2048RadioButton.Location = new System.Drawing.Point(6, 43);
             this.game2048RadioButton.Name = "game2048RadioButton";
             this.game2048RadioButton.Size = new System.Drawing.Size(49, 17);
             this.game2048RadioButton.TabIndex = 1;
@@ -604,7 +580,6 @@
         private System.Windows.Forms.GroupBox chooseGameGroupBox;
         private System.Windows.Forms.RadioButton gameTicTacToeRadioButton;
         private System.Windows.Forms.RadioButton game2048RadioButton;
-        private System.Windows.Forms.RadioButton gameConnectFourRadioButton;
         private System.Windows.Forms.GroupBox AIOptionsGroupBox;
         private System.Windows.Forms.Button clearConsoleButton;
         private System.Windows.Forms.Button purgeLogsButton;
@@ -623,7 +598,6 @@
         private System.Windows.Forms.NumericUpDown numberOfMergesHeuristicWeightCounter;
         private System.Windows.Forms.Button openStatisticsButton;
         private System.Windows.Forms.GroupBox dynamicHeuristicsGroupBox;
-        private System.Windows.Forms.RadioButton evolutionaryDynamicHeuristicRadioButton;
         private System.Windows.Forms.RadioButton neuralNetworkDynamicHeuristicRadioButton;
         private System.Windows.Forms.RadioButton mapDynamicHeuristicRadioButton;
     }
